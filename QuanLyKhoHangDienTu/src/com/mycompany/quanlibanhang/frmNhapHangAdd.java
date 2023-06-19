@@ -87,7 +87,6 @@ public class frmNhapHangAdd extends javax.swing.JFrame {
         txtMaHang = new javax.swing.JTextField();
         txtSoLuong = new javax.swing.JTextField();
         txtNhaCungCap = new javax.swing.JTextField();
-        dtNgayNhap = new com.toedter.calendar.JDateChooser();
         txtTongTienNhap = new javax.swing.JTextField();
         txtGhiChu = new javax.swing.JTextField();
         txtTrangThai = new javax.swing.JTextField();
@@ -179,7 +178,6 @@ public class frmNhapHangAdd extends javax.swing.JFrame {
                     .addComponent(jLabel8))
                 .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(dtNgayNhap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(txtTongTienNhap, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
                         .addComponent(txtTrangThai, javax.swing.GroupLayout.Alignment.LEADING))
@@ -233,10 +231,8 @@ public class frmNhapHangAdd extends javax.swing.JFrame {
                     .addComponent(txtNhaCungCap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnChonNhaCungCap))
                 .addGap(41, 41, 41)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(dtNgayNhap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40)
+                .addComponent(jLabel6)
+                .addGap(42, 42, 42)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7)
                     .addComponent(txtTongTienNhap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -502,7 +498,6 @@ public class frmNhapHangAdd extends javax.swing.JFrame {
     private javax.swing.JButton btnChonHangHoa;
     private javax.swing.JButton btnChonNhaCungCap;
     private javax.swing.JButton btnDong;
-    private com.toedter.calendar.JDateChooser dtNgayNhap;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
