@@ -4,13 +4,13 @@
  */
 package com.mycompany.quanlibanhang;
 
-/*import javax.swing.JOptionPane;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author DangQuang
  */
-/*public class frmDangNhap extends javax.swing.JFrame {
+public class frmDangNhap extends javax.swing.JFrame {
 
     /**
      * Creates new form frmDangNhap
@@ -236,4 +236,4 @@ package com.mycompany.quanlibanhang;
     private javax.swing.JPasswordField txtMatKhau;
     private javax.swing.JTextField txtTenDangNhap;
     // End of variables declaration//GEN-END:variables
-}*/
+}

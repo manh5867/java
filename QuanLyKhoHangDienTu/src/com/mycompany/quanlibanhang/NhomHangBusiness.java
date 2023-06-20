@@ -42,8 +42,8 @@ public class NhomHangBusiness {
                 objNH = new NhomHang();
 
                 //Gán giá trị cho các thuộc tính
-                objNH.setMaNhomHang(rs.getString("MaNhomHang"));
-                objNH.setTenNhomHang(rs.getString("TenNhomHang"));
+                objNH.setMaNhomHang(rs.getString("TYPE_ID"));
+                objNH.setTenNhomHang(rs.getString("TYPE_NAME"));
                 
 
                 //Thêm vào danh sách
@@ -81,7 +81,7 @@ public class NhomHangBusiness {
 
             conn = DataProvider.ketNoi();
 
-            String strSQL = "Select * from NhomHang where MaNhomHang='" + maNH + "'";
+            String strSQL = "Select * from NhomHang where TYPE_ID='" + maNH + "'";
 
             Statement comm = conn.createStatement();
 
@@ -92,8 +92,8 @@ public class NhomHangBusiness {
                 objNH = new NhomHang();
 
                 //Gán giá trị cho các thuộc tính
-                objNH.setMaNhomHang(rs.getString("MaNhomHang"));
-                objNH.setTenNhomHang(rs.getString("TenNhomHang"));
+                objNH.setMaNhomHang(rs.getString("TYPE_ID"));
+                objNH.setTenNhomHang(rs.getString("TYPE_NAME"));
             }
 
         } catch (SQLException ex) {
@@ -123,7 +123,7 @@ public class NhomHangBusiness {
             conn = DataProvider.ketNoi();
             
             //Khai báo công việc
-            String strInsert = "Insert into NhomHang(MaNhomHang, TenNhomHang) values("
+            String strInsert = "Insert into NhomHang(TYPE_ID, TYPE_NAME) values("
                     + "?,?)";
             
             PreparedStatement comm = conn.prepareStatement(strInsert);
@@ -175,7 +175,7 @@ public class NhomHangBusiness {
             conn = DataProvider.ketNoi();
             
             //Khai báo công việc
-            String strUpdate = "Update NhomHang set  TenNhomHang = ? where MaNhomHang = ?";
+            String strUpdate = "Update NhomHang set  TYPE_NAME = ? where TYPE_ID = ?";
             
             PreparedStatement comm = conn.prepareStatement(strUpdate);
             
@@ -220,7 +220,7 @@ public class NhomHangBusiness {
             conn = DataProvider.ketNoi();
             
             //Khai báo công việc
-            String strDelete = "Delete from NhomHang where MaNhomHang = ?";
+            String strDelete = "Delete from NhomHang where TYPE_ID = ?";
             
             PreparedStatement comm = conn.prepareStatement(strDelete);
             

@@ -21,6 +21,15 @@ public class HangHoa {
     private String xuatXu;
     private String viTri;
     private String maNhomHang;
+    private String tenNhomHang;
+
+    public String getTenNhomHang() {
+        return tenNhomHang;
+    }
+
+    public void setTenNhomHang(String tenNhomHang) {
+        this.tenNhomHang = tenNhomHang;
+    }
 
     public String getMaNhomHang() {
         return maNhomHang;

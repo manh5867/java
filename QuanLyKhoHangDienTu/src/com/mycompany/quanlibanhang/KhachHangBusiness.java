@@ -46,11 +46,11 @@ public class KhachHangBusiness {
                 objKH = new KhachHang();
 
                 //Gán giá trị cho các thuộc tính
-                objKH.setId(rs.getString("ID"));
-                objKH.setHoTen(rs.getString("HoTen"));
-                objKH.setDienThoai(rs.getString("DienThoai"));
-                objKH.setEmail(rs.getString("Email"));
-                objKH.setDiaChi(rs.getString("DiaChi"));
+                objKH.setId(rs.getString("CUSTOMER_ID"));
+                objKH.setHoTen(rs.getString("CUSTOMER_NAME"));
+                objKH.setDienThoai(rs.getString("CUSTOMER_ADDRESS"));
+                objKH.setEmail(rs.getString("CUSTOMER_PHONE_NUMBER"));
+                objKH.setDiaChi(rs.getString("CUSTOMER_EMAIL"));
 
                 //Thêm vào danh sách
                 lstKhachHang.add(objKH);
@@ -86,8 +86,8 @@ public class KhachHangBusiness {
             
             if(!tuKhoa.isEmpty())
             {
-                strSQL += " AND (ID = '" + tuKhoa + "'  OR HoTen like '%" + 
-                        tuKhoa + "%' OR DienThoai like '%"
+                strSQL += " AND (CUSTOMER_ID = '" + tuKhoa + "'  OR CUSTOMER_NAME like '%" + 
+                        tuKhoa + "%' OR CUSTOMER_PHONE_NUMBER like '%"
                         + tuKhoa + "%')";
             }
             
@@ -96,20 +96,20 @@ public class KhachHangBusiness {
 
             ResultSet rs = comm.executeQuery(strSQL);
 
-            KhachHang objSV;
+            KhachHang objKH;
             //Lấy dữ liệu từng dòng trong rs để đưa vào list
             while (rs.next()) {
-                objSV = new KhachHang();
+                objKH = new KhachHang();
 
                 //Gán giá trị cho các thuộc tính
-                objSV.setId(rs.getString("ID"));
-                objSV.setHoTen(rs.getString("HoTen"));
-                objSV.setDienThoai(rs.getString("DienThoai"));
-                objSV.setEmail(rs.getString("Email"));
-                objSV.setDiaChi(rs.getString("DiaChi"));
+                objKH.setId(rs.getString("CUSTOMER_ID"));
+                objKH.setHoTen(rs.getString("CUSTOMER_NAME"));
+                objKH.setDiaChi(rs.getString("CUSTOMER_ADDRESS"));
+                objKH.setDienThoai(rs.getString("CUSTOMER_PHONE_NUMBER"));
+                objKH.setEmail(rs.getString("CUSTOMER_EMAIL"));
 
                 //Thêm vào danh sách
-                lstKhachHang.add(objSV);
+                lstKhachHang.add(objKH);
             }
 
         } catch (SQLException ex) {
@@ -138,7 +138,7 @@ public class KhachHangBusiness {
 
             conn = DataProvider.ketNoi();
 
-            String strSQL = "Select * from KhachHang where ID='" + ID + "'";
+            String strSQL = "Select * from KhachHang where CUSTOMER_ID='" + ID + "'";
 
             Statement comm = conn.createStatement();
 
@@ -149,18 +149,11 @@ public class KhachHangBusiness {
                 objKH = new KhachHang();
 
                 //Gán giá trị cho các thuộc tính
-                objKH.setId(rs.getString("ID"));
-                objKH.setHoTen(rs.getString("HoTen"));
-                objKH.setDienThoai(rs.getString("DienThoai"));
-                objKH.setEmail(rs.getString("Email"));
-                objKH.setDiaChi(rs.getString("DiaChi"));
-                objKH.setGioiTinh(rs.getInt("GioiTinh"));
-                objKH.setNgaySinh(rs.getDate("NgaySinh"));
-                objKH.setCongTyId(rs.getString("CongTyID"));
-                objKH.setGhiChu(rs.getString("GhiChu"));
-                objKH.setCMT(rs.getString("CMT"));
-                objKH.setNgayCap(rs.getDate("NgayCapCMT"));
-                objKH.setNoiCap(rs.getString("NoiCapCMT"));
+                objKH.setId(rs.getString("CUSTOMER_ID"));
+                objKH.setHoTen(rs.getString("CUSTOMER_NAME"));
+                objKH.setDiaChi(rs.getString("CUSTOMER_ADDRESS"));
+                objKH.setDienThoai(rs.getString("CUSTOMER_PHONE_NUMBER"));
+                objKH.setEmail(rs.getString("CUSTOMER_EMAIL"));
                 //Thêm vào danh sách
                 lstKhachHang.add(objKH);
             }
@@ -192,25 +185,19 @@ public class KhachHangBusiness {
             conn = DataProvider.ketNoi();
             
             //Khai báo công việc
-            String strInsert = "Insert into KhachHang(ID, HoTen, DienThoai, Email, DiaChi, "
-                    + "GioiTinh, NgaySinh,GhiChu,CMT,NgayCapCMT,NoiCapCMT,CongTyID) values("
-                    + "?,?,?,?,?, ?, ?, ?,?,?,?,?)";
+            String strInsert = "Insert into KhachHang(CUSTOMER_ID, CUSTOMER_NAME, CUSTOMER_ADDRESS, CUSTOMER_PHONE_NUMBER, CUSTOMER_EMAIL "
+                    + ") values("
+                    + "?,?,?,?,?)";
             
             PreparedStatement comm = conn.prepareStatement(strInsert);
             
             //Thiết lập các giá trị cho tham số
             comm.setString(1, objKH.getId());
             comm.setString(2, objKH.getHoTen());
-            comm.setString(3, objKH.getDienThoai());
-            comm.setString(4, objKH.getEmail());
-            comm.setString(5, objKH.getDiaChi());
-            comm.setInt(6, objKH.getGioiTinh());
-            comm.setDate(7, new Date(objKH.getNgaySinh().getTime()));
-            comm.setString(8, objKH.getGhiChu());
-             comm.setString(9, objKH.getCMT());
-              comm.setDate(10, new Date( objKH.getNgayCap().getTime()));
-               comm.setString(11, objKH.getNoiCap());
-                comm.setString(12, objKH.getCongTyId());
+            comm.setString(3, objKH.getDiaChi());
+            comm.setString(4, objKH.getDienThoai());
+            comm.setString(5, objKH.getEmail());
+           
                 
                   
             
@@ -252,26 +239,19 @@ public class KhachHangBusiness {
             conn = DataProvider.ketNoi();
             
             //Khai báo công việc
-            String strUpdate = "Update KhachHang set HoTen=?, DienThoai = ?, Email = ?, "
-                    + "DiaChi = ?, GioiTinh = ?, "
-                    + "NgaySinh = ?, GhiChu=?,CMT=?, NgayCapCMT = ?, NoiCapCMT=?,CongTyID = ? where ID = ?";
+            String strUpdate = "Update KhachHang set CUSTOMER_NAME=?, CUSTOMER_ADDRESS = ?, CUSTOMER_PHONE_NUMBER = ?, "
+                    + "CUSTOMER_EMAIL = ? "
+                    + "where CUSTOMER_ID = ?";
             
             PreparedStatement comm = conn.prepareStatement(strUpdate);
             
             //Thiết lập các giá trị cho tham số
             
-           comm.setString(1, objKH.getHoTen());
-            comm.setString(2, objKH.getDienThoai());
-            comm.setString(3, objKH.getEmail());
-            comm.setString(4, objKH.getDiaChi());
-            comm.setInt(5, objKH.getGioiTinh());
-            comm.setDate(6, new Date(objKH.getNgaySinh().getTime()));
-            comm.setString(7, objKH.getGhiChu());
-             comm.setString(8, objKH.getCMT());
-              comm.setDate(9, new Date( objKH.getNgayCap().getTime()));
-               comm.setString(10, objKH.getNoiCap());
-                comm.setString(11, objKH.getCongTyId());
-                comm.setString(12, objKH.getId());
+           comm.setString(5, objKH.getId());
+            comm.setString(1, objKH.getHoTen());
+            comm.setString(2, objKH.getDiaChi());
+            comm.setString(3, objKH.getDienThoai());
+            comm.setString(4, objKH.getEmail());
             
             
             //Thực hiện công việc
@@ -311,7 +291,7 @@ public class KhachHangBusiness {
             conn = DataProvider.ketNoi();
             
             //Khai báo công việc
-            String strDelete = "Delete from KhachHang where ID = ?";
+            String strDelete = "Delete from KhachHang where CUSTOMER_ID = ?";
             
             PreparedStatement comm = conn.prepareStatement(strDelete);
             

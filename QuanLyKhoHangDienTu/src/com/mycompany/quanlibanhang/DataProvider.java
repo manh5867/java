@@ -94,7 +94,7 @@ public class DataProvider {
     //Khai báo driver mysql cần làm việc
     private static final String JDBC_DRIVER="com.mysql.cj.jdbc.Driver";
     //Khai báo db cần làm việc
-    private static final String DATABASE_LINK = "jdbc:mysql://localhost:3306/j062201cb?allowPublicKeyRetrieval=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false";
+    private static final String DATABASE_LINK = "jdbc:mysql://localhost:3306/mydb?allowPublicKeyRetrieval=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false";
     
     /**
      * Hàm kết nối đến db cần làm việc

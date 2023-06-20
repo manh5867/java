@@ -13,6 +13,12 @@ import javax.swing.JOptionPane;
 public class frmKhachHang extends javax.swing.JFrame {
 
     private String maKhachHang = "";
+    
+    private boolean ThongTin;
+
+    public void setThongTin(boolean ThongTin) {
+        this.ThongTin = ThongTin;
+    }
 
     public String getMaKhachHang() {
         return maKhachHang;
@@ -41,22 +47,10 @@ private void hienThiChiTiet()
             txtDienThoai.setText(objKH.getDienThoai());
             txtEmail.setText(objKH.getEmail());
             txtDiaChi.setText(objKH.getDiaChi());
-            dtNgaySinh.setDate(objKH.getNgaySinh());
-            txtGhiChu.setText(objKH.getGhiChu());
-            txtCongTyID.setText(objKH.getCongTyId());
-            txtCMT.setText(objKH.getCMT());
-            txtNoiCapCMT.setText(objKH.getNoiCap());
-            dtNgayCapCMT.setDate(objKH.getNgayCap());
             
             
-            if(objKH.getGioiTinh() == 1)
-            {
-                rbtnNu.setSelected(true);
-            }
-            else
-            {
-                rbtnNam.setSelected(true);
-            }
+            
+            
         }
         
     }
@@ -76,18 +70,6 @@ private void hienThiChiTiet()
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-<<<<<<< HEAD
-        rbtnNam = new javax.swing.JRadioButton();
-        rbtnNu = new javax.swing.JRadioButton();
-        jLabel8 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        txtCMT = new javax.swing.JTextField();
-        txtNoiCapCMT = new javax.swing.JTextField();
-=======
->>>>>>> 4fc65b743d2ba7fdc09102c14349cf5cad2ab2ff
         txtID = new javax.swing.JTextField();
         txtHoTen = new javax.swing.JTextField();
         txtDienThoai = new javax.swing.JTextField();
@@ -96,11 +78,6 @@ private void hienThiChiTiet()
         txtGhiChu = new javax.swing.JTextField();
         btnCapNhat = new javax.swing.JButton();
         btnDong = new javax.swing.JButton();
-<<<<<<< HEAD
-        jLabel12 = new javax.swing.JLabel();
-        txtCongTyID = new javax.swing.JTextField();
-=======
->>>>>>> 4fc65b743d2ba7fdc09102c14349cf5cad2ab2ff
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -123,57 +100,6 @@ private void hienThiChiTiet()
 
         jLabel7.setText("Ghi chú:");
 
-<<<<<<< HEAD
-        rbtnNam.setText("Nam");
-
-        rbtnNu.setText("Nữ");
-
-        jLabel8.setText("Ngày Sinh:");
-
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Chứng minh thư "));
-
-        jLabel9.setText("CMT:");
-
-        jLabel10.setText("Ngày cấp:");
-
-        jLabel11.setText("Nơi cấp:");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel9)
-                        .addGap(37, 37, 37)
-                        .addComponent(txtCMT, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel10)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel11)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtNoiCapCMT)))
-                .addContainerGap(191, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(txtCMT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addComponent(jLabel10)
-                .addGap(20, 20, 20)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(txtNoiCapCMT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-=======
->>>>>>> 4fc65b743d2ba7fdc09102c14349cf5cad2ab2ff
         txtID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtIDActionPerformed(evt);
@@ -219,10 +145,6 @@ private void hienThiChiTiet()
                             .addComponent(jLabel6)
                             .addComponent(jLabel7))
                         .addGap(18, 18, 18)
-<<<<<<< HEAD
-                        .addComponent(txtCongTyID)
-                        .addGap(68, 68, 68))))
-=======
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtGhiChu, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtDiaChi, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -235,7 +157,6 @@ private void hienThiChiTiet()
                 .addGap(18, 18, 18)
                 .addComponent(btnDong)
                 .addGap(78, 78, 78))
->>>>>>> 4fc65b743d2ba7fdc09102c14349cf5cad2ab2ff
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -248,19 +169,8 @@ private void hienThiChiTiet()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtHoTen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-<<<<<<< HEAD
-                .addGap(27, 27, 27)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(rbtnNam)
-                    .addComponent(rbtnNu)
-                    .addComponent(jLabel8))
-                .addGap(19, 19, 19)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-=======
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
->>>>>>> 4fc65b743d2ba7fdc09102c14349cf5cad2ab2ff
                     .addComponent(jLabel4)
                     .addComponent(txtDienThoai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
@@ -314,6 +224,16 @@ private void hienThiChiTiet()
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
+        
+        if (ThongTin==true)
+        {
+           this.setTitle("Thông tin khách hàng"); 
+           btnCapNhat.setVisible(false);
+           hienThiChiTiet();
+           
+        }
+        else
+        {
         if(!maKhachHang.isEmpty())//TH sửa
         {
             this.setTitle("Sửa thông tin khách hàng");
@@ -325,13 +245,14 @@ private void hienThiChiTiet()
         {
             this.setTitle("Thêm mới thông tin khách hàng");
         }
+        }
     }//GEN-LAST:event_formWindowOpened
 
     private void btnCapNhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCapNhatActionPerformed
         // TODO add your handling code here:
         KhachHang objKH = new KhachHang();
         
-        String ID = "", hoTen = "", dienThoai = "", email = "", diaChi = "",CMT="",noiCap="",ghiChu="",congTyID="";
+        String ID = "", hoTen = "", dienThoai = "", email = "", diaChi = "";
         
         int gioiTinh = 0;
         
@@ -340,10 +261,7 @@ private void hienThiChiTiet()
         dienThoai = txtDienThoai.getText();
         email = txtEmail.getText();
         diaChi = txtDiaChi.getText();
-        CMT=txtCMT.getText();
-        ghiChu=txtGhiChu.getText();
-        congTyID=txtCongTyID.getText();
-        noiCap=txtNoiCapCMT.getText();
+        
         
         //Gán giá trị cho các thuộc tính
         objKH.setId(ID);
@@ -352,21 +270,9 @@ private void hienThiChiTiet()
         objKH.setEmail(email);
         objKH.setDiaChi(diaChi);
         
-        if(rbtnNu.isSelected())
-        {
-            gioiTinh = 1;
-        }
-        else
-        {
-            gioiTinh = 0;
-        }
         
-        objKH.setGioiTinh(gioiTinh);
-        objKH.setNgaySinh(dtNgaySinh.getDate());
-        objKH.setNgayCap(dtNgayCapCMT.getDate());
-        objKH.setCongTyId(congTyID);
-        objKH.setCMT(CMT);
-        objKH.setNoiCap(noiCap);
+        
+        
         
         
        
