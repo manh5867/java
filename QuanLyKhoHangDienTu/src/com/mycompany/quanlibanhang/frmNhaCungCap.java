@@ -5,12 +5,32 @@
 package com.mycompany.quanlibanhang;
 
 import javax.swing.JOptionPane;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.JOptionPane;
+import java.awt.Point;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseAdapter;
+import javax.swing.JTable;
+import java.util.ArrayList;
 
 /**
  *
  * @author My HP
  */
 public class frmNhaCungCap extends javax.swing.JFrame {
+    private static GiaoDienChinh h;
     
     private String maNhaCungCap = "";
 
@@ -25,8 +45,18 @@ public class frmNhaCungCap extends javax.swing.JFrame {
     /**
      * Creates new form frmNhaCungCap
      */
-    public frmNhaCungCap() {
+    public frmNhaCungCap(GiaoDienChinh a) {
         initComponents();
+         hienthi();
+        // h=new GiaoDienChinh();
+        h=a;
+        
+        if(h.getkhachhang().getSelectedRow()>-1){
+            int j=h.getkhachhang().getSelectedRow();
+      
+          txtID.setText(h.getkhachhang().getValueAt(j, 0).toString());
+        }
+        
     }
     
 
@@ -221,10 +251,12 @@ public class frmNhaCungCap extends javax.swing.JFrame {
         // TODO add your handling code here:
 
     }//GEN-LAST:event_txtIDActionPerformed
-
+   public void settext(String s,frmNhaCungCap a){
+   txtID.setText(s);
+   }
     private void btnCapNhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCapNhatActionPerformed
         // TODO add your handling code here:
-        CongTy objCT = new CongTy();
+        /*CongTy objCT = new CongTy();
 
         String ID = "", hoTen = "", dienThoai = "", email = "", diaChi = "",maSoThue="",website="",ghiChu="",congTyID="";
 
@@ -275,6 +307,48 @@ public class frmNhaCungCap extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Thực hiện cập nhật nhà cung cấp thành công");
             //Reload lại danh sách
             GiaoDienChinh.hienThiDanhSachCongTy();
+        } */
+        DefaultTableModel model= (DefaultTableModel) h.getkhachhang().getModel();
+        if(h.getkhachhang().getSelectedRow()==-1){
+          try {
+          Connection c = ketnoi.lienket();
+            Statement d = c.createStatement();
+            String id = txtID.getText();
+            String ten= txtHoTen.getText();
+            String diachi=txtDiaChi.getText();
+            String sdt= txtDienThoai.getText();
+            String mail= txtEmail.getText();
+            d.executeUpdate("INSERT INTO nhacungcap(SUPPLIER_ID,SUPPLIER_NAME,SUPPLIER_ADDRESS,SUPPLIER_PHONE_NUM,SUPPLIER_EMAIL) VALUES('"+id+"','"+ten+"','"+diachi+"','"+sdt+"','"+mail+"')");
+            Object rowdata[]={id,ten,diachi,sdt,mail};
+            model.addRow(rowdata);
+            h.getkhachhang().setModel(model);
+         //  model.setRowCount(0);
+         // model.setRowCount(0);
+        //  h.hienthi();
+         // h.repaint();
+            
+          ketnoi.dongketnoi(c);
+          }catch(SQLException e){e.printStackTrace();}
+         
+        }
+        
+        else if(h.getkhachhang().getSelectedRow()!=-1){
+              try{
+                Connection c = ketnoi.lienket();
+                Statement d=c.createStatement();
+                DefaultTableModel model1= (DefaultTableModel) h.getkhachhang().getModel();
+                model1.setRowCount(0);
+              String id= txtID.getText();
+              String ten=txtHoTen.getText();
+              String sdt= txtDienThoai.getText();
+              String mail=txtEmail.getText();
+              String diachi=txtDiaChi.getText();
+              d.executeUpdate("UPDATE nhacungcap SET SUPPLIER_NAME='"+ten+"',SUPPLIER_ADDRESS='"+ten+"',SUPPLIER_PHONE_NUM='"+sdt+"',SUPPLIER_EMAIL='"+mail+"' WHERE SUPPLIER_ID="+id);
+              Object rowdata[]={id,ten,sdt,mail,diachi};
+              model1.addRow(rowdata);
+              ketnoi.dongketnoi(c);
+              }catch(SQLException e){e.printStackTrace();}; 
+        
         }
 
     }//GEN-LAST:event_btnCapNhatActionPerformed
@@ -348,7 +422,7 @@ public class frmNhaCungCap extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frmNhaCungCap().setVisible(true);
+                new frmNhaCungCap(h).setVisible(true);
             }
         });
     }
@@ -374,6 +448,25 @@ public class frmNhaCungCap extends javax.swing.JFrame {
     private javax.swing.JTextField txtMaSoThue;
     private javax.swing.JTextField txtWebsite;
     // End of variables declaration//GEN-END:variables
+
+    private void hienthi() {
+        try{
+        Connection c = ketnoi.lienket();
+        Statement d = c.createStatement();
+        ResultSet rs = d.executeQuery("SELECT * FROM nhacungcap");
+        while(rs.next()){
+        String id = txtID.getText();
+        String ten= txtHoTen.getText();
+        String sdt= txtDienThoai.getText();
+        String mail=txtEmail.getText();
+        String diachi=txtDiaChi.getText();
+        
+        }
+        ketnoi.dongketnoi(c);
+        }catch(SQLException e){
+        e.printStackTrace();
+                }
+    }
 
     
 }

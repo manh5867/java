@@ -15,8 +15,12 @@ public class frmNhomHangAdd extends javax.swing.JFrame {
     /**
      * Creates new form frmNhomHangAdd
      */
-    public frmNhomHangAdd() {
+    private static GiaoDienChinh h;
+    private static frmHangHoaAdd h1;
+    public frmNhomHangAdd(GiaoDienChinh a,frmHangHoaAdd h2) {
         initComponents();
+        h=a;
+        h1=h2;
     }
 
     /**
@@ -123,7 +127,7 @@ public class frmNhomHangAdd extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-          NhomHang objNH = new NhomHang();
+         /* NhomHang objNH = new NhomHang();
         
         String maNhomHang="",tenNhomHang="";
         
@@ -160,7 +164,9 @@ public class frmNhomHangAdd extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Thực hiện cập nhật khách hàng thành công");
             //Reload lại danh sách
             
-        }
+        } */
+         h.getcombobox().addItem(txtMaNhomHang.getText());
+         h1.getcombobox().addItem(txtMaNhomHang.getText());
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -198,7 +204,7 @@ public class frmNhomHangAdd extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frmNhomHangAdd().setVisible(true);
+                new frmNhomHangAdd(h,h1).setVisible(true);
             }
         });
     }

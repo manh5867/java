@@ -5,7 +5,11 @@
 package com.mycompany.quanlibanhang;
 
 import java.util.Date;
-
+import java.util.ArrayList;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.Connection;
+import java.sql.ResultSet;
 
 
 /**
@@ -131,7 +135,66 @@ public class KhachHang {
      {
          
      }
-             
+     // ham tra ve ten va id tien hanh set
+      public  ArrayList<String> getlistID(){
+        ArrayList<String> list=new ArrayList<>();
+          try{
+           Connection c = ketnoi.lienket();
+           Statement d=c.createStatement();
+           ResultSet rs=d.executeQuery("SELECT CUSTOMER_ID FROM khachhang");
+           while(rs.next()){
+           
+              String id=rs.getString("CUSTOMER_ID");
+              list.add(id);
+           
+           }
+           ketnoi.dongketnoi(c);
+          }catch(SQLException e){e.printStackTrace();}    
+       return list;
+      }     
+      public ArrayList<String> getten(){
+       ArrayList<String> list=new ArrayList<>();
+          try{
+           Connection c = ketnoi.lienket();
+           Statement d=c.createStatement();
+           ResultSet rs=d.executeQuery("SELECT CUSTOMER_NAME FROM khachhang");
+           while(rs.next()){
+           
+              String ten=rs.getString("CUSTOMER_NAME");
+              list.add(ten);
+           
+           }
+           ketnoi.dongketnoi(c);
+          }catch(SQLException e){e.printStackTrace();}    
+       return list;
+      
+      
+      }
+      public  ArrayList<String> getds(){
+        ArrayList<String>list=new ArrayList<>();
+        ArrayList<String>list1=new ArrayList<>();
+      list=this.getten();
+       for(String i:list ){
+       
+        String s = i.substring(i.lastIndexOf(" ")+1);
+        list1.add(s);
+       }
+       return list1;
+      }
+      public static void main(String[] args){
+       KhachHang a = new KhachHang();
+         ArrayList<String> list = new ArrayList<>();
+         list=a.getds();
+         for(String id:list){
+          System.out.println(id+" ");
+         
+         }
+         /*String id1="2";
+         if(list.contains(id1)==true){
+         
+         System.out.println("co ton tai ");
+         }*/
+      }
      
     
 }

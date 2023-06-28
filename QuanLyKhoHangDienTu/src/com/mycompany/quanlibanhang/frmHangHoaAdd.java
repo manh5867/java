@@ -4,15 +4,38 @@
  */
 package com.mycompany.quanlibanhang;
 
-import java.util.List;
+/*import java.util.List;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
+import javax.swing.JOptionPane;*/
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.JOptionPane;
+import java.awt.Point;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseAdapter;
+import javax.swing.JTable;
+import java.util.ArrayList;
+import javax.swing.JComboBox;
 
 /**
  *
  * @author My HP
  */
 public class frmHangHoaAdd extends javax.swing.JFrame {
+    private  static GiaoDienChinh h;
+    
     
     private boolean ThongTin;
 
@@ -34,8 +57,15 @@ public class frmHangHoaAdd extends javax.swing.JFrame {
     /**
      * Creates new form frmHangHoaAdd
      */
-    public frmHangHoaAdd() {
+    public frmHangHoaAdd(GiaoDienChinh a) {
         initComponents();
+        h=a;
+        if(h.gethanghoa().getSelectedRow()!=-1){
+        txtMaHang.setText(h.gethanghoa().getValueAt(h.gethanghoa().getSelectedRow(), 0).toString());
+       
+        }
+         showConbobox();
+        
     }
     private void hienThiChiTiet()
     {
@@ -161,8 +191,6 @@ public class frmHangHoaAdd extends javax.swing.JFrame {
         jLabel38.setText("Tồn kho (*):");
 
         jLabel41.setText("Giá hàng (*):");
-
-        cboNhomHang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel2.setText("Mô tả:");
 
@@ -330,7 +358,7 @@ public class frmHangHoaAdd extends javax.swing.JFrame {
     private void btnLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuActionPerformed
         // TODO add your handling code here:
         
-        HangHoa objHH = new HangHoa();
+       /* HangHoa objHH = new HangHoa();
 
         String maHang = "", tenHang = "", moTa = "", donViTinh = "", viTri = "";
 
@@ -387,13 +415,57 @@ public class frmHangHoaAdd extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Thực hiện cập nhật khách hàng thành công");
             //Reload lại danh sách
             GiaoDienChinh.hienThiDanhSachHangHoa();
+        }  */
+        if(h.gethanghoa().getSelectedRow()==-1){
+             DefaultTableModel model = (DefaultTableModel)h.gethanghoa().getModel();
+          model.setRowCount(0);
+         try{
+         Connection c = ketnoi.lienket();
+         Statement d=c.createStatement();
+        
+         String id=txtMaHang.getText();
+         String ten = txtTenHang.getText();
+         String mota=txtMoTa.getText();
+         String gia=txtGiaBan.getText();
+         String tonkho=txtTonKho.getText();
+         String loai=cboNhomHang.getSelectedItem().toString();
+         String khu= txtViTri.getText();
+         d.executeUpdate("INSERT INTO sanpham(PRODUCT_ID,PRODUCT_NAME,PRODUCT_DESCRIPTION,PRODUCT_PRICE,PRODUCT_IVENTORY,PRODUCT_TYPE,LOCATION_ID) VALUES('"+id+"','"+ten+"','"+mota+"','"+gia+"','"+tonkho+"','"+loai+"','"+khu+"') ");
+           Object rowdata[]={id,ten,mota,gia,tonkho,loai,khu};
+          
+           model.addRow(rowdata);
+          // h.gethanghoa().clearSelection();
+         ketnoi.dongketnoi(c);
+         } catch(SQLException e){e.printStackTrace();}
+        
         }
+        else if(h.gethanghoa().getSelectedRow()!=-1){
+       // h.gethanghoa().clearSelection();
+        try {
+         DefaultTableModel model1= (DefaultTableModel)h.gethanghoa().getModel();
+         model1.setRowCount(0);
+         Connection c = ketnoi.lienket();
+         Statement d =c.createStatement();
+         String id = txtMaHang.getText();
+         String ten = txtTenHang.getText();
+         String mota=txtMoTa.getText();
+         String gia=txtGiaBan.getText();
+         String tonkho=txtTonKho.getText();
+         String loai=cboNhomHang.getSelectedItem().toString();
+         String khu= txtViTri.getText();
+         d.executeUpdate("UPDATE sanpham SET PRODUCT_NAME='"+ten+"',PRODUCT_DESCRIPTION='"+mota+"',PRODUCT_PRICE='"+gia+"',PRODUCT_IVENTORY='"+tonkho+"',PRODUCT_TYPE='"+loai+"',LOCATION_ID='"+khu+"' WHERE PRODUCT_ID='"+id+"'" );
+         Object rowdata[]={id,ten,mota,gia,tonkho,loai,khu};
+         model1.addRow(rowdata);
+        ketnoi.dongketnoi(c);
+        
+        } catch(SQLException e){e.printStackTrace();}
+        } 
 
     }//GEN-LAST:event_btnLuuActionPerformed
 
     private void btnThemNhomHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemNhomHangActionPerformed
         // TODO add your handling code here:
-        frmNhomHangAdd frmThemMoi = new frmNhomHangAdd();
+        frmNhomHangAdd frmThemMoi = new frmNhomHangAdd(h,this);
         frmThemMoi.setVisible(true);
         hienThiDanhSachNH();
         
@@ -429,7 +501,7 @@ public class frmHangHoaAdd extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frmHangHoaAdd().setVisible(true);
+                new frmHangHoaAdd(h).setVisible(true);
             }
         });
     }
@@ -456,4 +528,15 @@ public class frmHangHoaAdd extends javax.swing.JFrame {
     private javax.swing.JTextField txtTonKho;
     private javax.swing.JTextField txtViTri;
     // End of variables declaration//GEN-END:variables
+
+    private void showConbobox() {
+        cboNhomHang.addItem("loai 1");
+        cboNhomHang.addItem("loai 2");
+        cboNhomHang.addItem("loai 3");
+        cboNhomHang.addItem("loai 4");
+        //cboNhomHang.addItem("5");
+    }
+    public JComboBox<String> getcombobox(){
+    return cboNhomHang;
+    }
 }

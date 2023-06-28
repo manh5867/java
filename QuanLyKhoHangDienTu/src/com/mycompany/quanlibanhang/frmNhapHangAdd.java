@@ -79,7 +79,6 @@ public class frmNhapHangAdd extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         txtMaNhapHang = new javax.swing.JTextField();
         txtNhaCungCap = new javax.swing.JTextField();
-        dtNgayNhap = new com.toedter.calendar.JDateChooser();
         txtTongTienNhap = new javax.swing.JTextField();
         btnChonNhaCungCap = new javax.swing.JButton();
         btnCapNhat = new javax.swing.JButton();
@@ -173,13 +172,11 @@ public class frmNhapHangAdd extends javax.swing.JFrame {
                                 .addComponent(txtMaNhapHang, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(27, 27, 27)
                                 .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(dtNgayNhap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(80, 80, 80)
+                                .addGap(129, 129, 129)
                                 .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txtNhaCungCap, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnChonNhaCungCap)))
                         .addGap(29, 29, 29))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -211,8 +208,7 @@ public class frmNhapHangAdd extends javax.swing.JFrame {
                         .addComponent(jLabel5)
                         .addComponent(txtNhaCungCap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnChonNhaCungCap)
-                        .addComponent(jLabel6))
-                    .addComponent(dtNgayNhap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel6)))
                 .addGap(12, 12, 12)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24)
@@ -460,7 +456,6 @@ public class frmNhapHangAdd extends javax.swing.JFrame {
     private javax.swing.JButton btnCapNhat;
     private javax.swing.JButton btnChonNhaCungCap;
     private javax.swing.JButton btnDong;
-    private com.toedter.calendar.JDateChooser dtNgayNhap;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;

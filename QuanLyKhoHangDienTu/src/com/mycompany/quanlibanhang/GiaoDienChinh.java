@@ -14,14 +14,27 @@ import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JOptionPane;
+import java.awt.Point;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseAdapter;
+import javax.swing.JTable;
+import java.util.ArrayList;
+import javax.swing.JComboBox;
 
 /**
  *
  * @author My HP
  */
+ 
 public class GiaoDienChinh extends javax.swing.JFrame {
-
+     static int a;
     public static boolean isTrangThaiDN = false;
+    private DefaultTableModel model;
+    private ArrayList<KhachHang>list;
     
     /**
      * Lưu tên đăng nhập
@@ -31,8 +44,20 @@ public class GiaoDienChinh extends javax.swing.JFrame {
     /**
      * Creates new form Giao
      */
+    public static GiaoDienChinh a1=new GiaoDienChinh();
     public GiaoDienChinh() {
         initComponents();
+       // showTable();
+       // mousekhachhang();
+       showkhachhang();
+       hienthi();
+       getkhachhang();
+       showhanghoa();
+       showcombobox();
+       
+    }
+    public GiaoDienChinh getgiaodien(){
+      return a1;
     }
 
     /**
@@ -59,7 +84,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         btnSua_HangHoa = new javax.swing.JButton();
         btnXoa_HangHoa = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTableHangHoa = new javax.swing.JTable();
+        hanghoa = new javax.swing.JTable();
         btnThongTinHangHoa = new javax.swing.JButton();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jPanel17 = new javax.swing.JPanel();
@@ -96,14 +121,13 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         jLabel22 = new javax.swing.JLabel();
         txtCMT1 = new javax.swing.JTextField();
         txtNoiCapCMT1 = new javax.swing.JTextField();
-        dtNgayCapCMT1 = new com.toedter.calendar.JDateChooser();
         jPanel12 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         txtTimKiemNhaCungCap = new javax.swing.JTextField();
         btnTimKiemNhaCungCap = new javax.swing.JButton();
         jLabel65 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTableNhaCungCap = new javax.swing.JTable();
+        nhacungcap = new javax.swing.JTable();
         btnThemMoi_NhaCungCap = new javax.swing.JButton();
         btnSua_NhaCungCap = new javax.swing.JButton();
         btnXoa_NhaCungCap = new javax.swing.JButton();
@@ -118,7 +142,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         btnXoa = new javax.swing.JButton();
         btnDong = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTableKhachHang = new javax.swing.JTable();
+        khachhang = new javax.swing.JTable();
         btnThongTinKhachHang = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         btnXoa3 = new javax.swing.JButton();
@@ -199,7 +223,6 @@ public class GiaoDienChinh extends javax.swing.JFrame {
             }
         });
 
-        cboNhomHangTimKiem.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cboNhomHangTimKiem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboNhomHangTimKiemActionPerformed(evt);
@@ -262,28 +285,25 @@ public class GiaoDienChinh extends javax.swing.JFrame {
             }
         });
 
-        jTableHangHoa.setModel(new javax.swing.table.DefaultTableModel(
+        hanghoa.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Mã hàng", "Tên hàng", "Mô tả", "Giá bán", "Tồn kho", "Nhóm Hàng", "Vị trí"
             }
         ));
-        jTableHangHoa.addContainerListener(new java.awt.event.ContainerAdapter() {
+        hanghoa.addContainerListener(new java.awt.event.ContainerAdapter() {
             public void componentAdded(java.awt.event.ContainerEvent evt) {
-                jTableHangHoaComponentAdded(evt);
+                hanghoaComponentAdded(evt);
             }
         });
-        jTableHangHoa.addMouseListener(new java.awt.event.MouseAdapter() {
+        hanghoa.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTableHangHoaMouseClicked(evt);
+                hanghoaMouseClicked(evt);
             }
         });
-        jScrollPane3.setViewportView(jTableHangHoa);
+        jScrollPane3.setViewportView(hanghoa);
 
         btnThongTinHangHoa.setText("Thông tin chi tiết");
         btnThongTinHangHoa.addActionListener(new java.awt.event.ActionListener() {
@@ -690,12 +710,10 @@ public class GiaoDienChinh extends javax.swing.JFrame {
                     .addGroup(jPanel13Layout.createSequentialGroup()
                         .addComponent(jLabel22)
                         .addGap(27, 27, 27)
-                        .addComponent(txtNoiCapCMT1))
+                        .addComponent(txtNoiCapCMT1, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE))
                     .addGroup(jPanel13Layout.createSequentialGroup()
                         .addComponent(jLabel21)
-                        .addGap(18, 18, 18)
-                        .addComponent(dtNgayCapCMT1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 33, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel13Layout.createSequentialGroup()
                         .addComponent(jLabel20)
                         .addGap(40, 40, 40)
@@ -710,10 +728,8 @@ public class GiaoDienChinh extends javax.swing.JFrame {
                     .addComponent(jLabel20)
                     .addComponent(txtCMT1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel21)
-                    .addComponent(dtNgayCapCMT1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addComponent(jLabel21)
+                .addGap(20, 20, 20)
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel22)
                     .addComponent(txtNoiCapCMT1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -800,23 +816,20 @@ public class GiaoDienChinh extends javax.swing.JFrame {
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
-        jTableNhaCungCap.setModel(new javax.swing.table.DefaultTableModel(
+        nhacungcap.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Mã nhà cung cấp", "Tên ", "Địa chỉ", "Sô điện thoại", "Email"
             }
         ));
-        jTableNhaCungCap.addMouseListener(new java.awt.event.MouseAdapter() {
+        nhacungcap.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTableNhaCungCapMouseClicked(evt);
+                nhacungcapMouseClicked(evt);
             }
         });
-        jScrollPane2.setViewportView(jTableNhaCungCap);
+        jScrollPane2.setViewportView(nhacungcap);
 
         btnThemMoi_NhaCungCap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vn/com/stanford/j0622/qlsinhvien/images/add-icon.png"))); // NOI18N
         btnThemMoi_NhaCungCap.setText("Thêm mới");
@@ -968,23 +981,20 @@ public class GiaoDienChinh extends javax.swing.JFrame {
             }
         });
 
-        jTableKhachHang.setModel(new javax.swing.table.DefaultTableModel(
+        khachhang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "Tên", "Địa chỉ", "SDT", "Email"
             }
         ));
-        jTableKhachHang.addMouseListener(new java.awt.event.MouseAdapter() {
+        khachhang.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTableKhachHangMouseClicked(evt);
+                khachhangMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(jTableKhachHang);
+        jScrollPane1.setViewportView(khachhang);
 
         btnThongTinKhachHang.setText("Thông tin chi tiết");
         btnThongTinKhachHang.addActionListener(new java.awt.event.ActionListener() {
@@ -1048,10 +1058,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
 
         jTableKhachHang1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4"
@@ -1282,7 +1289,11 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         }
         
         //Hiển thị lên table
-        jTableKhachHang.setModel(model);        
+        khachhang.setModel(model);        
+    }
+    public  JTable getkhachhang(){
+    
+    return  this.nhacungcap;// làm cách nào để truy cập đên JTable của khachhangf
     }
 
 
@@ -1318,7 +1329,7 @@ public static void hienThiDanhSachTimKiemKhachHang()
         }
         
         //Hiển thị lên table
-        jTableKhachHang.setModel(model);        
+        khachhang.setModel(model);        
     }
 
 public static void hienThiDanhSachNhapHang()
@@ -1492,7 +1503,7 @@ public static void hienThiDanhSachCongTy()
         }
         
         //Hiển thị lên table
-        jTableNhaCungCap.setModel(model);        
+        nhacungcap.setModel(model);        
     }
 
 public static void hienThiDanhSachTimKiemCongTy()
@@ -1527,7 +1538,7 @@ public static void hienThiDanhSachTimKiemCongTy()
         }
         
         //Hiển thị lên table
-        jTableNhaCungCap.setModel(model);        
+        nhacungcap.setModel(model);        
     }
 
     public static void hienThiDanhSachTimKiemHangHoa()
@@ -1572,7 +1583,7 @@ public static void hienThiDanhSachTimKiemCongTy()
         }
         
         //Hiển thị lên table
-        jTableHangHoa.setModel(model);       
+        hanghoa.setModel(model);       
     }
     public static void hienThiDanhSachHangHoa()
     {
@@ -1606,7 +1617,7 @@ public static void hienThiDanhSachTimKiemCongTy()
         }
         
         //Hiển thị lên table
-        jTableHangHoa.setModel(model);        
+        hanghoa.setModel(model);        
     }
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -1655,20 +1666,32 @@ public static void hienThiDanhSachTimKiemCongTy()
         // TODO add your handling code here:
     }//GEN-LAST:event_jTabbedPane1ComponentAdded
 
-    private void jTableKhachHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableKhachHangMouseClicked
+    private void khachhangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_khachhangMouseClicked
         // TODO add your handling code here:
-        int dongChon = 0;
+       /* int dongChon = 0;
 
-        dongChon = jTableKhachHang.getSelectedRow();
+        dongChon = khachhang.getSelectedRow();
 
         String ID = "";
 
         //Lấy mã sv của dòng chọn trên jtable
-        ID = "" + jTableKhachHang.getValueAt(dongChon, 0);
+        ID = "" + khachhang.getValueAt(dongChon, 0);
         KhachHang objKH = DataProvider.getKhachHangBus().layChiTietTheoMa(ID);
-
+        
+                          */
+        int Row= khachhang.getSelectedRow();
+        String ID = String.valueOf(khachhang.getValueAt(Row, 0));
+        SHAREData data = new SHAREData();
+        data.setdata(ID);
+        a=Row;
+        khachhang.addMouseListener(new MouseAdapter(){
+        public void MouseClicked(MouseEvent e){
+            data.setdem(e.getClickCount());// khi click xong button cap nhat  thi set dem se ve 0 
+        }
+        });
+        
        
-    }//GEN-LAST:event_jTableKhachHangMouseClicked
+    }//GEN-LAST:event_khachhangMouseClicked
 
     private void btnDongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDongActionPerformed
         // TODO add your handling code here:
@@ -1682,12 +1705,12 @@ public static void hienThiDanhSachTimKiemCongTy()
 
         if(ketQua == JOptionPane.YES_OPTION)//True
         {
-            int  dongChon = jTableKhachHang.getSelectedRow();
+            /*int  dongChon = khachhang.getSelectedRow();
 
             String ID = "";
 
             //Lấy mã sv của dòng chọn trên jtable
-            ID = "" + jTableKhachHang.getValueAt(dongChon, 0);
+            ID = "" + khachhang.getValueAt(dongChon, 0);
 
             boolean kq = DataProvider.getKhachHangBus().xoa(ID);
 
@@ -1695,6 +1718,27 @@ public static void hienThiDanhSachTimKiemCongTy()
             {
                 //Reload lại ds
                 hienThiDanhSachKhachHang();
+            }*/ 
+            try {
+            Connection c = ketnoi.lienket();
+            Statement d = c.createStatement();
+            model = (DefaultTableModel)khachhang.getModel();
+            String id = txtTuKhoaKhachHang.getText();
+            d.executeUpdate("DELETE FROM khachhang WHERE CUSTOMER_ID='"+id+"'");
+            ResultSet rs = d.executeQuery("SELECT * FROM khachhang");
+            model.setRowCount(0);
+            while(rs.next()){
+              String id1 = rs.getString("CUSTOMER_ID");
+              String ten=rs.getString("CUSTOMER_NAME");
+              String diachi=rs.getString("CUSTOMER_ADDRESS");
+              String sdt=rs.getString("CUSTOMER_PHONE_NUMBER");
+              String mail=rs.getString("CUSTOMER_EMAIL");
+              Object rowdata[]={id1,ten,diachi,sdt,mail};
+              model.addRow(rowdata);
+            }
+            ketnoi.dongketnoi(c);
+            } catch(SQLException e){
+            e.printStackTrace();
             }
 
         }
@@ -1702,27 +1746,137 @@ public static void hienThiDanhSachTimKiemCongTy()
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         // TODO add your handling code here:
-        int dongChon = 0;
+       /*int dongChon = 0;
 
-        dongChon = jTableKhachHang.getSelectedRow();
+        dongChon = khachhang.getSelectedRow();// sua 
 
         String ID = "";
 
-        //Lấy mã sv của dòng chọn trên jtable
-        ID = "" + jTableKhachHang.getValueAt(dongChon, 0);
-
+      //  Lấy mã sv của dòng chọn trên jtable
+        ID = "" + khachhang.getValueAt(dongChon, 0);
+           if(a!=-1){   
         frmKhachHang frmSua = new frmKhachHang();
-
+        frmSua.gettextid().setText(ID);*/
+         // try {
+          /* Connection c = ketnoi.lienket();
+            Statement d = c.createStatement();
+            String id= frmSua.gettextid().getText();
+            String ten= frmSua.gettextten().getText();
+            String diachi= frmSua.gettextdiachi().getText();
+            String sdt= frmSua.gettextsdt().getText();
+            String mail=frmSua.gettextmail().getText();*/
+            /*frmSua.getbutton().addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+             //  Statement d = c.createStatement(); 
+             try {
+                 Connection c = ketnoi.lienket();
+            Statement d = c.createStatement();
+            String id= frmSua.gettextid().getText();
+            String ten= frmSua.gettextten().getText();
+            String diachi= frmSua.gettextdiachi().getText();
+            String sdt= frmSua.gettextsdt().getText();
+            String mail=frmSua.gettextmail().getText(); 
+                  ketnoi.dongketnoi(c);
+            d.executeUpdate("UPDATE khachhang SET CUSTOMER_NAME='"+ten+"',CUSTOMER_ADDRESS='"+diachi+"',CUSTOMER_PHONE_NUMBER='"+sdt+"',CUSTOMER_EMAIL='"+mail+"' WHERE CUSTOMER_ID='"+id+"'");
+             } catch (SQLException a){
+             a.printStackTrace();
+             }
+               
+            }
+            
+            });
+            
+            
+         frmSua.setVisible(true);
+            
+            }*/
+            
+            
+            
+           //  showkhachhang();
+         // ketnoi.dongketnoi(c);
+         
+          //}catch(SQLException e){
+          //e.printStackTrace();
+         // }
+             
         //Gán mã sv để đưa lên form sửa
-        frmSua.setMaKhachHang(ID);
+        //frmSua.setMaKhachHang(ID);  
 
-        frmSua.setVisible(true);
+           
+           //}
+           
+           int dongChon = 0;
+
+dongChon = khachhang.getSelectedRow();
+
+String ID = "";
+
+// Lấy mã sv của dòng chọn trên JTable
+ID = "" + khachhang.getValueAt(dongChon, 0);
+
+if (dongChon != -1) {
+    frmKhachHang frmSua = new frmKhachHang(this);
+    frmSua.gettextid().setText(ID);
+
+   
+
+    frmSua.setVisible(true);
+}
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnThemMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemMoiActionPerformed
         // TODO add your handling code here:
-        frmKhachHang frmThemMoi = new frmKhachHang();
+        frmKhachHang frmThemMoi = new frmKhachHang(this);
+        /*frmThemMoi.getbutton().addActionListener(new ActionListener(){
+        
+              public void actionPerformed(ActionEvent e){
+              try {
+             Connection c = ketnoi.lienket();
+             Statement d= c.createStatement();
+             String ID= frmThemMoi.gettextid().getText();
+             String ten= frmThemMoi.gettextten().getText();
+             String sdt = frmThemMoi.gettextsdt().getText();
+             String mail= frmThemMoi.gettextmail().getText();
+             String diachi=frmThemMoi.gettextdiachi().getText();
+             //Statement d= c.createStatement();
+              d.executeUpdate("INSERT INTO khachhang(CUSTOMER_ID,CUSTOMER_NAME,CUSTOMER_ADDRESS,CUSTOMER_PHONE_NUMBER,CUSTOMER_EMAIL) VALUES('"+ID+"','"+ten+"','"+diachi+"','"+sdt+"','"+mail+"')");
+              GiaoDienChinh.hienThiDanhSachKhachHang();
+             ketnoi.dongketnoi(c);
+             } 
+               catch(SQLException a){
+             
+               a.printStackTrace();
+             }
+              
+              }        
+        });*/
+        frmThemMoi.getcapnhat1();// frmkhachhang.
+        try {
+        Connection c = ketnoi.lienket();
+        Statement d = c.createStatement();
+        DefaultTableModel model = (DefaultTableModel)khachhang.getModel();
+        model.setRowCount(0);
+        ResultSet rs = d.executeQuery("SELECT* FROM khachhang");
+        while(rs.next()){
+        String id = rs.getString("CUSTOMER_ID");
+        String ten = rs.getString("CUSTOMER_NAME");
+        String diachi= rs.getString("CUSTOMER_ADDRESS");
+        String sdt = rs.getString("CUSTOMER_PHONE_NUMBER");
+        String mail = rs.getString("CUSTOMER_EMAIL");
+        Object rowdata[]={id,ten,diachi,sdt,mail};
+        model.addRow(rowdata);
+        khachhang.setModel(model);
+        
+        }
+        ketnoi.dongketnoi(c);
+        } catch(SQLException e){
+        
+        e.printStackTrace();
+        }
+         
         frmThemMoi.setVisible(true);
+        //this.repaint();
     }//GEN-LAST:event_btnThemMoiActionPerformed
 
     private void txtTuKhoaKhachHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTuKhoaKhachHangActionPerformed
@@ -1874,27 +2028,118 @@ public static void hienThiDanhSachTimKiemCongTy()
 
     private void btnTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiemActionPerformed
         // TODO add your handling code here:
-        hienThiDanhSachTimKiemKhachHang();
+        //hienThiDanhSachTimKiemKhachHang();
+       /* KhachHang a = new KhachHang();
+        ArrayList<String>listid=new ArrayList<>();
+        ArrayList<String>listten=new ArrayList<>();
+          listid= a.getlistID();
+          listten=a.getten()    ;
+        model=(DefaultTableModel) khachhang.getModel();
+        model.setRowCount(0);
+        try {
+    Connection c = ketnoi.lienket();
+    Statement d = c.createStatement();
+    String id = txtTuKhoaKhachHang.getText();
+    if (listid.contains(id)) {
+        ResultSet rs = d.executeQuery("SELECT * FROM khachhang WHERE CUSTOMER_ID='" + id + "'");
+        while (rs.next()) {
+            String ten = rs.getString("CUSTOMER_NAME");
+            String diachi = rs.getString("CUSTOMER_ADDRESS");
+            String sdt = rs.getString("CUSTOMER_PHONE_NUMBER");
+            String mail = rs.getString("CUSTOMER_EMAIL");
+            Object rowdata[] = {id, ten, diachi, sdt, mail};
+            model.addRow(rowdata);
+         }
+        else if (listten.contains(id)) {
+        ResultSet rs2 = d.executeQuery("SELECT * FROM khachhang WHERE CUSTOMER_NAME='" + id + "'");
+        while (rs2.next()) {
+            String ten = rs2.getString("CUSTOMER_NAME");
+            String diachi = rs2.getString("CUSTOMER_ADDRESS");
+            String sdt = rs2.getString("CUSTOMER_PHONE_NUMBER");
+            String mail = rs2.getString("CUSTOMER_EMAIL");
+            Object rowdata[] = {id, ten, diachi, sdt, mail};
+            model.addRow(rowdata);
+         }
+        ketnoi.dongketnoi(c);
+    }   
+     } catch (SQLException e) {
+    e.printStackTrace();*/
+    KhachHang a = new KhachHang();
+ArrayList<String> listid = new ArrayList<>();
+ArrayList<String> listten = new ArrayList<>();
+ ArrayList<String> listt = new ArrayList<>();
+listid = a.getlistID();
+listten = a.getten();
+listt=a.getds();
+DefaultTableModel model = (DefaultTableModel) khachhang.getModel();
+model.setRowCount(0);
+try {
+    Connection c = ketnoi.lienket();
+    Statement d = c.createStatement();
+    String id = txtTuKhoaKhachHang.getText();
+    if (listid.contains(id)==true) {
+        ResultSet rs = d.executeQuery("SELECT * FROM khachhang WHERE CUSTOMER_ID ='" + id + "'");
+        while (rs.next()) {
+            String ten = rs.getString("CUSTOMER_NAME");
+            String diachi = rs.getString("CUSTOMER_ADDRESS");
+            String sdt = rs.getString("CUSTOMER_PHONE_NUMBER");
+            String mail = rs.getString("CUSTOMER_EMAIL");
+            Object rowdata[] = {id, ten, diachi, sdt, mail};
+            model.addRow(rowdata);
+        }
+    } else if (listten.contains(id)) {
+        String id3=txtTuKhoaKhachHang.getText();
+        ResultSet rs2 = d.executeQuery("SELECT * FROM khachhang WHERE CUSTOMER_NAME = '"+id3+"'");
+        while (rs2.next()) {
+             String id1 =rs2.getString("CUSTOMER_ID");
+            String ten = rs2.getString("CUSTOMER_NAME");
+            String diachi = rs2.getString("CUSTOMER_ADDRESS");
+            String sdt = rs2.getString("CUSTOMER_PHONE_NUMBER");
+            String mail = rs2.getString("CUSTOMER_EMAIL");
+            Object rowdata[] = {id1, ten, diachi, sdt, mail};
+            model.addRow(rowdata);
+        }
+    } else if (listt.contains(id)) {
+        String id4=txtTuKhoaKhachHang.getText();
+        ResultSet rs3 = d.executeQuery("SELECT * FROM khachhang WHERE CUSTOMER_NAME LIKE '%"+id4+"'");
+        while (rs3.next()) {
+             String id1 =rs3.getString("CUSTOMER_ID");
+            String ten = rs3.getString("CUSTOMER_NAME");
+            String diachi = rs3.getString("CUSTOMER_ADDRESS");
+            String sdt = rs3.getString("CUSTOMER_PHONE_NUMBER");
+            String mail = rs3.getString("CUSTOMER_EMAIL");
+            Object rowdata[] = {id1, ten, diachi, sdt, mail};
+            model.addRow(rowdata);
+        }
+    } 
+     
+    ketnoi.dongketnoi(c);
+} catch (SQLException e) {
+    e.printStackTrace();
+}    
+      
+                
+        
     }//GEN-LAST:event_btnTimKiemActionPerformed
 
     private void btnThongTinCongTy1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongTinCongTy1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnThongTinCongTy1ActionPerformed
 
-    private void jTableNhaCungCapMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableNhaCungCapMouseClicked
+    private void nhacungcapMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nhacungcapMouseClicked
         // TODO add your handling code here:
         int dongChon = 0;
 
-        dongChon = jTableNhaCungCap.getSelectedRow();
+        dongChon = nhacungcap.getSelectedRow();
 
         String ID = "";
 
         //Lấy mã sv của dòng chọn trên jtable
-        ID = "" + jTableNhaCungCap.getValueAt(dongChon, 0);
+        ID = "" + nhacungcap.getValueAt(dongChon, 0);
         CongTy objKH = DataProvider.getCongTyBus().layChiTietTheoMa(ID);
 
        
-    }//GEN-LAST:event_jTableNhaCungCapMouseClicked
+    }//GEN-LAST:event_nhacungcapMouseClicked
 
     private void btnDong1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDong1ActionPerformed
         // TODO add your handling code here:
@@ -1907,12 +2152,12 @@ public static void hienThiDanhSachTimKiemCongTy()
 
         if(ketQua == JOptionPane.YES_OPTION)//True
         {
-            int  dongChon = jTableNhaCungCap.getSelectedRow();
+            /*int  dongChon = nhacungcap.getSelectedRow();
 
             String ID = "";
 
             //Lấy mã sv của dòng chọn trên jtable
-            ID = "" + jTableNhaCungCap.getValueAt(dongChon, 0);
+            ID = "" + nhacungcap.getValueAt(dongChon, 0);
 
             boolean kq = DataProvider.getCongTyBus().xoa(ID);
 
@@ -1920,21 +2165,45 @@ public static void hienThiDanhSachTimKiemCongTy()
             {
                 //Reload lại ds
                 hienThiDanhSachCongTy();
+              }*/
+            try{
+            Connection c =ketnoi.lienket();
+            String id = txtTimKiemNhaCungCap.getText();
+            Statement d=c.createStatement();
+            d.executeUpdate("DELETE FROM nhacungcap WHERE SUPPLIER_ID='"+id+"'");
+            ResultSet rs=d.executeQuery("SELECT * FROM nhacungcap ");
+            model = (DefaultTableModel)nhacungcap.getModel();
+            model.setRowCount(0);
+            while(rs.next()){
+             String id1=rs.getString("SUPPLIER_ID");
+             String ten = rs.getString("SUPPLIER_NAME");
+             String diachi= rs.getString("SUPPLIER_ADDRESS");
+             String sdt=rs.getString("SUPPLIER_PHONE_NUM");
+             String mail=rs.getString("SUPPLIER_EMAIL");
+             Object rowdata[]={id1,ten,diachi,sdt,mail};
+             model.addRow(rowdata);
             }
+            ketnoi.dongketnoi(c);
+            } catch(SQLException e){e.printStackTrace();}
+        
     }//GEN-LAST:event_btnXoa_NhaCungCapActionPerformed
+    }
+    public JTable getbang(){
+      return khachhang;
+    
     }
     private void btnSua_NhaCungCapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSua_NhaCungCapActionPerformed
         // TODO add your handling code here:
         int dongChon = 0;
 
-        dongChon = jTableNhaCungCap.getSelectedRow();
+        dongChon = nhacungcap.getSelectedRow();
 
         String ID = "";
 
         //Lấy mã sv của dòng chọn trên jtable
-        ID = "" + jTableNhaCungCap.getValueAt(dongChon, 0);
+        ID = "" + nhacungcap.getValueAt(dongChon, 0);
 
-        frmNhaCungCap frmSua = new frmNhaCungCap();
+        frmNhaCungCap frmSua = new frmNhaCungCap(this);
 
         //Gán mã sv để đưa lên form sửa
         frmSua.setMaNhaCungCap(ID);
@@ -1944,8 +2213,12 @@ public static void hienThiDanhSachTimKiemCongTy()
 
     private void btnThemMoi_NhaCungCapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemMoi_NhaCungCapActionPerformed
         // TODO add your handling code here:
-        frmNhaCungCap frmThemMoi = new frmNhaCungCap();
+        
+        frmNhaCungCap frmThemMoi = new frmNhaCungCap(this);
         frmThemMoi.setVisible(true);
+       
+          
+        
     }//GEN-LAST:event_btnThemMoi_NhaCungCapActionPerformed
 
     private void btnTimKiemNhaCungCapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiemNhaCungCapActionPerformed
@@ -2013,12 +2286,12 @@ public static void hienThiDanhSachTimKiemCongTy()
 
         if(ketQua == JOptionPane.YES_OPTION)//True
         {
-            int  dongChon = jTableKhachHang.getSelectedRow();
+            int  dongChon = khachhang.getSelectedRow();
 
             String ID = "";
 
             //Lấy mã sv của dòng chọn trên jtable
-            ID = "" + jTableKhachHang.getValueAt(dongChon, 0);
+            ID = "" + khachhang.getValueAt(dongChon, 0);
 
             boolean kq = DataProvider.getKhachHangBus().xoa(ID);
 
@@ -2035,12 +2308,12 @@ public static void hienThiDanhSachTimKiemCongTy()
         // TODO add your handling code here:
         int dongChon = 0;
 
-        dongChon = jTableKhachHang.getSelectedRow();
+        dongChon = khachhang.getSelectedRow();
 
         String ID = "";
 
         //Lấy mã sv của dòng chọn trên jtable
-        ID = "" + jTableKhachHang.getValueAt(dongChon, 0);
+        ID = "" + khachhang.getValueAt(dongChon, 0);
         KhachHang objKH = DataProvider.getKhachHangBus().layChiTietTheoMa(ID);
 
       
@@ -2048,7 +2321,7 @@ public static void hienThiDanhSachTimKiemCongTy()
 
     private void btnThemMoi3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemMoi3ActionPerformed
         // TODO add your handling code here:
-        frmKhachHang frmThemMoi = new frmKhachHang();
+        frmKhachHang frmThemMoi = new frmKhachHang(this);
         frmThemMoi.setVisible(true);
     }//GEN-LAST:event_btnThemMoi3ActionPerformed
 
@@ -2056,14 +2329,14 @@ public static void hienThiDanhSachTimKiemCongTy()
         // TODO add your handling code here:
         int dongChon = 0;
 
-        dongChon = jTableKhachHang.getSelectedRow();
+        dongChon = khachhang.getSelectedRow();
 
         String ID = "";
 
         //Lấy mã sv của dòng chọn trên jtable
-        ID = "" + jTableKhachHang.getValueAt(dongChon, 0);
+        ID = "" + khachhang.getValueAt(dongChon, 0);
 
-        frmKhachHang frmSua = new frmKhachHang();
+        frmKhachHang frmSua = new frmKhachHang(this);
 
         //Gán mã sv để đưa lên form sửa
         frmSua.setMaKhachHang(ID);
@@ -2076,16 +2349,16 @@ public static void hienThiDanhSachTimKiemCongTy()
 
     }//GEN-LAST:event_jPanel14FocusGained
 
-    private void jTableHangHoaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableHangHoaMouseClicked
+    private void hanghoaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hanghoaMouseClicked
         // TODO add your handling code here:
         int dongChon = 0;
 
-        dongChon = jTableHangHoa.getSelectedRow();
+        dongChon = hanghoa.getSelectedRow();
 
         String ID = "";
 
         //Lấy mã sv của dòng chọn trên jtable
-        ID = "" + jTableHangHoa.getValueAt(dongChon, 0);
+        ID = "" + hanghoa.getValueAt(dongChon, 0);
         HangHoa objKH = DataProvider.getHangHoaBus().layChiTietTheoMa(ID);
 
         if(objKH != null)
@@ -2093,11 +2366,11 @@ public static void hienThiDanhSachTimKiemCongTy()
             
 
         }
-    }//GEN-LAST:event_jTableHangHoaMouseClicked
+    }//GEN-LAST:event_hanghoaMouseClicked
 
-    private void jTableHangHoaComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_jTableHangHoaComponentAdded
+    private void hanghoaComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_hanghoaComponentAdded
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTableHangHoaComponentAdded
+    }//GEN-LAST:event_hanghoaComponentAdded
 
     private void cboNhomHangTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboNhomHangTimKiemActionPerformed
         // TODO add your handling code here:
@@ -2105,6 +2378,29 @@ public static void hienThiDanhSachTimKiemCongTy()
 
     private void btnTimKiemHangHoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiemHangHoaActionPerformed
         // TODO add your handling code here:
+        try{
+            Connection c = ketnoi.lienket();
+            
+        String id= txtTimKiemHangHoa.getText();
+        Statement d = c.createStatement();
+        ResultSet rs= d.executeQuery("SELECT * FROM sanpham WHERE PRODUCT_ID='"+id+"'");
+        while(rs.next()){
+        String id1 = rs.getString("PRODUCT_ID");
+        String ten=rs.getString("PRODUCT_NAME");
+        String mota=rs.getString("PRODUCT_DESCRIPTION");
+        String gia=rs.getString("PRODUCT_PRICE");
+        String ton=rs.getString("PRODUCT_IVENTORY");
+        String loai=rs.getString("PRODUCT_TYPE");
+        String khu=rs.getString("LOCATION_ID");
+        Object rowdata[]={id1,ten,mota,gia,ton,loai,khu};
+        model.setRowCount(0);
+        model.addRow(rowdata);
+        }
+        ketnoi.dongketnoi(c);
+        }catch(SQLException e){
+        e.printStackTrace();
+        
+        }
         hienThiDanhSachTimKiemHangHoa();
     }//GEN-LAST:event_btnTimKiemHangHoaActionPerformed
 
@@ -2119,12 +2415,12 @@ public static void hienThiDanhSachTimKiemCongTy()
 
         if(ketQua == JOptionPane.YES_OPTION)//True
         {
-            int  dongChon = jTableHangHoa.getSelectedRow();
+            /*int  dongChon = hanghoa.getSelectedRow();
 
             String ID = "";
 
             //Lấy mã sv của dòng chọn trên jtable
-            ID = "" + jTableHangHoa.getValueAt(dongChon, 0);
+            ID = "" + hanghoa.getValueAt(dongChon, 0);
 
             boolean kq = DataProvider.getHangHoaBus().xoa(ID);
 
@@ -2132,13 +2428,34 @@ public static void hienThiDanhSachTimKiemCongTy()
             {
                 //Reload lại ds
                 hienThiDanhSachHangHoa();
-            }
+            }*/try{
+           String id=txtTimKiemHangHoa.getText();
+            Connection c = ketnoi.lienket();
+            Statement d = c.createStatement();
+            d.executeUpdate("DELETE FROM sanpham WHERE PRODUCT_ID='"+id+"'");
+             model = (DefaultTableModel)hanghoa.getModel();
+        model.setRowCount(0);
+         ResultSet rs=d.executeQuery("SELECT * FROM sanpham");
+         while (rs.next()){
+         String id1 = rs.getString("PRODUCT_ID");
+         String ten = rs.getString("PRODUCT_NAME");
+         String mota= rs.getString("PRODUCT_DESCRIPTION");
+         String gia=rs.getString("PRODUCT_PRICE");
+         String tonkho=rs.getString("PRODUCT_IVENTORY");
+         String loai= rs.getString("PRODUCT_TYPE");
+         String luutru=rs.getString("LOCATION_ID");
+         Object rowdata[]={id1,ten,mota,gia,tonkho,loai,luutru};
+         model.addRow(rowdata);
+         }
+            ketnoi.dongketnoi(c);
+            } catch(SQLException e){e.printStackTrace();}
+           
         }
     }//GEN-LAST:event_btnXoa_HangHoaActionPerformed
 
     private void btnSua_HangHoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSua_HangHoaActionPerformed
         // TODO add your handling code here:
-        int dongChon = 0;
+        /*int dongChon = 0;
 
         dongChon = jTableHangHoa.getSelectedRow();
 
@@ -2152,13 +2469,23 @@ public static void hienThiDanhSachTimKiemCongTy()
         //Gán mã sv để đưa lên form sửa
         frmSua.setMaHangHoa(ID);
 
-        frmSua.setVisible(true);
+        frmSua.setVisible(true);*/
+        
+        
+        if(hanghoa.getSelectedRow()!=-1){
+        frmHangHoaAdd frm= new frmHangHoaAdd(this);
+        frm.setVisible(true);
+        //hanghoa.clearSelection();
+        }
+        
     }//GEN-LAST:event_btnSua_HangHoaActionPerformed
 
     private void btnThemMoi_HangHoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemMoi_HangHoaActionPerformed
 
         // TODO add your handling code here:
-        frmHangHoaAdd frmThemMoi = new frmHangHoaAdd();
+        if(hanghoa.getSelectedRow()!=-1) hanghoa.clearSelection();
+        frmHangHoaAdd frmThemMoi = new frmHangHoaAdd(this);
+        
         frmThemMoi.setVisible(true);
     }//GEN-LAST:event_btnThemMoi_HangHoaActionPerformed
 
@@ -2166,16 +2493,16 @@ public static void hienThiDanhSachTimKiemCongTy()
         // TODO add your handling code here:
          int dongChon = 0;
 
-        dongChon = jTableHangHoa.getSelectedRow();
+        dongChon = hanghoa.getSelectedRow();
 
         String ID = "";
 
         //Lấy mã sv của dòng chọn trên jtable
-        ID = "" + jTableHangHoa.getValueAt(dongChon, 0);
+        ID = "" + hanghoa.getValueAt(dongChon, 0);
         
        
 
-        frmHangHoaAdd frmThongTin = new frmHangHoaAdd();
+        frmHangHoaAdd frmThongTin = new frmHangHoaAdd(this);
 
         //Gán mã sv để đưa lên form sửa
         frmThongTin.setMaHangHoa(ID);
@@ -2194,16 +2521,16 @@ public static void hienThiDanhSachTimKiemCongTy()
         // TODO add your handling code here:
         int dongChon = 0;
 
-        dongChon = jTableKhachHang.getSelectedRow();
+        dongChon = khachhang.getSelectedRow();
 
         String ID = "";
 
         //Lấy mã sv của dòng chọn trên jtable
-        ID = "" + jTableKhachHang.getValueAt(dongChon, 0);
+        ID = "" + khachhang.getValueAt(dongChon, 0);
         
        
 
-        frmKhachHang frmThongTin = new frmKhachHang();
+        frmKhachHang frmThongTin = new frmKhachHang(this);
 
         //Gán mã sv để đưa lên form sửa
         frmThongTin.setMaKhachHang(ID);
@@ -2263,8 +2590,12 @@ public static void hienThiDanhSachTimKiemCongTy()
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new GiaoDienChinh().setVisible(true);
+             //  a1.setVisible(true);
             }
         });
+        //System.out.println(Mouse());
+        //System.out.println("hello");
+     //   showkhachhang();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -2300,7 +2631,7 @@ public static void hienThiDanhSachTimKiemCongTy()
     private javax.swing.JButton btnXoa_HangHoa;
     private javax.swing.JButton btnXoa_NhaCungCap;
     private static javax.swing.JComboBox<String> cboNhomHangTimKiem;
-    private com.toedter.calendar.JDateChooser dtNgayCapCMT1;
+    private static javax.swing.JTable hanghoa;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel17;
@@ -2348,13 +2679,12 @@ public static void hienThiDanhSachTimKiemCongTy()
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
-    private static javax.swing.JTable jTableHangHoa;
     private static javax.swing.JTable jTableHoaDon;
-    private static javax.swing.JTable jTableKhachHang;
     private static javax.swing.JTable jTableKhachHang1;
-    private static javax.swing.JTable jTableNhaCungCap;
     private static javax.swing.JTable jTableNhapHang;
     private javax.swing.JTextField jTextField1;
+    private static javax.swing.JTable khachhang;
+    private static javax.swing.JTable nhacungcap;
     private javax.swing.JTextField txtCMT1;
     private javax.swing.JTextField txtNoiCapCMT1;
     private static javax.swing.JTextField txtTimKiemHangHoa;
@@ -2363,4 +2693,123 @@ public static void hienThiDanhSachTimKiemCongTy()
     private static javax.swing.JTextField txtTuKhoaKhachHang;
     private static javax.swing.JTextField txtTuKhoaNhapHang;
     // End of variables declaration//GEN-END:variables
+
+    //private void showTable() {
+      
+    //}
+    public static  void showkhachhang(){
+      try {
+      Connection c = ketnoi.lienket();
+      Statement d = c.createStatement();
+      ResultSet rs = d.executeQuery("SELECT * FROM khachhang");
+      DefaultTableModel model = (DefaultTableModel) khachhang.getModel();
+      while (rs.next()){
+          String id =rs.getString("CUSTOMER_ID");
+          String ten= rs.getString("CUSTOMER_NAME");
+          String diachi = rs.getString("CUSTOMER_ADDRESS");
+          String sdt= rs.getString("CUSTOMER_PHONE_NUMBER");
+          String mail = rs.getString("CUSTOMER_EMAIL");
+          Object rowdata[]={id,ten,diachi,sdt,mail};
+          model.addRow(rowdata);
+      }
+      ketnoi.dongketnoi(c);
+      } catch(SQLException e){
+       e.printStackTrace();
+       
+       
+      }
+    }
+    /*int Mouse(){
+        int a =0;
+      khachhang.addMouseListener(new MouseAdapter(){
+      public void   MouseClick(MouseEvent e){
+        a= e.getClickCount();
+      }
+        });//  
+      return a ;// 
+      
+    }*/
+     int   Mouse() {
+        
+    int a[] = {0}; // Biến ngoại vi
+
+    khachhang.addMouseListener(new MouseAdapter() {
+        public void mouseClicked(MouseEvent e) {
+           a[0] = e.getClickCount(); // Gán giá trị cho biến ngoại vi
+        }
+    });
+
+    return a[0]; // Trả về giá trị của biến ngoại vi
+   
+}
+ /*public static void  hien(){
+     System.out.println(Mouse());
+    }*/// làm lại thôi
+
+    public  void hienthi() {
+        try{
+        Connection c = ketnoi.lienket();
+        Statement d = c.createStatement();
+        model= (DefaultTableModel) nhacungcap.getModel();
+        ResultSet rs = d.executeQuery("SELECT * FROM nhacungcap");
+        model.setRowCount(0);
+        while(rs.next()){
+        String id = rs.getString("SUPPLIER_ID");
+        String ten= rs.getString("SUPPLIER_NAME");
+        String sdt= rs.getString("SUPPLIER_ADDRESS");
+        String mail=rs.getString("SUPPLIER_PHONE_NUM");
+        String diachi=rs.getString("SUPPLIER_EMAIL");
+        Object rowdata[]={id,ten,sdt,mail,diachi};
+        model.addRow(rowdata);
+        }
+        ketnoi.dongketnoi(c);
+        }catch(SQLException e){
+        e.printStackTrace();
+                }
+    }
+
+    private void showhanghoa() {
+        try {
+        Connection c =ketnoi.lienket();
+        Statement d = c.createStatement();
+        model = (DefaultTableModel)hanghoa.getModel();
+        model.setRowCount(0);
+         ResultSet rs=d.executeQuery("SELECT * FROM sanpham");
+         while (rs.next()){
+         String id = rs.getString("PRODUCT_ID");
+         String ten = rs.getString("PRODUCT_NAME");
+         String mota= rs.getString("PRODUCT_DESCRIPTION");
+         String gia=rs.getString("PRODUCT_PRICE");
+         String tonkho=rs.getString("PRODUCT_IVENTORY");
+         String loai= rs.getString("PRODUCT_TYPE");
+         String luutru=rs.getString("LOCATION_ID");
+         Object rowdata[]={id,ten,mota,gia,tonkho,loai,luutru};
+         model.addRow(rowdata);
+         }
+        ketnoi.dongketnoi(c);
+        } catch(SQLException e){
+        e.printStackTrace();
+        }
+    }
+    public JTable gethanghoa(){
+    
+    return this.hanghoa;
+    }
+
+    private void showcombobox() {
+       cboNhomHangTimKiem.addItem("Loai 1");
+        cboNhomHangTimKiem.addItem("Loai 2");
+         cboNhomHangTimKiem.addItem("Loai 3");
+          cboNhomHangTimKiem.addItem("Loai 4");
+    }
+  public JComboBox<String> getcombobox (){
+      return cboNhomHangTimKiem;
+  
+  
+  }
+    
+    
+    
+
+    
 }

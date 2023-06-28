@@ -68,13 +68,11 @@
                                   <Component id="txtMaNhapHang" min="-2" pref="120" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                                   <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="dtNgayNhap" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="129" max="-2" attributes="0"/>
                                   <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="txtNhaCungCap" min="-2" pref="120" max="-2" attributes="0"/>
-                                  <EmptySpace pref="36" max="32767" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
                                   <Component id="btnChonNhaCungCap" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -118,7 +116,6 @@
                           <Component id="btnChonNhaCungCap" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="dtNgayNhap" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
@@ -164,8 +161,6 @@
         <Component class="javax.swing.JTextField" name="txtMaNhapHang">
         </Component>
         <Component class="javax.swing.JTextField" name="txtNhaCungCap">
-        </Component>
-        <Component class="com.toedter.calendar.JDateChooser" name="dtNgayNhap">
         </Component>
         <Component class="javax.swing.JTextField" name="txtTongTienNhap">
         </Component>
