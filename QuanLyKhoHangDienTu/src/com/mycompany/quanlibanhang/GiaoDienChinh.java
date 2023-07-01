@@ -109,7 +109,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         btnSua1 = new javax.swing.JButton();
         btnXoa1 = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTableNhapHang = new javax.swing.JTable();
+        nhaphang = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         btnXoa3 = new javax.swing.JButton();
@@ -595,23 +595,20 @@ public class GiaoDienChinh extends javax.swing.JFrame {
             }
         });
 
-        jTableNhapHang.setModel(new javax.swing.table.DefaultTableModel(
+        nhaphang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Mã hóa đơn", "thời gian đặt", "thời gian giao hàng", "nhà cung cấp", "nhà cung cấp"
             }
         ));
-        jTableNhapHang.addMouseListener(new java.awt.event.MouseAdapter() {
+        nhaphang.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTableNhapHangMouseClicked(evt);
+                nhaphangMouseClicked(evt);
             }
         });
-        jScrollPane4.setViewportView(jTableNhapHang);
+        jScrollPane4.setViewportView(nhaphang);
 
         jButton2.setText("Thông tin chi tiết");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -1364,7 +1361,7 @@ public static void hienThiDanhSachNhapHang()
         }
         
         //Hiển thị lên table
-        jTableNhapHang.setModel(model);        
+        nhaphang.setModel(model);        
     }
 public static void hienThiDanhSachHoaDon()
     {
@@ -1470,7 +1467,7 @@ public static void hienThiDanhSachTimKiemNhapHang()
         }
         
         //Hiển thị lên table
-        jTableNhapHang.setModel(model);        
+        nhaphang.setModel(model);        
     }
 public static void hienThiDanhSachCongTy()
     {
@@ -1884,21 +1881,21 @@ if (dongChon != -1) {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTuKhoaKhachHangActionPerformed
 
-    private void jTableNhapHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableNhapHangMouseClicked
+    private void nhaphangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nhaphangMouseClicked
         // TODO add your handling code here:
         int dongChon = 0;
 
-        dongChon = jTableNhapHang.getSelectedRow();
+        dongChon = nhaphang.getSelectedRow();
 
         String ID = "";
 
         //Lấy mã sv của dòng chọn trên jtable
-        ID = "" + jTableNhapHang.getValueAt(dongChon, 0);
+        ID = "" + nhaphang.getValueAt(dongChon, 0);
         NhapHang objNH = DataProvider.getNhapHangBus().layChiTietTheoMa(ID);
 
         
 
-    }//GEN-LAST:event_jTableNhapHangMouseClicked
+    }//GEN-LAST:event_nhaphangMouseClicked
 
     private void btnXoa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoa1ActionPerformed
         // TODO add your handling code here:
@@ -1907,12 +1904,12 @@ if (dongChon != -1) {
 
         if(ketQua == JOptionPane.YES_OPTION)//True
         {
-            int  dongChon = jTableNhapHang.getSelectedRow();
+            int  dongChon = nhaphang.getSelectedRow();
 
             String ID = "";
 
             //Lấy mã sv của dòng chọn trên jtable
-            ID = "" + jTableNhapHang.getValueAt(dongChon, 0);
+            ID = "" + nhaphang.getValueAt(dongChon, 0);
             boolean a=DataProvider.getNhapHangBus().xoa1(ID);
 
             boolean kq = DataProvider.getNhapHangBus().xoa(ID);
@@ -1930,12 +1927,12 @@ if (dongChon != -1) {
         // TODO add your handling code here:
         int dongChon = 0;
 
-        dongChon = jTableNhapHang.getSelectedRow();
+        dongChon = nhaphang.getSelectedRow();
 
         String ID = "";
 
         //Lấy mã sv của dòng chọn trên jtable
-        ID = "" + jTableNhapHang.getValueAt(dongChon, 0);
+        ID = "" + nhaphang.getValueAt(dongChon, 0);
 
         frmNhapHangAdd frmSua = new frmNhapHangAdd();
 
@@ -2829,10 +2826,10 @@ try {
     private javax.swing.JTabbedPane jTabbedPane2;
     private static javax.swing.JTable jTableHoaDon;
     private static javax.swing.JTable jTableKhachHang1;
-    private static javax.swing.JTable jTableNhapHang;
     private javax.swing.JTextField jTextField1;
     private static javax.swing.JTable khachhang;
     private static javax.swing.JTable nhacungcap;
+    private static javax.swing.JTable nhaphang;
     private javax.swing.JTextField txtCMT1;
     private javax.swing.JTextField txtNoiCapCMT1;
     private static javax.swing.JTextField txtTimKiemHangHoa;
