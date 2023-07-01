@@ -24,6 +24,7 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseAdapter;
 import javax.swing.JTable;
 import java.util.ArrayList;
+import javax.swing.JButton;
 
 /**
  *
@@ -467,6 +468,17 @@ public class frmNhaCungCap extends javax.swing.JFrame {
         e.printStackTrace();
                 }
     }
+    
+     public void settext(String s,String s1,String s2,String s3){
+      txtHoTen.setText(s);
+     txtDienThoai.setText(s1);
+     txtEmail.setText(s2);
+     txtDiaChi.setText(s3);
+     }
+     public JButton capnhat(){
+     
+     return btnCapNhat;
+     }
 
     
 }

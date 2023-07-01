@@ -111,6 +111,17 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         jTableNhapHang = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        btnXoa3 = new javax.swing.JButton();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        jTableKhachHang1 = new javax.swing.JTable();
+        btnThemMoi3 = new javax.swing.JButton();
+        btnSua3 = new javax.swing.JButton();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        btnTimKiemViTri = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
+        jPanel7 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jPanel11 = new javax.swing.JPanel();
         btnDong1 = new javax.swing.JButton();
@@ -144,17 +155,6 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         khachhang = new javax.swing.JTable();
         btnThongTinKhachHang = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
-        btnXoa3 = new javax.swing.JButton();
-        jScrollPane6 = new javax.swing.JScrollPane();
-        jTableKhachHang1 = new javax.swing.JTable();
-        btnThemMoi3 = new javax.swing.JButton();
-        btnSua3 = new javax.swing.JButton();
-        jPanel5 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        btnTimKiemViTri = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jPanel7 = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItemDangNhap = new javax.swing.JMenuItem();
@@ -678,6 +678,126 @@ public class GiaoDienChinh extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Giao dịch", jTabbedPane2);
 
+        btnXoa3.setText("Xóa");
+        btnXoa3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoa3ActionPerformed(evt);
+            }
+        });
+
+        jTableKhachHang1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jTableKhachHang1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableKhachHang1MouseClicked(evt);
+            }
+        });
+        jScrollPane6.setViewportView(jTableKhachHang1);
+
+        btnThemMoi3.setText("Thêm mới");
+        btnThemMoi3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThemMoi3ActionPerformed(evt);
+            }
+        });
+
+        btnSua3.setText("Sửa");
+        btnSua3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSua3ActionPerformed(evt);
+            }
+        });
+
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Tìm kiếm vị trí"));
+
+        jLabel2.setText("Từ khóa: ");
+
+        btnTimKiemViTri.setText("Tìm kiếm");
+        btnTimKiemViTri.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTimKiemViTriActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(65, 65, 65)
+                .addComponent(btnTimKiemViTri)
+                .addContainerGap(616, Short.MAX_VALUE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(11, 11, 11)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnTimKiemViTri))
+                .addContainerGap(23, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(653, Short.MAX_VALUE)
+                .addComponent(btnThemMoi3)
+                .addGap(86, 86, 86)
+                .addComponent(btnSua3, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(52, 52, 52)
+                .addComponent(btnXoa3, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(126, 126, 126))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane6)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnXoa3)
+                    .addComponent(btnSua3)
+                    .addComponent(btnThemMoi3))
+                .addGap(28, 28, 28))
+        );
+
+        jTabbedPane1.addTab("Vị trí lưu trữ", jPanel3);
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1143, Short.MAX_VALUE)
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 585, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Quản lí người dùng", jPanel7);
+
         btnDong1.setText("Đóng");
         btnDong1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1048,126 +1168,6 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         );
 
         jTabbedPane1.addTab("Khách hàng", jPanel4);
-
-        btnXoa3.setText("Xóa");
-        btnXoa3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnXoa3ActionPerformed(evt);
-            }
-        });
-
-        jTableKhachHang1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jTableKhachHang1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTableKhachHang1MouseClicked(evt);
-            }
-        });
-        jScrollPane6.setViewportView(jTableKhachHang1);
-
-        btnThemMoi3.setText("Thêm mới");
-        btnThemMoi3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnThemMoi3ActionPerformed(evt);
-            }
-        });
-
-        btnSua3.setText("Sửa");
-        btnSua3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSua3ActionPerformed(evt);
-            }
-        });
-
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Tìm kiếm vị trí"));
-
-        jLabel2.setText("Từ khóa: ");
-
-        btnTimKiemViTri.setText("Tìm kiếm");
-        btnTimKiemViTri.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTimKiemViTriActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(65, 65, 65)
-                .addComponent(btnTimKiemViTri)
-                .addContainerGap(616, Short.MAX_VALUE))
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(11, 11, 11)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnTimKiemViTri))
-                .addContainerGap(23, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(653, Short.MAX_VALUE)
-                .addComponent(btnThemMoi3)
-                .addGap(86, 86, 86)
-                .addComponent(btnSua3, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52)
-                .addComponent(btnXoa3, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(126, 126, 126))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane6)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnXoa3)
-                    .addComponent(btnSua3)
-                    .addComponent(btnThemMoi3))
-                .addGap(28, 28, 28))
-        );
-
-        jTabbedPane1.addTab("Vị trí lưu trữ", jPanel3);
-
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1143, Short.MAX_VALUE)
-        );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 585, Short.MAX_VALUE)
-        );
-
-        jTabbedPane1.addTab("Quản lí người dùng", jPanel7);
 
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vn/com/stanford/j0622/qlsinhvien/images/settings_16.png"))); // NOI18N
         jMenu1.setText("Hệ thống ");
@@ -1720,6 +1720,7 @@ public static void hienThiDanhSachTimKiemCongTy()
                 hienThiDanhSachKhachHang();
             }*/ 
             try {
+                txtTuKhoaKhachHang.setText(khachhang.getValueAt(khachhang.getSelectedRow(),0).toString());
             Connection c = ketnoi.lienket();
             Statement d = c.createStatement();
             model = (DefaultTableModel)khachhang.getModel();
@@ -1818,7 +1819,7 @@ ID = "" + khachhang.getValueAt(dongChon, 0);
 if (dongChon != -1) {
     frmKhachHang frmSua = new frmKhachHang(this);
     frmSua.gettextid().setText(ID);
-
+   frmSua.settext(khachhang.getValueAt(khachhang.getSelectedRow(), 0).toString(),khachhang.getValueAt(khachhang.getSelectedRow(), 1).toString(), khachhang.getValueAt(khachhang.getSelectedRow(), 3).toString(),khachhang.getValueAt(khachhang.getSelectedRow(), 4).toString(), khachhang.getValueAt(khachhang.getSelectedRow(), 2).toString());
    
 
     frmSua.setVisible(true);
@@ -2136,7 +2137,9 @@ try {
 
         //Lấy mã sv của dòng chọn trên jtable
         ID = "" + nhacungcap.getValueAt(dongChon, 0);
-        CongTy objKH = DataProvider.getCongTyBus().layChiTietTheoMa(ID);
+        String ID1 =   nhacungcap.getValueAt(dongChon, 0).toString();
+        //CongTy objKH = DataProvider.getCongTyBus().layChiTietTheoMa(ID);
+        txtTimKiemNhaCungCap.setText(ID1);
 
        
     }//GEN-LAST:event_nhacungcapMouseClicked
@@ -2149,7 +2152,7 @@ try {
         // TODO add your handling code here:
         int ketQua = JOptionPane.showConfirmDialog(rootPane, "Bạn có chắc chắn muốn xóa không ?",
             "Thông báo", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
-
+            //txtTimKiemNhaCungCap.setText(nhacungcap.getValueAt(nhacungcap.getSelectedRow(),0).toString());
         if(ketQua == JOptionPane.YES_OPTION)//True
         {
             /*int  dongChon = nhacungcap.getSelectedRow();
@@ -2168,6 +2171,7 @@ try {
               }*/
             try{
             Connection c =ketnoi.lienket();
+         //  txtTimKiemNhaCungCap.setText(nhacungcap.getValueAt(nhacungcap.getSelectedRow(),0).toString());
             String id = txtTimKiemNhaCungCap.getText();
             Statement d=c.createStatement();
             d.executeUpdate("DELETE FROM nhacungcap WHERE SUPPLIER_ID='"+id+"'");
@@ -2202,11 +2206,15 @@ try {
 
         //Lấy mã sv của dòng chọn trên jtable
         ID = "" + nhacungcap.getValueAt(dongChon, 0);
-
+        String ten = nhacungcap.getValueAt(dongChon,1 ).toString();
+         String sdt=nhacungcap.getValueAt(dongChon, 3).toString();
+         String mail= nhacungcap.getValueAt(dongChon,4).toString();
+         String diachi=nhacungcap.getValueAt(dongChon, 2).toString();
         frmNhaCungCap frmSua = new frmNhaCungCap(this);
-
+         frmSua.settext(ten, sdt, mail, diachi);
         //Gán mã sv để đưa lên form sửa
         frmSua.setMaNhaCungCap(ID);
+        frmSua.capnhat().setEnabled(true);
 
         frmSua.setVisible(true);
     }//GEN-LAST:event_btnSua_NhaCungCapActionPerformed
@@ -2215,6 +2223,8 @@ try {
         // TODO add your handling code here:
         
         frmNhaCungCap frmThemMoi = new frmNhaCungCap(this);
+        frmThemMoi.capnhat().setEnabled(true);
+        
         frmThemMoi.setVisible(true);
        
           
@@ -2223,7 +2233,98 @@ try {
 
     private void btnTimKiemNhaCungCapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiemNhaCungCapActionPerformed
         // TODO add your handling code here:
-        hienThiDanhSachTimKiemCongTy();
+        
+        //hienThiDanhSachTimKiemCongTy();
+        /*String input= btnTimKiemNhaCungCap.getText();
+        model = (DefaultTableModel)nhacungcap.getModel();
+         ArrayList<String> listid = new ArrayList<>();
+        ArrayList<String> listten = new ArrayList<>();*/
+       /* try {
+        Connection c = ketnoi.lienket();
+        Statement d=c.createStatement();
+        ArrayList<String>listid=new ArrayList<>();
+        ArrayList<String>listten=new ArrayList<>();
+        ResultSet rs=d.executeQuery("SELECT * FROM nhacungcap");
+        while(rs.next()){
+        listid.add(rs.getString("SUPPLIER_ID"));
+        listten.add(rs.getString("SUPPILER_NAME"));
+        
+        }
+        if(listid.contains(input)== true){
+         ResultSet rs1= d.executeQuery("SELECT * FROM nhacungcap WHERE SUPPLIER_ID='"+input+"'");
+         while(rs1.next()){
+            String id =rs1.getString("SUPPILER_ID");
+            String ten=rs1.getString("SUPPLIER_NAME");
+            String diachi=rs1.getString("SUPPLIER_ADDRESS");
+            String sdt= rs1.getString("SUPPLIER_PHONE_NUM");
+            String mail=rs1.getString("SUPPLIER_EMAIL");
+            Object rowdata[]={id,ten,diachi,sdt,mail};
+            model.addRow(rowdata);
+         } else if(listten.contains(input)==true){
+                 ResultSet rs2= d.executeQuery("SELECT * FROM nhacungcap WHERE SUPPLIER_NAME='"+input+"'");
+         while(rs.next()){
+            String id1 =rs2.getString("SUPPLiER_ID");
+            String ten1=rs2.getString("SUPPLIER_NAME");
+            String diachi1=rs2.getString("SUPPLIER_ADDRESS");
+            String sdt1= rs2.getString("SUPPLIER_PHONE_NUM");
+            String mail1=rs2.getString("SUPPLIER_EMAIL");
+            Object rowdata[]={id1,ten1,diachi1,sdt1,mail1};
+            model.addRow(rowdata);
+                 }
+        
+        }
+        ketnoi.dongketnoi(c);
+        }catch(SQLException e){
+        e.printStackTrace();
+        } */
+       String input= txtTimKiemNhaCungCap.getText();
+        model = (DefaultTableModel)nhacungcap.getModel();
+         ArrayList<String> listid = new ArrayList<>();
+        ArrayList<String> listten = new ArrayList<>();
+       try {
+    Connection c = ketnoi.lienket();
+    Statement d = c.createStatement();
+   
+    ResultSet rs = d.executeQuery("SELECT * FROM nhacungcap");
+    
+    while (rs.next()) {
+        listid.add(rs.getString("SUPPLIER_ID"));
+        listten.add(rs.getString("SUPPLIER_NAME"));
+    }
+    
+    if (listid.contains(input)==true) {
+        String input0= txtTimKiemNhaCungCap.getText();
+        ResultSet rs1 = d.executeQuery("SELECT * FROM nhacungcap WHERE SUPPLIER_ID='" + input0 + "'");
+        model.setRowCount(0);
+        while (rs1.next()) {
+            String id = rs1.getString("SUPPLIER_ID");
+            String ten = rs1.getString("SUPPLIER_NAME");
+            String diachi = rs1.getString("SUPPLIER_ADDRESS");
+            String sdt = rs1.getString("SUPPLIER_PHONE_NUM");
+            String mail = rs1.getString("SUPPLIER_EMAIL");
+            Object rowdata[] = { id, ten, diachi, sdt, mail };
+            model.addRow(rowdata);
+        }
+    } else if (listten.contains(input)==true) {
+        String input1= txtTimKiemNhaCungCap.getText();
+        ResultSet rs2 = d.executeQuery("SELECT * FROM nhacungcap WHERE SUPPLIER_NAME='" + input1 + "'");
+        model.setRowCount(0);
+        while (rs2.next()) {
+            String id1 = rs2.getString("SUPPLIER_ID");
+            String ten1 = rs2.getString("SUPPLIER_NAME");
+            String diachi1 = rs2.getString("SUPPLIER_ADDRESS");
+            String sdt1 = rs2.getString("SUPPLIER_PHONE_NUM");
+            String mail1 = rs2.getString("SUPPLIER_EMAIL");
+            Object rowdata[] = { id1, ten1, diachi1, sdt1, mail1 };
+            model.addRow(rowdata);
+        }
+    }
+    
+    ketnoi.dongketnoi(c);
+} catch (SQLException e) {
+    e.printStackTrace();
+}
+        
     }//GEN-LAST:event_btnTimKiemNhaCungCapActionPerformed
 
     private void txtTimKiemNhaCungCapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTimKiemNhaCungCapActionPerformed
@@ -2366,6 +2467,7 @@ try {
             
 
         }
+       
     }//GEN-LAST:event_hanghoaMouseClicked
 
     private void hanghoaComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_hanghoaComponentAdded
@@ -2378,29 +2480,70 @@ try {
 
     private void btnTimKiemHangHoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiemHangHoaActionPerformed
         // TODO add your handling code here:
-        try{
-            Connection c = ketnoi.lienket();
-            
-        String id= txtTimKiemHangHoa.getText();
-        Statement d = c.createStatement();
-        ResultSet rs= d.executeQuery("SELECT * FROM sanpham WHERE PRODUCT_ID='"+id+"'");
-        while(rs.next()){
-        String id1 = rs.getString("PRODUCT_ID");
-        String ten=rs.getString("PRODUCT_NAME");
-        String mota=rs.getString("PRODUCT_DESCRIPTION");
-        String gia=rs.getString("PRODUCT_PRICE");
-        String ton=rs.getString("PRODUCT_IVENTORY");
-        String loai=rs.getString("PRODUCT_TYPE");
-        String khu=rs.getString("LOCATION_ID");
-        Object rowdata[]={id1,ten,mota,gia,ton,loai,khu};
-        model.setRowCount(0);
-        model.addRow(rowdata);
-        }
-        ketnoi.dongketnoi(c);
-        }catch(SQLException e){
-        e.printStackTrace();
-        
-        }
+        ArrayList<String> listid=new ArrayList<>();
+        ArrayList<String> listten= new ArrayList<>();
+        model = (DefaultTableModel) hanghoa.getModel();
+        HangHoa a = new HangHoa();
+        listid=a.getlistid();
+        listten=a.getlistten();
+         String input = txtTimKiemHangHoa.getText();
+         try {
+                Connection c = ketnoi.lienket();
+                
+                Statement d = c.createStatement();
+          if(input.isEmpty()==false){
+          if(listid.contains(input)==true){
+               ResultSet rs = d.executeQuery("SELECT * FROM sanpham WHERE PRODUCT_ID='"+input+"'");
+               while(rs.next()){
+               String id = rs.getString("PRODUCT_ID");
+               String ten = rs.getString("PRODUCT_NAME");
+               String mota= rs.getString("PRODUCT_DESCRIPTION");
+               String giaban= rs.getString("PRODUCT_PRICE");
+               String tonkho=rs.getString("PRODUCT_IVENTORY");
+               String nhomhang= rs.getString("PRODUCT_TYPE");
+               String khuvuc = rs.getString("LOCATION_ID");
+               model.setRowCount(0);
+               Object rowdata[]={id,ten,mota,giaban,tonkho,nhomhang,khuvuc};
+               model.addRow(rowdata);
+               }
+          
+          } else if(listten.contains(input)==true){
+              ResultSet rs = d.executeQuery("SELECT * FROM sanpham WHERE PRODUCT_NAME='"+input+"'");
+               while(rs.next()){
+               String id = rs.getString("PRODUCT_ID");
+               String ten = rs.getString("PRODUCT_NAME");
+               String mota= rs.getString("PRODUCT_DESCRIPTION");
+               String giaban= rs.getString("PRODUCT_PRICE");
+               String tonkho=rs.getString("PRODUCT_IVENTORY");
+               String nhomhang= rs.getString("PRODUCT_TYPE");
+               String khuvuc = rs.getString("LOCATION_ID");
+               model.setRowCount(0);
+               Object rowdata[]={id,ten,mota,giaban,tonkho,nhomhang,khuvuc};
+               model.addRow(rowdata);
+               }
+          }}
+          else /*if(input.isEmpty()==true)*/{
+              String input1= cboNhomHangTimKiem.getSelectedItem().toString();
+              ResultSet rs = d.executeQuery("SELECT * FROM sanpham WHERE PRODUCT_TYPE='"+input1+"'");
+              model.setRowCount(0);
+               while(rs.next()){
+               String id = rs.getString("PRODUCT_ID");
+               String ten = rs.getString("PRODUCT_NAME");
+               String mota= rs.getString("PRODUCT_DESCRIPTION");
+               String giaban= rs.getString("PRODUCT_PRICE");
+               String tonkho=rs.getString("PRODUCT_IVENTORY");
+               String nhomhang= rs.getString("PRODUCT_TYPE");
+               String khuvuc = rs.getString("LOCATION_ID");
+               
+               Object rowdata[]={id,ten,mota,giaban,tonkho,nhomhang,khuvuc};
+               model.addRow(rowdata);
+          
+          }        
+         }
+          ketnoi.dongketnoi(c);
+         }catch(SQLException e){
+         e.printStackTrace();
+         }
         hienThiDanhSachTimKiemHangHoa();
     }//GEN-LAST:event_btnTimKiemHangHoaActionPerformed
 
@@ -2429,6 +2572,7 @@ try {
                 //Reload lại ds
                 hienThiDanhSachHangHoa();
             }*/try{
+                txtTimKiemHangHoa.setText(hanghoa.getValueAt(hanghoa.getSelectedRow(), 0).toString());
            String id=txtTimKiemHangHoa.getText();
             Connection c = ketnoi.lienket();
             Statement d = c.createStatement();
@@ -2474,6 +2618,8 @@ try {
         
         if(hanghoa.getSelectedRow()!=-1){
         frmHangHoaAdd frm= new frmHangHoaAdd(this);
+         int a = hanghoa.getSelectedRow();
+         frm.settext(hanghoa.getValueAt(a, 0).toString(), hanghoa.getValueAt(a, 1).toString(),hanghoa.getValueAt(a, 5).toString(), hanghoa.getValueAt(a, 6).toString(), hanghoa.getValueAt(a,3).toString(),hanghoa.getValueAt(a, 4).toString(),hanghoa.getValueAt(a, 2).toString());
         frm.setVisible(true);
         //hanghoa.clearSelection();
         }
@@ -2490,7 +2636,7 @@ try {
     }//GEN-LAST:event_btnThemMoi_HangHoaActionPerformed
 
     private void btnThongTinHangHoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongTinHangHoaActionPerformed
-        // TODO add your handling code here:
+       /* // TODO add your handling code here:
          int dongChon = 0;
 
         dongChon = hanghoa.getSelectedRow();
@@ -2509,17 +2655,19 @@ try {
 
         frmThongTin.setVisible(true);
         
-       frmThongTin.setThongTin(true);
+       frmThongTin.setThongTin(true);*/
+        this.showhanghoa();
         
     }//GEN-LAST:event_btnThongTinHangHoaActionPerformed
 
     private void btnThongTinNhaCungCapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongTinNhaCungCapActionPerformed
         // TODO add your handling code here:
+        this.hienthi();
     }//GEN-LAST:event_btnThongTinNhaCungCapActionPerformed
 
     private void btnThongTinKhachHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongTinKhachHangActionPerformed
         // TODO add your handling code here:
-        int dongChon = 0;
+        /*int dongChon = 0;
 
         dongChon = khachhang.getSelectedRow();
 
@@ -2537,10 +2685,10 @@ try {
 
         frmThongTin.setVisible(true);
         
-       frmThongTin.setThongTin(true);
+       frmThongTin.setThongTin(true);*/
         
         
-              
+           GiaoDienChinh.showkhachhang();
         
         
     }//GEN-LAST:event_btnThongTinKhachHangActionPerformed
@@ -2703,6 +2851,7 @@ try {
       Statement d = c.createStatement();
       ResultSet rs = d.executeQuery("SELECT * FROM khachhang");
       DefaultTableModel model = (DefaultTableModel) khachhang.getModel();
+      model.setRowCount(0);
       while (rs.next()){
           String id =rs.getString("CUSTOMER_ID");
           String ten= rs.getString("CUSTOMER_NAME");
@@ -2801,6 +2950,16 @@ try {
         cboNhomHangTimKiem.addItem("Loai 2");
          cboNhomHangTimKiem.addItem("Loai 3");
           cboNhomHangTimKiem.addItem("Loai 4");
+          /*try{
+           Connection c = ketnoi.lienket();
+          Statement d = c.createStatement();
+          ResultSet rs=d.executeQuery("SELECT * FROM sanpham");
+          while(rs.next()){
+          cboNhomHangTimKiem.addItem(rs.getString("PRODUCT_TYPE"));
+          
+          }
+          ketnoi.dongketnoi(c);
+          } catch(SQLException e){e.printStackTrace();}*/
     }
   public JComboBox<String> getcombobox (){
       return cboNhomHangTimKiem;

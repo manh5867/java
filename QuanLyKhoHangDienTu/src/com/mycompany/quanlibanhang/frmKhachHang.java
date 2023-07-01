@@ -375,6 +375,13 @@ private void hienThiChiTiet()
        
      this.btnCapNhatActionPerformed(null);
      }
+     public void settext(String s,String s1, String s2,String s3, String s4){
+     txtID.setText(s);
+     txtHoTen.setText(s1);
+     txtDienThoai.setText(s2);
+     txtEmail.setText(s3);
+     txtDiaChi.setText(s4);
+     }
     /**
      * @param args the command line arguments
      */
@@ -409,6 +416,7 @@ private void hienThiChiTiet()
             }
         }); 
     }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCapNhat;

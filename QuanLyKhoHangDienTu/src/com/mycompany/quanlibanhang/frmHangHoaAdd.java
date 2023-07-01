@@ -539,4 +539,13 @@ public class frmHangHoaAdd extends javax.swing.JFrame {
     public JComboBox<String> getcombobox(){
     return cboNhomHang;
     }
+    public void settext(String s, String s1,String s2,String s3,String s4, String s5, String s6){
+      txtMaHang.setText(s);
+    txtTenHang.setText(s1);
+    cboNhomHang.setSelectedItem(s2);
+    txtViTri.setText(s3);
+    txtGiaBan.setText(s4);
+    txtTonKho.setText(s5);
+    txtMoTa.setText(s6);
+    }
 }
