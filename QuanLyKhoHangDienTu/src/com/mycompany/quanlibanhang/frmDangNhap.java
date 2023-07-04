@@ -156,7 +156,8 @@ public class frmDangNhap extends javax.swing.JFrame {
             {
                 //Đăng nhập thành công
                 GiaoDienChinh.isTrangThaiDN = true;
-                GiaoDienChinh.userName = tenDN;
+                GiaoDienChinh.userName = objUser.getHoTen();
+                GiaoDienChinh.setQuyenTruyCap(objUser.getQuyenSuDung());
                 
                 GiaoDienChinh frmMain = new GiaoDienChinh();
                 

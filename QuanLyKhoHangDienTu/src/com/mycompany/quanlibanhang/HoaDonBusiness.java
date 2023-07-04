@@ -28,13 +28,11 @@ public class HoaDonBusiness {
 
             conn = DataProvider.ketNoi();
 
-            String strSQL = "Select * from HoaDon where 1=1";
+            String strSQL = "Select * from donHangXuat where 1=1";
             
             if(!tuKhoa.isEmpty())
             {
-                strSQL += " AND (maHoaDon = '" + tuKhoa + "'  OR maHang like '%" + 
-                        tuKhoa + "%' OR tenHang like '%"+tuKhoa 
-                        +"%' OR KhachHang like '%"+ tuKhoa + "%')";
+                strSQL += " AND (maHoaDon = '" + tuKhoa + "' OR KhachHang like '%"+ tuKhoa + "%')";
             }
             
             
@@ -91,7 +89,7 @@ public class HoaDonBusiness {
 
             conn = DataProvider.ketNoi();
 
-            String strSQL = "Select * from HoaDon";
+            String strSQL = "Select * from donHangXuat";
 
             Statement comm = conn.createStatement();
 
@@ -104,12 +102,11 @@ public class HoaDonBusiness {
 
                 //Gán giá trị cho các thuộc tính
                 
-                objHD.setTenHang(rs.getString("TenHang"));
-                objHD.setSoLuong(rs.getInt("SoLuong"));
-                objHD.setThoiGian(rs.getDate("ThoiGian"));
-                objHD.setKhachHang(rs.getString("KhachHang"));
-                objHD.setTongTienHang(rs.getInt("TongTienHang"));
-                objHD.setMaHoaDon(rs.getString("MaHoaDon"));
+               
+                objHD.setThoiGian(rs.getDate("ORDER_TIME_EXP"));
+                objHD.setKhachHang(rs.getString("CUSTOMER"));
+                objHD.setTongTienHang(rs.getInt("TOTAL_PRICE_EXP"));
+                objHD.setMaHoaDon(rs.getString("EXPORT_ID"));
 
                 //Thêm vào danh sách
                 lstHoaDon.add(objHD);
@@ -141,7 +138,7 @@ public class HoaDonBusiness {
 
             conn = DataProvider.ketNoi();
 
-            String strSQL = "Select * from HoaDon where maHoaDon='" + maHoaDon + "'";
+            String strSQL = "Select * from donHangXuat where EXPORT_ID='" + maHoaDon + "'";
 
             Statement comm = conn.createStatement();
 
@@ -152,13 +149,10 @@ public class HoaDonBusiness {
                 objHD = new HoaDon();
 
                 //Gán giá trị cho các thuộc tính
-                objHD.setTenHang(rs.getString("TenHang"));
-                objHD.setSoLuong(rs.getInt("SoLuong"));
-                objHD.setThoiGian(rs.getDate("ThoiGian"));
-                objHD.setKhachHang(rs.getString("KhachHang"));
-                objHD.setTongTienHang(rs.getInt("TongTienHang"));
-                objHD.setMaHoaDon(rs.getString("MaHoaDon"));
-                objHD.setMaHang(rs.getString("MaHang"));
+                objHD.setThoiGian(rs.getDate("ORDER_TIME_EXP"));
+                objHD.setKhachHang(rs.getString("CUSTOMER"));
+                objHD.setTongTienHang(rs.getInt("TOTAL_PRICE_EXP"));
+                objHD.setMaHoaDon(rs.getString("EXPORT_ID"));
                                   
                 
                 
@@ -199,21 +193,20 @@ public class HoaDonBusiness {
             conn = DataProvider.ketNoi();
             
             //Khai báo công việc
-            String strInsert = "Insert into HoaDon(MaHoaDon, TenHang, MaHang, ThoiGian, "
-                    + "KhachHang,SoLuong,TongTienHang) values("
-                    + "?,?,?,?,?, ?, ?)";
+            String strInsert = "Insert into donHangXuat(EXPORT_ID, ORDER_TIME_EXP, TOTAL_PRICE_EXP, CUSTOMER "
+                    + ") values("
+                    + "?,?,?,?)";
             
             PreparedStatement comm = conn.prepareStatement(strInsert);
             
             //Thiết lập các giá trị cho tham số
             comm.setString(1, objHD.getMaHoaDon());
-            comm.setString(2, objHD.getTenHang());
-            comm.setString(3, objHD.getMaHang());
-            comm.setDate(4, new Date(objHD.getThoiGian().getTime()));
+          
+            comm.setDate(2, new Date(objHD.getThoiGian().getTime()));
             
-            comm.setString(5, objHD.getKhachHang());
-            comm.setInt(6, objHD.getSoLuong());
-            comm.setInt(7, objHD.getTongTienHang());
+            comm.setString(4, objHD.getKhachHang());
+            
+            comm.setInt(3, objHD.getTongTienHang());
              
                 
                 
@@ -257,23 +250,22 @@ public class HoaDonBusiness {
             conn = DataProvider.ketNoi();
             
             //Khai báo công việc
-            String strUpdate = "Update HoaDon set TenHang=?, MaHang = ?, ThoiGian= ?, "
-                    + " KhachHang = ?, "
-                    + "SoLuong = ?, TongTienHang=?  where MaHoaDon = ?";
+            String strUpdate = "Update donHangXuat set  ORDER_TIME_EXP = ?, TOTAL_PRICE_EXP= ?, "
+                    + " CUSTOMER = ? "
+                    + "  where EXPORT_ID = ?";
             
             PreparedStatement comm = conn.prepareStatement(strUpdate);
             
             //Thiết lập các giá trị cho tham số
             
             
-            comm.setString(7, objHD.getMaHoaDon());
-            comm.setString(1, objHD.getTenHang());
-            comm.setString(2, objHD.getMaHang());
-            comm.setDate(3, new Date(objHD.getThoiGian().getTime()));
+            comm.setString(4, objHD.getMaHoaDon());
+           
+            comm.setDate(1, new Date(objHD.getThoiGian().getTime()));
           
-            comm.setString(4, objHD.getKhachHang());
-            comm.setInt(5, objHD.getSoLuong());
-            comm.setInt(6, objHD.getTongTienHang());
+            comm.setString(3, objHD.getKhachHang());
+           
+            comm.setInt(2, objHD.getTongTienHang());
              
                 
             
@@ -305,169 +297,7 @@ public class HoaDonBusiness {
      * @param ID
      * @return 
      */
-    public boolean capNhat1(HoaDon objHD)
-    {
-        int soLuong=0;
-        Connection conn = null;
-           
-        try {
-            int SoLuong=0,SoLuongCu=0;
-            //Kết nối đến db làm việc
-            conn = DataProvider.ketNoi();
-            String strSQL = "Select * from HoaDon where MaHoaDon='" + objHD.getMaHoaDon()+ "'";
-
-            Statement coa = conn.createStatement();
-
-            ResultSet rs = coa.executeQuery(strSQL);   
-            while (rs.next())
-            {
-                SoLuongCu=rs.getInt("SoLuong");
-            }
-            //Khai báo công việc
-           
-             strSQL = "Select * from HangHoa where MaHang='" + objHD.getMaHang() + "'";
-
-            
-
-            rs = coa.executeQuery(strSQL);   
-            while (rs.next())
-            {
-                SoLuong=rs.getInt("TonKho");
-            }
-                SoLuong=SoLuong-objHD.getSoLuong()+SoLuongCu;
-            String strUpdate1 = "Update HangHoa set  TonKho=?  where MaHang = ?";
-            
-            PreparedStatement comm = conn.prepareStatement(strUpdate1);    
-            comm.setInt(1, SoLuong);
-            comm.setString(2, objHD.getMaHang());            //Thực hiện công việc
-           return (comm.executeUpdate() > 0);
-           
-        } catch (SQLException ex) {
-            System.err.println("Co loi xay ra trong qua trinh cap nhat thong tin. "
-                    + "Chi tiet: " + ex.getMessage());
-        }
-        finally
-        {
-             try {
-                if(conn != null){
-                //Đóng kết nối
-                conn.close();
-                }
-            } catch (SQLException ex) {
-                System.err.println("Co loi xay ra. Chi tiet: " + ex.getMessage());
-            }
-        }
-        
-        
-        return false;
-    }
-     public boolean xoa1(String MaHoaDon)
-    {
-       Connection conn = null;
-           
-       
-            
-            //Khai báo công việc
-           try {
-            int SoLuong=0;
-            //Kết nối đến db làm việc
-            conn = DataProvider.ketNoi();
-            HoaDon objHD = new HoaDon();
-            objHD=layChiTietTheoMa(MaHoaDon);
-            //Khai báo công việc
-            String strSQL = "Select * from HangHoa where MaHang='" + objHD.getMaHang() + "'";
-
-            Statement coa = conn.createStatement();
-
-            ResultSet rs = coa.executeQuery(strSQL);   
-            while (rs.next())
-            {
-                SoLuong=rs.getInt("TonKho");
-            }
-                SoLuong+=objHD.getSoLuong();
-            String strUpdate = "Update HangHoa set  TonKho=?  where MaHang = ?";
-            
-             PreparedStatement comm = conn.prepareStatement(strUpdate);    
-            comm.setInt(1, SoLuong);
-            comm.setString(2, objHD.getMaHang());
-                
-            //Thực hiện công việc
-           return (comm.executeUpdate() > 0);
-           
-        } catch (SQLException ex) {
-            System.err.println("Co loi xay ra trong qua trinh cap nhat thong tin. "
-                    + "Chi tiet: " + ex.getMessage());
-        }
-        finally
-        {
-             try {
-                if(conn != null){
-                //Đóng kết nối
-                conn.close();
-                }
-            } catch (SQLException ex) {
-                System.err.println("Co loi xay ra. Chi tiet: " + ex.getMessage());
-            }
-        }
-            
-            //Thực hiện công việc
-           
-        
-        return false;
-    }
-     public boolean themMoi1(HoaDon objHD)
-    {
-        Connection conn = null;
-           
-        try {
-            int SoLuong=0;
-            //Kết nối đến db làm việc
-            conn = DataProvider.ketNoi();
-            
-            //Khai báo công việc
-            String strSQL = "Select * from HangHoa where MaHang='" + objHD.getMaHang() + "'";
-
-            Statement coa = conn.createStatement();
-
-            ResultSet rs = coa.executeQuery(strSQL);   
-            while (rs.next())
-            {
-                SoLuong=rs.getInt("TonKho");
-            }
-                SoLuong-=objHD.getSoLuong();
-            String strUpdate = "Update HangHoa set  TonKho=?  where MaHang = ?";
-            
-             PreparedStatement comm = conn.prepareStatement(strUpdate);    
-            comm.setInt(1, SoLuong);
-            comm.setString(2, objHD.getMaHang());
-                
-                
-             
-                
-                  
-            
-            
-            //Thực hiện công việc
-           return (comm.executeUpdate() > 0);
-           
-        } catch (SQLException ex) {
-            System.err.println("Co loi xay ra trong qua trinh them thong tin. "
-                    + "Chi tiet: " + ex.getMessage());
-        }
-        finally
-        {
-             try {
-                if(conn != null){
-                //Đóng kết nối
-                conn.close();
-                }
-            } catch (SQLException ex) {
-                System.err.println("Co loi xay ra. Chi tiet: " + ex.getMessage());
-            }
-        }
-        
-        return false;
-    }
+   
     public boolean xoa(String MaHoaDon)
     {
        Connection conn = null;
@@ -478,7 +308,7 @@ public class HoaDonBusiness {
             conn = DataProvider.ketNoi();
             
             //Khai báo công việc
-            String strDelete = "Delete from HoaDon where MaHoaDon = ?";
+            String strDelete = "Delete from donhangxuat where EXPORT_ID = ?";
             
             PreparedStatement comm = conn.prepareStatement(strDelete);
             

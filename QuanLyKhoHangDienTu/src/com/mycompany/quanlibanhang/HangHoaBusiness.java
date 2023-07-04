@@ -56,7 +56,7 @@ public class HangHoaBusiness {
                 objHH.setTenHang(rs.getString("PRODUCT_NAME"));
                 
                 objHH.setGiaBan(rs.getInt("PRODUCT_PRICE"));
-                objHH.setMaNhomHang(rs.getString("PRODUCT_TYPE"));
+                objHH.setTenNhomHang(rs.getString("PRODUCT_TYPE"));
                 objHH.setTonKho(rs.getInt("PRODUCT_QUANTITY"));
                 objHH.setViTri(rs.getString("PRODUCT_LOCATION"));
 
@@ -116,7 +116,7 @@ public class HangHoaBusiness {
                 objHH.setTenHang(rs.getString("PRODUCT_NAME"));
                 
                 objHH.setGiaBan(rs.getInt("PRODUCT_PRICE"));
-                objHH.setMaNhomHang(rs.getString("PRODUCT_TYPE"));
+                objHH.setTenNhomHang(rs.getString("PRODUCT_TYPE"));
                 objHH.setTonKho(rs.getInt("PRODUCT_QUANTITY"));
                 objHH.setViTri(rs.getString("PRODUCT_LOCATION"));
 
@@ -165,7 +165,7 @@ public class HangHoaBusiness {
                 objHH.setTenHang(rs.getString("PRODUCT_NAME"));
                 
                 objHH.setGiaBan(rs.getInt("PRODUCT_PRICE"));
-                objHH.setMaNhomHang(rs.getString("PRODUCT_TYPE"));
+                objHH.setTenNhomHang(rs.getString("PRODUCT_TYPE"));
                 objHH.setTonKho(rs.getInt("PRODUCT_QUANTITY"));
                 objHH.setViTri(rs.getString("PRODUCT_LOCATION"));
                  
@@ -217,7 +217,7 @@ public class HangHoaBusiness {
             //Thiết lập các giá trị cho tham số
             comm.setString(1, objHH.getMaHang());
             comm.setString(2, objHH.getTenHang());
-            comm.setString(3, objHH.getMaNhomHang());
+            comm.setString(3, objHH.getTenNhomHang());
            
             comm.setInt(4, objHH.getGiaBan());
             comm.setString(5, objHH.getViTri());
@@ -278,7 +278,7 @@ public class HangHoaBusiness {
             
            comm.setString(7, objHH.getMaHang());
             comm.setString(1, objHH.getTenHang());
-            comm.setString(2, objHH.getMaNhomHang());
+            comm.setString(2, objHH.getTenNhomHang());
            
             comm.setInt(3, objHH.getGiaBan());
             comm.setString(4, objHH.getViTri());

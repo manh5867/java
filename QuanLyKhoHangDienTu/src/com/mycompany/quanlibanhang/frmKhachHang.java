@@ -5,57 +5,17 @@
 package com.mycompany.quanlibanhang;
 
 import javax.swing.JOptionPane;
-import com.mycompany.quanlibanhang.GiaoDienChinh;
-//import static com.mycompany.quanlibanhang.GiaoDienChinh.a;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.JOptionPane;
-import java.awt.Point;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseAdapter;
-import javax.swing.JTextField;
-import javax.swing.JButton;
 
 /**
  *
  * @author My HP
  */
 public class frmKhachHang extends javax.swing.JFrame {
-    private static GiaoDienChinh h;
 
     private String maKhachHang = "";
     
     private boolean ThongTin;
-    public  JTextField gettextid(){
-    
-      return this.txtID;
-    }
-    public JTextField gettextten(){
-    
-     return this.txtHoTen;
-    }
-    public JTextField gettextdiachi(){
-    return this.txtDiaChi;
-    }
-    public JTextField gettextsdt(){
-    return this.txtDienThoai;
-    }
-    public JTextField gettextmail(){
-    return this.txtEmail;
-    }
-   public JButton getbutton(){
-       return this.btnCapNhat;
-      
-   }
+
     public void setThongTin(boolean ThongTin) {
         this.ThongTin = ThongTin;
     }
@@ -67,14 +27,13 @@ public class frmKhachHang extends javax.swing.JFrame {
     public void setMaKhachHang(String maKhachHang) {
         this.maKhachHang = maKhachHang;
     }
-   
+
    
     /**
      * Creates new form frmKhachHang
      */
-    public frmKhachHang(GiaoDienChinh a ) {
+    public frmKhachHang() {
         initComponents();
-        h=a;
     }
 private void hienThiChiTiet()
     {
@@ -110,13 +69,11 @@ private void hienThiChiTiet()
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         txtID = new javax.swing.JTextField();
         txtHoTen = new javax.swing.JTextField();
         txtDienThoai = new javax.swing.JTextField();
         txtEmail = new javax.swing.JTextField();
         txtDiaChi = new javax.swing.JTextField();
-        txtGhiChu = new javax.swing.JTextField();
         btnCapNhat = new javax.swing.JButton();
         btnDong = new javax.swing.JButton();
 
@@ -138,8 +95,6 @@ private void hienThiChiTiet()
         jLabel5.setText("Email:");
 
         jLabel6.setText("Địa chỉ:");
-
-        jLabel7.setText("Ghi chú:");
 
         txtID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -180,24 +135,21 @@ private void hienThiChiTiet()
                             .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(319, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel7))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnCapNhat)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel6))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtDiaChi, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtDienThoai, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtGhiChu, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtDiaChi, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtDienThoai, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnDong)
                         .addGap(0, 0, Short.MAX_VALUE))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnCapNhat)
-                .addGap(18, 18, 18)
-                .addComponent(btnDong)
-                .addGap(78, 78, 78))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -222,15 +174,11 @@ private void hienThiChiTiet()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
                     .addComponent(txtDiaChi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7)
-                    .addComponent(txtGhiChu, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(81, 81, 81)
+                .addGap(55, 55, 55)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCapNhat)
                     .addComponent(btnDong))
-                .addContainerGap(74, Short.MAX_VALUE))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -238,9 +186,8 @@ private void hienThiChiTiet()
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addGap(0, 12, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -253,6 +200,7 @@ private void hienThiChiTiet()
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
     private void txtIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDActionPerformed
         // TODO add your handling code here:
         
@@ -288,15 +236,15 @@ private void hienThiChiTiet()
         }
         }
     }//GEN-LAST:event_formWindowOpened
-     
+
     private void btnCapNhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCapNhatActionPerformed
         // TODO add your handling code here:
-        /*KhachHang objKH = new KhachHang();
+        KhachHang objKH = new KhachHang();
         
         String ID = "", hoTen = "", dienThoai = "", email = "", diaChi = "";
         
         int gioiTinh = 0;
-       
+        
         ID = txtID.getText();
         hoTen = txtHoTen.getText();
         dienThoai = txtDienThoai.getText();
@@ -339,49 +287,10 @@ private void hienThiChiTiet()
             JOptionPane.showMessageDialog(rootPane, "Thực hiện cập nhật khách hàng thành công");
             //Reload lại danh sách
             GiaoDienChinh.hienThiDanhSachKhachHang();
-        }*/
-        // làm thôi
-        // giu lam private 
-      //  com.mycompany.quanlibanhang.GiaoDienChinh.
-        // if(Mouse()!=0) {
-        
-         
-         //}
-          //SHAREData data=new SHAREData();
-         //if(Integer.parseInt(data.getdata())!=0){
-             try {
-             Connection c = ketnoi.lienket();
-             Statement d= c.createStatement();
-             String ID= txtID.getText();
-             String ten= txtHoTen.getText();
-             String sdt = txtDienThoai.getText();
-             String mail= txtEmail.getText();
-             String diachi=txtDiaChi.getText();
-             //Statement d= c.createStatement();
-              d.executeUpdate("INSERT INTO khachhang(CUSTOMER_ID,CUSTOMER_NAME,CUSTOMER_ADDRESS,CUSTOMER_PHONE_NUMBER,CUSTOMER_EMAIL) VALUES('"+ID+"','"+ten+"','"+diachi+"','"+sdt+"','"+mail+"')");
-              GiaoDienChinh.hienThiDanhSachKhachHang();
-             ketnoi.dongketnoi(c);
-             } catch(SQLException e){
-             
-             e.printStackTrace();
-             }
-            // DefaultTableModel model = (DefaultTableModel)
-          
-        // }
-        
+        }
         
     }//GEN-LAST:event_btnCapNhatActionPerformed
-     public void getcapnhat1(){
-       
-     this.btnCapNhatActionPerformed(null);
-     }
-     public void settext(String s,String s1, String s2,String s3, String s4){
-     txtID.setText(s);
-     txtHoTen.setText(s1);
-     txtDienThoai.setText(s2);
-     txtEmail.setText(s3);
-     txtDiaChi.setText(s4);
-     }
+
     /**
      * @param args the command line arguments
      */
@@ -412,11 +321,10 @@ private void hienThiChiTiet()
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frmKhachHang(h).setVisible(true);
+                new frmKhachHang().setVisible(true);
             }
         }); 
     }
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCapNhat;
@@ -426,12 +334,10 @@ private void hienThiChiTiet()
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txtDiaChi;
     private javax.swing.JTextField txtDienThoai;
     private javax.swing.JTextField txtEmail;
-    private javax.swing.JTextField txtGhiChu;
     private javax.swing.JTextField txtHoTen;
     private javax.swing.JTextField txtID;
     // End of variables declaration//GEN-END:variables

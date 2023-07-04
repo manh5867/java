@@ -4,60 +4,38 @@
  */
 package com.mycompany.quanlibanhang;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JOptionPane;
-import java.awt.Point;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseAdapter;
-import javax.swing.JTable;
-import java.util.ArrayList;
-import javax.swing.JComboBox;
 
 /**
  *
  * @author My HP
  */
- 
 public class GiaoDienChinh extends javax.swing.JFrame {
-     static int a;
+
     public static boolean isTrangThaiDN = false;
-    private DefaultTableModel model;
-    private ArrayList<KhachHang>list;
     
     /**
      * Lưu tên đăng nhập
      */
     public static String userName = "";
     
+    public static String quyenTruyCap="";
+
+    public static String getQuyenTruyCap() {
+        return quyenTruyCap;
+    }
+
+    public static void setQuyenTruyCap(String quyenTruyCap) {
+        GiaoDienChinh.quyenTruyCap = quyenTruyCap;
+    }
+    
     /**
      * Creates new form Giao
      */
-    public static GiaoDienChinh a1=new GiaoDienChinh();
     public GiaoDienChinh() {
         initComponents();
-       // showTable();
-       // mousekhachhang();
-       showkhachhang();
-       hienthi();
-       getkhachhang();
-       showhanghoa();
-       showcombobox();
-       
-    }
-    public GiaoDienChinh getgiaodien(){
-      return a1;
     }
 
     /**
@@ -71,7 +49,6 @@ public class GiaoDienChinh extends javax.swing.JFrame {
 
         jMenu3 = new javax.swing.JMenu();
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jPanel14 = new javax.swing.JPanel();
         jPanel15 = new javax.swing.JPanel();
@@ -84,7 +61,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         btnSua_HangHoa = new javax.swing.JButton();
         btnXoa_HangHoa = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
-        hanghoa = new javax.swing.JTable();
+        jTableHangHoa = new javax.swing.JTable();
         btnThongTinHangHoa = new javax.swing.JButton();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jPanel17 = new javax.swing.JPanel();
@@ -98,7 +75,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         btnXoa2 = new javax.swing.JButton();
         jScrollPane5 = new javax.swing.JScrollPane();
         jTableHoaDon = new javax.swing.JTable();
-        btnThongTinHoaDon = new javax.swing.JButton();
+        btnThongTinChiTietHoaDon = new javax.swing.JButton();
         jPanel19 = new javax.swing.JPanel();
         jPanel20 = new javax.swing.JPanel();
         jPanel21 = new javax.swing.JPanel();
@@ -109,19 +86,8 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         btnSua1 = new javax.swing.JButton();
         btnXoa1 = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
-        nhaphang = new javax.swing.JTable();
-        jButton2 = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
-        btnXoa3 = new javax.swing.JButton();
-        jScrollPane6 = new javax.swing.JScrollPane();
-        jTableKhachHang1 = new javax.swing.JTable();
-        btnThemMoi3 = new javax.swing.JButton();
-        btnSua3 = new javax.swing.JButton();
-        jPanel5 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        btnTimKiemViTri = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jPanel7 = new javax.swing.JPanel();
+        jTableNhapHang = new javax.swing.JTable();
+        btnThongTinChiTietNhapHang = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jPanel11 = new javax.swing.JPanel();
         btnDong1 = new javax.swing.JButton();
@@ -132,13 +98,14 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         jLabel22 = new javax.swing.JLabel();
         txtCMT1 = new javax.swing.JTextField();
         txtNoiCapCMT1 = new javax.swing.JTextField();
+        dtNgayCapCMT1 = new com.toedter.calendar.JDateChooser();
         jPanel12 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         txtTimKiemNhaCungCap = new javax.swing.JTextField();
         btnTimKiemNhaCungCap = new javax.swing.JButton();
         jLabel65 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        nhacungcap = new javax.swing.JTable();
+        jTableNhaCungCap = new javax.swing.JTable();
         btnThemMoi_NhaCungCap = new javax.swing.JButton();
         btnSua_NhaCungCap = new javax.swing.JButton();
         btnXoa_NhaCungCap = new javax.swing.JButton();
@@ -153,8 +120,31 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         btnXoa = new javax.swing.JButton();
         btnDong = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        khachhang = new javax.swing.JTable();
+        jTableKhachHang = new javax.swing.JTable();
         btnThongTinKhachHang = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        btnXoa3 = new javax.swing.JButton();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        jTableViTri = new javax.swing.JTable();
+        btnThemViTri = new javax.swing.JButton();
+        btnSuaViTriLuuTru = new javax.swing.JButton();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        btnTimKiemViTri = new javax.swing.JButton();
+        txtTimKiemViTri = new javax.swing.JTextField();
+        jPanel7 = new javax.swing.JPanel();
+        jPanelTaiKhoan = new javax.swing.JPanel();
+        jPanel10 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        txtTuKhoaNguoiDung = new javax.swing.JTextField();
+        btnTimKiemNguoiDung = new javax.swing.JButton();
+        btnThemMoiNguoiDung = new javax.swing.JButton();
+        btnSuaNguoiDung = new javax.swing.JButton();
+        btnXoaNguoiDung = new javax.swing.JButton();
+        btnDong2 = new javax.swing.JButton();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        jTableNguoiDung = new javax.swing.JTable();
+        btnThongTinNguoiDung = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItemDangNhap = new javax.swing.JMenuItem();
@@ -186,19 +176,6 @@ public class GiaoDienChinh extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1143, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 585, Short.MAX_VALUE)
-        );
-
-        jTabbedPane1.addTab("Tổng quan", jPanel1);
-
         jPanel14.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jPanel14FocusGained(evt);
@@ -223,6 +200,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
             }
         });
 
+        cboNhomHangTimKiem.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Điện thoại di động", "Linh kiện điện tử", "Máy tính xách tay", "Thiết bị âm thanh", "Thiết bị gia dụng thông minh" }));
         cboNhomHangTimKiem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboNhomHangTimKiemActionPerformed(evt);
@@ -242,11 +220,11 @@ public class GiaoDienChinh extends javax.swing.JFrame {
                 .addComponent(txtTimKiemHangHoa, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
                 .addComponent(jLabel66)
-                .addGap(40, 40, 40)
+                .addGap(18, 18, 18)
                 .addComponent(cboNhomHangTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
+                .addGap(27, 27, 27)
                 .addComponent(btnTimKiemHangHoa)
-                .addContainerGap(434, Short.MAX_VALUE))
+                .addContainerGap(463, Short.MAX_VALUE))
         );
         jPanel15Layout.setVerticalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -285,25 +263,28 @@ public class GiaoDienChinh extends javax.swing.JFrame {
             }
         });
 
-        hanghoa.setModel(new javax.swing.table.DefaultTableModel(
+        jTableHangHoa.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Mã hàng", "Tên hàng", "Mô tả", "Giá bán", "Tồn kho", "Nhóm Hàng", "Vị trí"
+                "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        hanghoa.addContainerListener(new java.awt.event.ContainerAdapter() {
+        jTableHangHoa.addContainerListener(new java.awt.event.ContainerAdapter() {
             public void componentAdded(java.awt.event.ContainerEvent evt) {
-                hanghoaComponentAdded(evt);
+                jTableHangHoaComponentAdded(evt);
             }
         });
-        hanghoa.addMouseListener(new java.awt.event.MouseAdapter() {
+        jTableHangHoa.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                hanghoaMouseClicked(evt);
+                jTableHangHoaMouseClicked(evt);
             }
         });
-        jScrollPane3.setViewportView(hanghoa);
+        jScrollPane3.setViewportView(jTableHangHoa);
 
         btnThongTinHangHoa.setText("Thông tin chi tiết");
         btnThongTinHangHoa.addActionListener(new java.awt.event.ActionListener() {
@@ -459,10 +440,10 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         });
         jScrollPane5.setViewportView(jTableHoaDon);
 
-        btnThongTinHoaDon.setText("Thông tin chi tiết");
-        btnThongTinHoaDon.addActionListener(new java.awt.event.ActionListener() {
+        btnThongTinChiTietHoaDon.setText("Thông tin chi tiết");
+        btnThongTinChiTietHoaDon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnThongTinHoaDonActionPerformed(evt);
+                btnThongTinChiTietHoaDonActionPerformed(evt);
             }
         });
 
@@ -473,9 +454,9 @@ public class GiaoDienChinh extends javax.swing.JFrame {
             .addGroup(jPanel23Layout.createSequentialGroup()
                 .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel23Layout.createSequentialGroup()
-                        .addGap(244, 244, 244)
-                        .addComponent(btnThongTinHoaDon)
-                        .addGap(104, 104, 104)
+                        .addGap(285, 285, 285)
+                        .addComponent(btnThongTinChiTietHoaDon)
+                        .addGap(63, 63, 63)
                         .addComponent(btnThemMoi2)
                         .addGap(83, 83, 83)
                         .addComponent(btnSua2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -501,7 +482,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
                     .addComponent(btnThemMoi2)
                     .addComponent(btnSua2)
                     .addComponent(btnXoa2)
-                    .addComponent(btnThongTinHoaDon))
+                    .addComponent(btnThongTinChiTietHoaDon))
                 .addGap(74, 74, 74))
         );
 
@@ -522,6 +503,12 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         );
 
         jTabbedPane2.addTab("Xuất hàng", jPanel17);
+
+        jPanel19.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPanel19MousePressed(evt);
+            }
+        });
 
         jPanel20.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -556,7 +543,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
                 .addComponent(jLabel42)
                 .addGap(40, 40, 40)
                 .addComponent(txtTuKhoaNhapHang, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(126, 126, 126)
+                .addGap(61, 61, 61)
                 .addComponent(btnTimKiemNhapHang)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -595,25 +582,28 @@ public class GiaoDienChinh extends javax.swing.JFrame {
             }
         });
 
-        nhaphang.setModel(new javax.swing.table.DefaultTableModel(
+        jTableNhapHang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Mã hóa đơn", "thời gian đặt", "thời gian giao hàng", "nhà cung cấp", "nhà cung cấp"
+                "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        nhaphang.addMouseListener(new java.awt.event.MouseAdapter() {
+        jTableNhapHang.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                nhaphangMouseClicked(evt);
+                jTableNhapHangMouseClicked(evt);
             }
         });
-        jScrollPane4.setViewportView(nhaphang);
+        jScrollPane4.setViewportView(jTableNhapHang);
 
-        jButton2.setText("Thông tin chi tiết");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnThongTinChiTietNhapHang.setText("Thông tin chi tiết");
+        btnThongTinChiTietNhapHang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnThongTinChiTietNhapHangActionPerformed(evt);
             }
         });
 
@@ -629,7 +619,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel20Layout.createSequentialGroup()
                 .addContainerGap(357, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(btnThongTinChiTietNhapHang)
                 .addGap(64, 64, 64)
                 .addComponent(btnThemMoi1)
                 .addGap(70, 70, 70)
@@ -650,7 +640,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
                     .addComponent(btnThemMoi1)
                     .addComponent(btnSua1)
                     .addComponent(btnXoa1)
-                    .addComponent(jButton2))
+                    .addComponent(btnThongTinChiTietNhapHang))
                 .addGap(49, 49, 49))
         );
 
@@ -674,126 +664,6 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         jTabbedPane2.addTab("Nhập hàng", jPanel19);
 
         jTabbedPane1.addTab("Giao dịch", jTabbedPane2);
-
-        btnXoa3.setText("Xóa");
-        btnXoa3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnXoa3ActionPerformed(evt);
-            }
-        });
-
-        jTableKhachHang1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jTableKhachHang1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTableKhachHang1MouseClicked(evt);
-            }
-        });
-        jScrollPane6.setViewportView(jTableKhachHang1);
-
-        btnThemMoi3.setText("Thêm mới");
-        btnThemMoi3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnThemMoi3ActionPerformed(evt);
-            }
-        });
-
-        btnSua3.setText("Sửa");
-        btnSua3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSua3ActionPerformed(evt);
-            }
-        });
-
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Tìm kiếm vị trí"));
-
-        jLabel2.setText("Từ khóa: ");
-
-        btnTimKiemViTri.setText("Tìm kiếm");
-        btnTimKiemViTri.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTimKiemViTriActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(65, 65, 65)
-                .addComponent(btnTimKiemViTri)
-                .addContainerGap(616, Short.MAX_VALUE))
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(11, 11, 11)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnTimKiemViTri))
-                .addContainerGap(23, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(653, Short.MAX_VALUE)
-                .addComponent(btnThemMoi3)
-                .addGap(86, 86, 86)
-                .addComponent(btnSua3, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52)
-                .addComponent(btnXoa3, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(126, 126, 126))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane6)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnXoa3)
-                    .addComponent(btnSua3)
-                    .addComponent(btnThemMoi3))
-                .addGap(28, 28, 28))
-        );
-
-        jTabbedPane1.addTab("Vị trí lưu trữ", jPanel3);
-
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1143, Short.MAX_VALUE)
-        );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 585, Short.MAX_VALUE)
-        );
-
-        jTabbedPane1.addTab("Quản lí người dùng", jPanel7);
 
         btnDong1.setText("Đóng");
         btnDong1.addActionListener(new java.awt.event.ActionListener() {
@@ -827,10 +697,12 @@ public class GiaoDienChinh extends javax.swing.JFrame {
                     .addGroup(jPanel13Layout.createSequentialGroup()
                         .addComponent(jLabel22)
                         .addGap(27, 27, 27)
-                        .addComponent(txtNoiCapCMT1, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE))
+                        .addComponent(txtNoiCapCMT1))
                     .addGroup(jPanel13Layout.createSequentialGroup()
                         .addComponent(jLabel21)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(dtNgayCapCMT1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 33, Short.MAX_VALUE))
                     .addGroup(jPanel13Layout.createSequentialGroup()
                         .addComponent(jLabel20)
                         .addGap(40, 40, 40)
@@ -845,8 +717,10 @@ public class GiaoDienChinh extends javax.swing.JFrame {
                     .addComponent(jLabel20)
                     .addComponent(txtCMT1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel21)
-                .addGap(20, 20, 20)
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel21)
+                    .addComponent(dtNgayCapCMT1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel22)
                     .addComponent(txtNoiCapCMT1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -933,20 +807,23 @@ public class GiaoDienChinh extends javax.swing.JFrame {
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
-        nhacungcap.setModel(new javax.swing.table.DefaultTableModel(
+        jTableNhaCungCap.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Mã nhà cung cấp", "Tên ", "Địa chỉ", "Sô điện thoại", "Email"
+                "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        nhacungcap.addMouseListener(new java.awt.event.MouseAdapter() {
+        jTableNhaCungCap.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                nhacungcapMouseClicked(evt);
+                jTableNhaCungCapMouseClicked(evt);
             }
         });
-        jScrollPane2.setViewportView(nhacungcap);
+        jScrollPane2.setViewportView(jTableNhaCungCap);
 
         btnThemMoi_NhaCungCap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vn/com/stanford/j0622/qlsinhvien/images/add-icon.png"))); // NOI18N
         btnThemMoi_NhaCungCap.setText("Thêm mới");
@@ -1098,20 +975,23 @@ public class GiaoDienChinh extends javax.swing.JFrame {
             }
         });
 
-        khachhang.setModel(new javax.swing.table.DefaultTableModel(
+        jTableKhachHang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "ID", "Tên", "Địa chỉ", "SDT", "Email"
+                "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        khachhang.addMouseListener(new java.awt.event.MouseAdapter() {
+        jTableKhachHang.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                khachhangMouseClicked(evt);
+                jTableKhachHangMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(khachhang);
+        jScrollPane1.setViewportView(jTableKhachHang);
 
         btnThongTinKhachHang.setText("Thông tin chi tiết");
         btnThongTinKhachHang.addActionListener(new java.awt.event.ActionListener() {
@@ -1131,7 +1011,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(btnDong)
-                                .addGap(0, 1072, Short.MAX_VALUE))
+                                .addGap(0, 1059, Short.MAX_VALUE))
                             .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(jScrollPane1))
                 .addContainerGap())
@@ -1165,6 +1045,287 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         );
 
         jTabbedPane1.addTab("Khách hàng", jPanel4);
+
+        btnXoa3.setText("Xóa");
+        btnXoa3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoa3ActionPerformed(evt);
+            }
+        });
+
+        jTableViTri.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jTableViTri.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableViTriMouseClicked(evt);
+            }
+        });
+        jScrollPane6.setViewportView(jTableViTri);
+
+        btnThemViTri.setText("Thêm mới");
+        btnThemViTri.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThemViTriActionPerformed(evt);
+            }
+        });
+
+        btnSuaViTriLuuTru.setText("Sửa");
+        btnSuaViTriLuuTru.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuaViTriLuuTruActionPerformed(evt);
+            }
+        });
+
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Tìm kiếm vị trí"));
+
+        jLabel2.setText("Từ khóa: ");
+
+        btnTimKiemViTri.setText("Tìm kiếm");
+        btnTimKiemViTri.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTimKiemViTriActionPerformed(evt);
+            }
+        });
+
+        txtTimKiemViTri.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTimKiemViTriActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
+                .addComponent(txtTimKiemViTri, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(103, 103, 103)
+                .addComponent(btnTimKiemViTri)
+                .addContainerGap(643, Short.MAX_VALUE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(11, 11, 11)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtTimKiemViTri, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnTimKiemViTri))
+                .addContainerGap(23, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnThemViTri)
+                .addGap(60, 60, 60)
+                .addComponent(btnSuaViTriLuuTru, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(52, 52, 52)
+                .addComponent(btnXoa3, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(126, 126, 126))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane6)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnXoa3)
+                    .addComponent(btnSuaViTriLuuTru)
+                    .addComponent(btnThemViTri))
+                .addGap(28, 28, 28))
+        );
+
+        jTabbedPane1.addTab("Vị trí lưu trữ", jPanel3);
+
+        jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder("Tìm kiếm người dùng"));
+
+        jLabel3.setText("Từ khóa:");
+
+        txtTuKhoaNguoiDung.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTuKhoaNguoiDungActionPerformed(evt);
+            }
+        });
+
+        btnTimKiemNguoiDung.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vn/com/stanford/j0622/qlsinhvien/images/search.png"))); // NOI18N
+        btnTimKiemNguoiDung.setText("Tìm kiếm");
+        btnTimKiemNguoiDung.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTimKiemNguoiDungActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
+        jPanel10.setLayout(jPanel10Layout);
+        jPanel10Layout.setHorizontalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(jLabel3)
+                .addGap(29, 29, 29)
+                .addComponent(txtTuKhoaNguoiDung, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(56, 56, 56)
+                .addComponent(btnTimKiemNguoiDung)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel10Layout.setVerticalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(txtTuKhoaNguoiDung, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnTimKiemNguoiDung))
+                .addContainerGap(35, Short.MAX_VALUE))
+        );
+
+        btnThemMoiNguoiDung.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vn/com/stanford/j0622/qlsinhvien/images/add-icon.png"))); // NOI18N
+        btnThemMoiNguoiDung.setText("Thêm mới");
+        btnThemMoiNguoiDung.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThemMoiNguoiDungActionPerformed(evt);
+            }
+        });
+
+        btnSuaNguoiDung.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vn/com/stanford/j0622/qlsinhvien/images/gear_16.png"))); // NOI18N
+        btnSuaNguoiDung.setText("Sửa");
+        btnSuaNguoiDung.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuaNguoiDungActionPerformed(evt);
+            }
+        });
+
+        btnXoaNguoiDung.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vn/com/stanford/j0622/qlsinhvien/images/delete.png"))); // NOI18N
+        btnXoaNguoiDung.setText("Xóa");
+        btnXoaNguoiDung.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoaNguoiDungActionPerformed(evt);
+            }
+        });
+
+        btnDong2.setText("Đóng");
+        btnDong2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDong2ActionPerformed(evt);
+            }
+        });
+
+        jTableNguoiDung.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jTableNguoiDung.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableNguoiDungMouseClicked(evt);
+            }
+        });
+        jScrollPane7.setViewportView(jTableNguoiDung);
+
+        btnThongTinNguoiDung.setText("Thông tin chi tiết");
+        btnThongTinNguoiDung.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThongTinNguoiDungActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanelTaiKhoanLayout = new javax.swing.GroupLayout(jPanelTaiKhoan);
+        jPanelTaiKhoan.setLayout(jPanelTaiKhoanLayout);
+        jPanelTaiKhoanLayout.setHorizontalGroup(
+            jPanelTaiKhoanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelTaiKhoanLayout.createSequentialGroup()
+                .addGroup(jPanelTaiKhoanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelTaiKhoanLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanelTaiKhoanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelTaiKhoanLayout.createSequentialGroup()
+                                .addComponent(btnDong2)
+                                .addGap(0, 1059, Short.MAX_VALUE))
+                            .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jScrollPane7))
+                .addContainerGap())
+            .addGroup(jPanelTaiKhoanLayout.createSequentialGroup()
+                .addGap(322, 322, 322)
+                .addComponent(btnThongTinNguoiDung)
+                .addGap(66, 66, 66)
+                .addComponent(btnThemMoiNguoiDung)
+                .addGap(73, 73, 73)
+                .addComponent(btnSuaNguoiDung, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(86, 86, 86)
+                .addComponent(btnXoaNguoiDung, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanelTaiKhoanLayout.setVerticalGroup(
+            jPanelTaiKhoanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelTaiKhoanLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanelTaiKhoanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnThemMoiNguoiDung)
+                    .addComponent(btnSuaNguoiDung)
+                    .addComponent(btnXoaNguoiDung)
+                    .addComponent(btnThongTinNguoiDung))
+                .addGap(412, 412, 412)
+                .addComponent(btnDong2)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1143, Short.MAX_VALUE)
+            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel7Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanelTaiKhoan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 951, Short.MAX_VALUE)
+            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel7Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanelTaiKhoan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+
+        jTabbedPane1.addTab("Tài Khoản", jPanel7);
 
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vn/com/stanford/j0622/qlsinhvien/images/settings_16.png"))); // NOI18N
         jMenu1.setText("Hệ thống ");
@@ -1211,10 +1372,10 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(20, Short.MAX_VALUE)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1243,17 +1404,55 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         
         jMenuItemDangNhap.setVisible(!isQuyen);
         jMenuItemDangXuat.setVisible(isQuyen);
-        jTabbedPane1.setEnabled(isQuyen);
+        jTabbedPane1.setVisible(isQuyen);
+        if (quyenTruyCap=="Quản lí")
+        {
+            jPanelTaiKhoan.setVisible(false);
+
+        }
         
         
         if(isQuyen)
         {
-            jMenuNguoiDung.setText(userName);
+            jMenuNguoiDung.setText(quyenTruyCap+" "+ userName);
         }
         else
         {
             jMenuNguoiDung.setText("Chưa đăng nhập");
         }
+    }
+    public static void hienThiDanhSachViTri()
+    {
+        //Khai báo 1 tiêu đề
+        
+        String colTieuDe[] = new String[]{"Mã vị trí", "Tên vị trí", "Trạng thái", "Mô tả"};
+        
+        //Khai báo đối tượng để thiển thị lên table
+        DefaultTableModel model = new DefaultTableModel(colTieuDe, 0);
+        
+        //Lấy danh sách sv
+        List<ViTri> lstViTri = DataProvider.getViTriBus().layDanhSach();
+        
+        Object row[] = null;
+        
+        //Duyệt để đưa vào model
+        for(ViTri kh : lstViTri)
+        {
+            //Khởi tạo mảng
+            row = new Object[4];
+            
+            row[0] = kh.getID();
+            row[1] = kh.getTenViTri();
+            row[2] = kh.getTrangThai();
+            row[3] = kh.getMoTa();
+            
+            
+            //Thêm vào model
+            model.addRow(row);
+        }
+        
+        //Hiển thị lên table
+        jTableViTri.setModel(model);        
     }
     public static void hienThiDanhSachKhachHang()
     {
@@ -1286,11 +1485,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         }
         
         //Hiển thị lên table
-        khachhang.setModel(model);        
-    }
-    public  JTable getkhachhang(){
-    
-    return  this.nhacungcap;// làm cách nào để truy cập đên JTable của khachhangf
+        jTableKhachHang.setModel(model);        
     }
 
 
@@ -1326,13 +1521,119 @@ public static void hienThiDanhSachTimKiemKhachHang()
         }
         
         //Hiển thị lên table
-        khachhang.setModel(model);        
+        jTableKhachHang.setModel(model);        
     }
+
+public static void hienThiDanhSachNguoiDung()
+    {
+        //Khai báo 1 tiêu đề
+        
+        String colTieuDe[] = new String[]{"ID", "Tài khoản", "Mật khẩu", "Họ tên", "Quyền truy cập "};
+        
+        //Khai báo đối tượng để thiển thị lên table
+        DefaultTableModel model = new DefaultTableModel(colTieuDe, 0);
+        
+        //Lấy danh sách sv
+        List<NguoiDung> lstNguoiDung = DataProvider.getNguoiDungBus().layDanhSach();
+        
+        Object row[] = null;
+        
+        //Duyệt để đưa vào model
+        for(NguoiDung kh : lstNguoiDung)
+        {
+            //Khởi tạo mảng
+            row = new Object[5];
+            
+            row[0] = kh.getId();
+            row[1] = kh.getTenDangNhap();
+            row[2] = kh.getMatKhau();
+            row[3] = kh.getHoTen();
+            row[4] = kh.getQuyenSuDung();
+            
+            //Thêm vào model
+            model.addRow(row);
+        }
+        
+        //Hiển thị lên table
+        jTableNguoiDung.setModel(model);        
+    }
+
+
+public static void hienThiDanhSachTimKiemNguoiDung()
+    {
+        //Khai báo 1 tiêu đề
+       String tuKhoa="";
+        tuKhoa=txtTuKhoaNguoiDung.getText();
+          String colTieuDe[] = new String[]{"ID", "Tài khoản", "Mật khẩu", "Họ tên", "Quyền truy cập "};
+        
+        //Khai báo đối tượng để thiển thị lên table
+        DefaultTableModel model = new DefaultTableModel(colTieuDe, 0);
+        
+        //Lấy danh sách sv
+        List<NguoiDung> lstNguoiDung = DataProvider.getNguoiDungBus().timKiemNguoiDung(tuKhoa);
+        
+        Object row[] = null;
+        
+        //Duyệt để đưa vào model
+        for(NguoiDung kh : lstNguoiDung)
+        {
+            //Khởi tạo mảng
+            row = new Object[5];
+            
+            row[0] = kh.getId();
+            row[1] = kh.getTenDangNhap();
+            row[2] = kh.getMatKhau();
+            row[3] = kh.getHoTen();
+            row[4] = kh.getQuyenSuDung();
+            
+            //Thêm vào model
+            model.addRow(row);
+        }
+        
+        //Hiển thị lên table
+        jTableNguoiDung.setModel(model);   
+    }
+public static void hienThiDanhSachTimKiemViTri()
+    {
+        //Khai báo 1 tiêu đề
+       String tuKhoa="";
+        tuKhoa=txtTimKiemViTri.getText();
+        String colTieuDe[] = new String[]{"Mã vị trí", "Tên vị trí", "Trạng thái", "Mô tả"};
+        
+        //Khai báo đối tượng để thiển thị lên table
+        DefaultTableModel model = new DefaultTableModel(colTieuDe, 0);
+        
+        //Lấy danh sách sv
+        List<ViTri> lstViTri = DataProvider.getViTriBus().timKiemViTri(tuKhoa);
+        
+        Object row[] = null;
+        
+        //Duyệt để đưa vào model
+        for(ViTri kh : lstViTri)
+        {
+            //Khởi tạo mảng
+           
+            
+             row = new Object[4];
+            
+            row[0] = kh.getID();
+            row[1] = kh.getTenViTri();
+            row[2] = kh.getTrangThai();
+            row[3] = kh.getMoTa();
+            
+            //Thêm vào model
+            model.addRow(row);
+        }
+        
+        //Hiển thị lên table
+        jTableViTri.setModel(model);        
+    }
+
 
 public static void hienThiDanhSachNhapHang()
     {
         //Khai báo 1 tiêu đề
-        String colTieuDe[] = new String[]{"Mã nhập hàng", "Tên hàng", "Số lượng", "Nhà cung cấp", "Ngày nhập","Trạng thái"};
+        String colTieuDe[] = new String[]{"Mã nhập hàng", "Ngày nhập","Tổng tiền hàng","Nhà cung cấp",};
         
         //Khai báo đối tượng để thiển thị lên table
         DefaultTableModel model = new DefaultTableModel(colTieuDe, 0);
@@ -1349,11 +1650,10 @@ public static void hienThiDanhSachNhapHang()
             row = new Object[6];
             
             row[0] = kh.getMaNhap();
-            row[1] = kh.getTenHang();
-            row[2] = kh.getSoLuong();
+            row[1] = kh.getNgayNhap();
+            row[2] = kh.getTongTienHang();
             row[3] = kh.getTenNhaCungCap();
-            row[4] = kh.getNgayNhap();
-            row[5] = kh.getTrangThai();
+            
             
             
             //Thêm vào model
@@ -1361,12 +1661,12 @@ public static void hienThiDanhSachNhapHang()
         }
         
         //Hiển thị lên table
-        nhaphang.setModel(model);        
+        jTableNhapHang.setModel(model);        
     }
 public static void hienThiDanhSachHoaDon()
     {
         //Khai báo 1 tiêu đề
-        String colTieuDe[] = new String[]{"Mã hóa đơn ", "Tên hàng", "Số lượng", "Khách hàng", "Thời gian","Tổng tiền hàng"};
+        String colTieuDe[] = new String[]{"Mã hóa đơn ", "Thời gian","Tổng tiền hàng","Khách hàng"};
         
         //Khai báo đối tượng để thiển thị lên table
         DefaultTableModel model = new DefaultTableModel(colTieuDe, 0);
@@ -1380,14 +1680,14 @@ public static void hienThiDanhSachHoaDon()
         for(HoaDon kh : lstHoaDon)
         {
             //Khởi tạo mảng
-            row = new Object[6];
+            row = new Object[4];
             
             row[0] = kh.getMaHoaDon();
-            row[1] = kh.getTenHang();
-            row[2] = kh.getSoLuong();
+           
+           
             row[3] = kh.getKhachHang();
-            row[4] = kh.getThoiGian();
-            row[5] = kh.getTongTienHang();
+            row[1] = kh.getThoiGian();
+            row[2] = kh.getTongTienHang();
             
             
             //Thêm vào model
@@ -1438,7 +1738,7 @@ public static void hienThiDanhSachTimKiemNhapHang()
         String tuKhoa="";
         tuKhoa=txtTuKhoaNhapHang.getText();
         //Khai báo 1 tiêu đề
-        String colTieuDe[] = new String[]{"Mã nhập hàng", "Tên hàng", "Số lượng", "Nhà cung cấp", "Ngày nhập","Trạng thái"};
+        String colTieuDe[] = new String[]{"Mã nhập hàng", "Ngày nhập","Tổng giá tiền","Nhà cung cấp"};
         
         //Khai báo đối tượng để thiển thị lên table
         DefaultTableModel model = new DefaultTableModel(colTieuDe, 0);
@@ -1455,11 +1755,10 @@ public static void hienThiDanhSachTimKiemNhapHang()
             row = new Object[6];
             
             row[0] = kh.getMaNhap();
-            row[1] = kh.getTenHang();
-            row[2] = kh.getSoLuong();
+           
             row[3] = kh.getTenNhaCungCap();
-            row[4] = kh.getNgayNhap();
-            row[5] = kh.getTrangThai();
+            row[1] = kh.getNgayNhap();
+            row[2] = kh.getTongTienHang();
             
             
             //Thêm vào model
@@ -1467,9 +1766,9 @@ public static void hienThiDanhSachTimKiemNhapHang()
         }
         
         //Hiển thị lên table
-        nhaphang.setModel(model);        
+        jTableNhapHang.setModel(model);        
     }
-public static void hienThiDanhSachCongTy()
+public static void hienThiDanhSachNhaCungCap()
     {
         //Khai báo 1 tiêu đề
         
@@ -1500,7 +1799,7 @@ public static void hienThiDanhSachCongTy()
         }
         
         //Hiển thị lên table
-        nhacungcap.setModel(model);        
+        jTableNhaCungCap.setModel(model);        
     }
 
 public static void hienThiDanhSachTimKiemCongTy()
@@ -1535,19 +1834,16 @@ public static void hienThiDanhSachTimKiemCongTy()
         }
         
         //Hiển thị lên table
-        nhacungcap.setModel(model);        
+        jTableNhaCungCap.setModel(model);        
     }
 
     public static void hienThiDanhSachTimKiemHangHoa()
     {
         String tuKhoa="",nhomHang="";
-        NhomHang objNH = (NhomHang)cboNhomHangTimKiem.getSelectedItem();
+        
         tuKhoa=txtTimKiemHangHoa.getText();
         
-        if(objNH != null)
-        {
-            nhomHang = objNH.getMaNhomHang();
-        }
+        nhomHang=cboNhomHangTimKiem.getSelectedItem().toString();
        
         //Khai báo 1 tiêu đề
         String colTieuDe[] = new String[]{"Mã hàng", "Tên hàng", "Nhóm hàng", "Vị trí", "Tồn kho","Giá bán"};
@@ -1569,7 +1865,7 @@ public static void hienThiDanhSachTimKiemCongTy()
             
             row[0] = kh.getMaHang();
             row[1] = kh.getTenHang();
-            row[2] = kh.getMaNhomHang();
+            row[2] = kh.getTenNhomHang();
             row[3] = kh.getViTri();
             row[4] = kh.getTonKho();
             row[5] = kh.getGiaBan();
@@ -1580,7 +1876,7 @@ public static void hienThiDanhSachTimKiemCongTy()
         }
         
         //Hiển thị lên table
-        hanghoa.setModel(model);       
+        jTableHangHoa.setModel(model);       
     }
     public static void hienThiDanhSachHangHoa()
     {
@@ -1603,7 +1899,7 @@ public static void hienThiDanhSachTimKiemCongTy()
             
             row[0] = kh.getMaHang();
             row[1] = kh.getTenHang();
-            row[2] = kh.getMaNhomHang();
+            row[2] = kh.getTenNhomHang();
             row[3] = kh.getViTri();
             row[4] = kh.getTonKho();
             row[5] = kh.getGiaBan();
@@ -1614,81 +1910,248 @@ public static void hienThiDanhSachTimKiemCongTy()
         }
         
         //Hiển thị lên table
-        hanghoa.setModel(model);        
+        jTableHangHoa.setModel(model);        
     }
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
-       // kiemTraQuyenSuDung(isTrangThaiDN);
+        kiemTraQuyenSuDung(isTrangThaiDN);
         hienThiDanhSachKhachHang();
-        hienThiDanhSachCongTy();
+        hienThiDanhSachNhaCungCap();
         hienThiDanhSachHangHoa();
         hienThiDanhSachNhapHang();
-        hienThiDanhSachNH();
-        hienThiDanhSachHoaDon();
         
-        SoQuyBusiness bus = new SoQuyBusiness();
-        bus.TongChi();
-        bus.TongThu();
-        bus.TonQuy();
+        hienThiDanhSachHoaDon();
+        hienThiDanhSachViTri();
+        hienThiDanhSachTimKiemNguoiDung();
+        
+        
+        
         
     }//GEN-LAST:event_formWindowOpened
     
-    private void hienThiDanhSachNH()
-    {
-        NhomHangBusiness nhomNHBusiness = new NhomHangBusiness();
         
-        //Lấy danh sách
-        List<NhomHang> lstNH = nhomNHBusiness.layDanhSach();
-        NhomHang root = new NhomHang();
-        root.setMaNhomHang("");
-        root.setTenNhomHang("---Chọn khoa---");
+    private void jMenuThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuThoatActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+    }//GEN-LAST:event_jMenuThoatActionPerformed
+
+    private void jMenuItemDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemDangNhapActionPerformed
+        // TODO add your handling code here:
+        dangNhapHeThong();
         
-        lstNH.add(0, root);
-        
-        DefaultComboBoxModel model = new DefaultComboBoxModel();
-        
-        for(NhomHang objNH : lstNH)
-        {
-            model.addElement(objNH);
-        }
-        
-        //Sửa lại nội dung cần hiển thị ra trên combobox
-        cboNhomHangTimKiem.setRenderer(new NhomHangRender());
-        
-        cboNhomHangTimKiem.setModel(model);
-        
-    }
+    }//GEN-LAST:event_jMenuItemDangNhapActionPerformed
+
+    private void jMenuItemDangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemDangXuatActionPerformed
+        // TODO add your handling code here:
+        dangNhapHeThong();
+    }//GEN-LAST:event_jMenuItemDangXuatActionPerformed
+
+    private void jTabbedPane1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MousePressed
+        // TODO add your handling code here:
+        hienThiDanhSachHangHoa();
+    }//GEN-LAST:event_jTabbedPane1MousePressed
+
+    private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTabbedPane1MouseClicked
+
     private void jTabbedPane1ComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_jTabbedPane1ComponentAdded
         // TODO add your handling code here:
     }//GEN-LAST:event_jTabbedPane1ComponentAdded
 
-    private void khachhangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_khachhangMouseClicked
+    private void btnThongTinNguoiDungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongTinNguoiDungActionPerformed
         // TODO add your handling code here:
-       /* int dongChon = 0;
+        int dongChon = 0;
 
-        dongChon = khachhang.getSelectedRow();
+        dongChon = jTableNguoiDung.getSelectedRow();
 
         String ID = "";
 
         //Lấy mã sv của dòng chọn trên jtable
-        ID = "" + khachhang.getValueAt(dongChon, 0);
-        KhachHang objKH = DataProvider.getKhachHangBus().layChiTietTheoMa(ID);
-        
-                          */
-        int Row= khachhang.getSelectedRow();
-        String ID = String.valueOf(khachhang.getValueAt(Row, 0));
-        SHAREData data = new SHAREData();
-        data.setdata(ID);
-        a=Row;
-        khachhang.addMouseListener(new MouseAdapter(){
-        public void MouseClicked(MouseEvent e){
-            data.setdem(e.getClickCount());// khi click xong button cap nhat  thi set dem se ve 0 
+        ID = "" + jTableNguoiDung.getValueAt(dongChon, 0);
+
+        frmNguoiDungAdd frmSua = new frmNguoiDungAdd();
+
+        //Gán mã sv để đưa lên form sửa
+        frmSua.setIdNguoiDung(ID);
+        frmSua.thongTinChiTiet();
+
+        frmSua.setVisible(true);
+    }//GEN-LAST:event_btnThongTinNguoiDungActionPerformed
+
+    private void jTableNguoiDungMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableNguoiDungMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTableNguoiDungMouseClicked
+
+    private void btnDong2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDong2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDong2ActionPerformed
+
+    private void btnXoaNguoiDungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaNguoiDungActionPerformed
+        // TODO add your handling code here:
+         int ketQua = JOptionPane.showConfirmDialog(rootPane, "Bạn có chắc chắn muốn xóa không ?",
+            "Thông báo", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+
+        if(ketQua == JOptionPane.YES_OPTION)//True
+        {
+            int  dongChon = jTableNguoiDung.getSelectedRow();
+
+            String ID = "";
+
+            //Lấy mã sv của dòng chọn trên jtable
+            ID = "" + jTableNguoiDung.getValueAt(dongChon, 0);
+
+            boolean kq = DataProvider.getNguoiDungBus().xoa(ID);
+
+            if(kq)
+            {
+                //Reload lại ds
+                hienThiDanhSachNguoiDung();
+            }
+
         }
-        });
-        
-       
-    }//GEN-LAST:event_khachhangMouseClicked
+    }//GEN-LAST:event_btnXoaNguoiDungActionPerformed
+
+    private void btnSuaNguoiDungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaNguoiDungActionPerformed
+        // TODO add your handling code here:
+        int dongChon = 0;
+
+        dongChon = jTableNguoiDung.getSelectedRow();
+
+        String ID = "";
+
+        //Lấy mã sv của dòng chọn trên jtable
+        ID = "" + jTableNguoiDung.getValueAt(dongChon, 0);
+
+        frmNguoiDungAdd frmSua = new frmNguoiDungAdd();
+
+        //Gán mã sv để đưa lên form sửa
+        frmSua.setIdNguoiDung(ID);
+
+        frmSua.setVisible(true);
+    }//GEN-LAST:event_btnSuaNguoiDungActionPerformed
+
+    private void btnThemMoiNguoiDungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemMoiNguoiDungActionPerformed
+        // TODO add your handling code here:
+        frmNguoiDungAdd frmThemMoi = new frmNguoiDungAdd();
+        frmThemMoi.setVisible(true);
+    }//GEN-LAST:event_btnThemMoiNguoiDungActionPerformed
+
+    private void btnTimKiemNguoiDungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiemNguoiDungActionPerformed
+        // TODO add your handling code here:
+        hienThiDanhSachTimKiemNguoiDung();
+    }//GEN-LAST:event_btnTimKiemNguoiDungActionPerformed
+
+    private void txtTuKhoaNguoiDungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTuKhoaNguoiDungActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTuKhoaNguoiDungActionPerformed
+
+    private void txtTimKiemViTriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTimKiemViTriActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTimKiemViTriActionPerformed
+
+    private void btnTimKiemViTriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiemViTriActionPerformed
+        // TODO add your handling code here:
+        hienThiDanhSachTimKiemViTri();
+    }//GEN-LAST:event_btnTimKiemViTriActionPerformed
+
+    private void btnSuaViTriLuuTruActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaViTriLuuTruActionPerformed
+        // TODO add your handling code here:
+        int dongChon = 0;
+
+        dongChon = jTableViTri.getSelectedRow();
+
+        String ID = "";
+
+        //Lấy mã sv của dòng chọn trên jtable
+        ID = "" + jTableViTri.getValueAt(dongChon, 0);
+
+        frmViTriLuuTruAdd frmSua = new frmViTriLuuTruAdd();
+
+        //Gán mã sv để đưa lên form sửa
+        frmSua.setMaViTri(ID);
+
+        frmSua.setVisible(true);
+    }//GEN-LAST:event_btnSuaViTriLuuTruActionPerformed
+
+    private void btnThemViTriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemViTriActionPerformed
+        // TODO add your handling code here:
+        frmViTriLuuTruAdd frmThemMoi = new frmViTriLuuTruAdd();
+        frmThemMoi.setVisible(true);
+    }//GEN-LAST:event_btnThemViTriActionPerformed
+
+    private void jTableViTriMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableViTriMouseClicked
+        // TODO add your handling code here:
+        int dongChon = 0;
+
+        dongChon = jTableViTri.getSelectedRow();
+
+        String ID = "";
+
+        //Lấy mã sv của dòng chọn trên jtable
+        ID = "" + jTableViTri.getValueAt(dongChon, 0);
+        ViTri objKH = DataProvider.getViTriBus().layChiTietTheoMa(ID);
+    }//GEN-LAST:event_jTableViTriMouseClicked
+
+    private void btnXoa3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoa3ActionPerformed
+        // TODO add your handling code here:
+        int ketQua = JOptionPane.showConfirmDialog(rootPane, "Bạn có chắc chắn muốn xóa không ?",
+            "Thông báo", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+
+        if(ketQua == JOptionPane.YES_OPTION)//True
+        {
+            int  dongChon = jTableViTri.getSelectedRow();
+
+            String ID = "";
+
+            //Lấy mã sv của dòng chọn trên jtable
+            ID = "" + jTableViTri.getValueAt(dongChon, 0);
+
+            boolean kq = DataProvider.getViTriBus().xoa(ID);
+
+            if(kq)
+            {
+                //Reload lại ds
+                hienThiDanhSachViTri();
+            }
+
+        }
+    }//GEN-LAST:event_btnXoa3ActionPerformed
+
+    private void btnThongTinKhachHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongTinKhachHangActionPerformed
+        // TODO add your handling code here:
+        int dongChon = 0;
+
+        dongChon = jTableKhachHang.getSelectedRow();
+
+        String ID = "";
+
+        //Lấy mã sv của dòng chọn trên jtable
+        ID = "" + jTableKhachHang.getValueAt(dongChon, 0);
+
+        frmKhachHang frmThongTin = new frmKhachHang();
+
+        //Gán mã sv để đưa lên form sửa
+        frmThongTin.setMaKhachHang(ID);
+
+        frmThongTin.setVisible(true);
+
+        frmThongTin.setThongTin(true);
+    }//GEN-LAST:event_btnThongTinKhachHangActionPerformed
+
+    private void jTableKhachHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableKhachHangMouseClicked
+        // TODO add your handling code here:
+        int dongChon = 0;
+
+        dongChon = jTableKhachHang.getSelectedRow();
+
+        String ID = "";
+
+        //Lấy mã sv của dòng chọn trên jtable
+        ID = "" + jTableKhachHang.getValueAt(dongChon, 0);
+        KhachHang objKH = DataProvider.getKhachHangBus().layChiTietTheoMa(ID);
+    }//GEN-LAST:event_jTableKhachHangMouseClicked
 
     private void btnDongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDongActionPerformed
         // TODO add your handling code here:
@@ -1702,12 +2165,12 @@ public static void hienThiDanhSachTimKiemCongTy()
 
         if(ketQua == JOptionPane.YES_OPTION)//True
         {
-            /*int  dongChon = khachhang.getSelectedRow();
+            int  dongChon = jTableKhachHang.getSelectedRow();
 
             String ID = "";
 
             //Lấy mã sv của dòng chọn trên jtable
-            ID = "" + khachhang.getValueAt(dongChon, 0);
+            ID = "" + jTableKhachHang.getValueAt(dongChon, 0);
 
             boolean kq = DataProvider.getKhachHangBus().xoa(ID);
 
@@ -1715,28 +2178,6 @@ public static void hienThiDanhSachTimKiemCongTy()
             {
                 //Reload lại ds
                 hienThiDanhSachKhachHang();
-            }*/ 
-            try {
-                txtTuKhoaKhachHang.setText(khachhang.getValueAt(khachhang.getSelectedRow(),0).toString());
-            Connection c = ketnoi.lienket();
-            Statement d = c.createStatement();
-            model = (DefaultTableModel)khachhang.getModel();
-            String id = txtTuKhoaKhachHang.getText();
-            d.executeUpdate("DELETE FROM khachhang WHERE CUSTOMER_ID='"+id+"'");
-            ResultSet rs = d.executeQuery("SELECT * FROM khachhang");
-            model.setRowCount(0);
-            while(rs.next()){
-              String id1 = rs.getString("CUSTOMER_ID");
-              String ten=rs.getString("CUSTOMER_NAME");
-              String diachi=rs.getString("CUSTOMER_ADDRESS");
-              String sdt=rs.getString("CUSTOMER_PHONE_NUMBER");
-              String mail=rs.getString("CUSTOMER_EMAIL");
-              Object rowdata[]={id1,ten,diachi,sdt,mail};
-              model.addRow(rowdata);
-            }
-            ketnoi.dongketnoi(c);
-            } catch(SQLException e){
-            e.printStackTrace();
             }
 
         }
@@ -1744,158 +2185,179 @@ public static void hienThiDanhSachTimKiemCongTy()
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         // TODO add your handling code here:
-       /*int dongChon = 0;
+        int dongChon = 0;
 
-        dongChon = khachhang.getSelectedRow();// sua 
+        dongChon = jTableKhachHang.getSelectedRow();
 
         String ID = "";
 
-      //  Lấy mã sv của dòng chọn trên jtable
-        ID = "" + khachhang.getValueAt(dongChon, 0);
-           if(a!=-1){   
+        //Lấy mã sv của dòng chọn trên jtable
+        ID = "" + jTableKhachHang.getValueAt(dongChon, 0);
+
         frmKhachHang frmSua = new frmKhachHang();
-        frmSua.gettextid().setText(ID);*/
-         // try {
-          /* Connection c = ketnoi.lienket();
-            Statement d = c.createStatement();
-            String id= frmSua.gettextid().getText();
-            String ten= frmSua.gettextten().getText();
-            String diachi= frmSua.gettextdiachi().getText();
-            String sdt= frmSua.gettextsdt().getText();
-            String mail=frmSua.gettextmail().getText();*/
-            /*frmSua.getbutton().addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e){
-             //  Statement d = c.createStatement(); 
-             try {
-                 Connection c = ketnoi.lienket();
-            Statement d = c.createStatement();
-            String id= frmSua.gettextid().getText();
-            String ten= frmSua.gettextten().getText();
-            String diachi= frmSua.gettextdiachi().getText();
-            String sdt= frmSua.gettextsdt().getText();
-            String mail=frmSua.gettextmail().getText(); 
-                  ketnoi.dongketnoi(c);
-            d.executeUpdate("UPDATE khachhang SET CUSTOMER_NAME='"+ten+"',CUSTOMER_ADDRESS='"+diachi+"',CUSTOMER_PHONE_NUMBER='"+sdt+"',CUSTOMER_EMAIL='"+mail+"' WHERE CUSTOMER_ID='"+id+"'");
-             } catch (SQLException a){
-             a.printStackTrace();
-             }
-               
-            }
-            
-            });
-            
-            
-         frmSua.setVisible(true);
-            
-            }*/
-            
-            
-            
-           //  showkhachhang();
-         // ketnoi.dongketnoi(c);
-         
-          //}catch(SQLException e){
-          //e.printStackTrace();
-         // }
-             
+
         //Gán mã sv để đưa lên form sửa
-        //frmSua.setMaKhachHang(ID);  
+        frmSua.setMaKhachHang(ID);
 
-           
-           //}
-           
-           int dongChon = 0;
-
-dongChon = khachhang.getSelectedRow();
-
-String ID = "";
-
-// Lấy mã sv của dòng chọn trên JTable
-ID = "" + khachhang.getValueAt(dongChon, 0);
-
-if (dongChon != -1) {
-    frmKhachHang frmSua = new frmKhachHang(this);
-    frmSua.gettextid().setText(ID);
-   frmSua.settext(khachhang.getValueAt(khachhang.getSelectedRow(), 0).toString(),khachhang.getValueAt(khachhang.getSelectedRow(), 1).toString(), khachhang.getValueAt(khachhang.getSelectedRow(), 3).toString(),khachhang.getValueAt(khachhang.getSelectedRow(), 4).toString(), khachhang.getValueAt(khachhang.getSelectedRow(), 2).toString());
-   
-
-    frmSua.setVisible(true);
-}
+        frmSua.setVisible(true);
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnThemMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemMoiActionPerformed
         // TODO add your handling code here:
-        frmKhachHang frmThemMoi = new frmKhachHang(this);
-        /*frmThemMoi.getbutton().addActionListener(new ActionListener(){
-        
-              public void actionPerformed(ActionEvent e){
-              try {
-             Connection c = ketnoi.lienket();
-             Statement d= c.createStatement();
-             String ID= frmThemMoi.gettextid().getText();
-             String ten= frmThemMoi.gettextten().getText();
-             String sdt = frmThemMoi.gettextsdt().getText();
-             String mail= frmThemMoi.gettextmail().getText();
-             String diachi=frmThemMoi.gettextdiachi().getText();
-             //Statement d= c.createStatement();
-              d.executeUpdate("INSERT INTO khachhang(CUSTOMER_ID,CUSTOMER_NAME,CUSTOMER_ADDRESS,CUSTOMER_PHONE_NUMBER,CUSTOMER_EMAIL) VALUES('"+ID+"','"+ten+"','"+diachi+"','"+sdt+"','"+mail+"')");
-              GiaoDienChinh.hienThiDanhSachKhachHang();
-             ketnoi.dongketnoi(c);
-             } 
-               catch(SQLException a){
-             
-               a.printStackTrace();
-             }
-              
-              }        
-        });*/
-        frmThemMoi.getcapnhat1();// frmkhachhang.
-        try {
-        Connection c = ketnoi.lienket();
-        Statement d = c.createStatement();
-        DefaultTableModel model = (DefaultTableModel)khachhang.getModel();
-        model.setRowCount(0);
-        ResultSet rs = d.executeQuery("SELECT* FROM khachhang");
-        while(rs.next()){
-        String id = rs.getString("CUSTOMER_ID");
-        String ten = rs.getString("CUSTOMER_NAME");
-        String diachi= rs.getString("CUSTOMER_ADDRESS");
-        String sdt = rs.getString("CUSTOMER_PHONE_NUMBER");
-        String mail = rs.getString("CUSTOMER_EMAIL");
-        Object rowdata[]={id,ten,diachi,sdt,mail};
-        model.addRow(rowdata);
-        khachhang.setModel(model);
-        
-        }
-        ketnoi.dongketnoi(c);
-        } catch(SQLException e){
-        
-        e.printStackTrace();
-        }
-         
+        frmKhachHang frmThemMoi = new frmKhachHang();
         frmThemMoi.setVisible(true);
-        //this.repaint();
     }//GEN-LAST:event_btnThemMoiActionPerformed
+
+    private void btnTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiemActionPerformed
+        // TODO add your handling code here:
+        hienThiDanhSachTimKiemKhachHang();
+    }//GEN-LAST:event_btnTimKiemActionPerformed
 
     private void txtTuKhoaKhachHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTuKhoaKhachHangActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTuKhoaKhachHangActionPerformed
 
-    private void nhaphangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nhaphangMouseClicked
+    private void btnThongTinNhaCungCapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongTinNhaCungCapActionPerformed
+        // TODO add your handling code here:
         // TODO add your handling code here:
         int dongChon = 0;
 
-        dongChon = nhaphang.getSelectedRow();
+        dongChon = jTableNhaCungCap.getSelectedRow();
 
         String ID = "";
 
         //Lấy mã sv của dòng chọn trên jtable
-        ID = "" + nhaphang.getValueAt(dongChon, 0);
-        NhapHang objNH = DataProvider.getNhapHangBus().layChiTietTheoMa(ID);
+        ID = "" + jTableNhaCungCap.getValueAt(dongChon, 0);
 
+        frmNhaCungCap frmSua = new frmNhaCungCap();
+
+        //Gán mã sv để đưa lên form sửa
+        frmSua.setMaNhaCungCap(ID);
+        frmSua.thongTinChiTiet();
+
+        frmSua.setVisible(true);
         
+    }//GEN-LAST:event_btnThongTinNhaCungCapActionPerformed
 
-    }//GEN-LAST:event_nhaphangMouseClicked
+    private void btnXoa_NhaCungCapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoa_NhaCungCapActionPerformed
+        // TODO add your handling code here:
+        int ketQua = JOptionPane.showConfirmDialog(rootPane, "Bạn có chắc chắn muốn xóa không ?",
+            "Thông báo", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+
+        if(ketQua == JOptionPane.YES_OPTION)//True
+        {
+            int  dongChon = jTableNhaCungCap.getSelectedRow();
+
+            String ID = "";
+
+            //Lấy mã sv của dòng chọn trên jtable
+            ID = "" + jTableNhaCungCap.getValueAt(dongChon, 0);
+
+            boolean kq = DataProvider.getCongTyBus().xoa(ID);
+
+            if(kq)
+            {
+                //Reload lại ds
+                hienThiDanhSachNhaCungCap();
+            }
+    }//GEN-LAST:event_btnXoa_NhaCungCapActionPerformed
+    }
+    private void btnSua_NhaCungCapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSua_NhaCungCapActionPerformed
+        // TODO add your handling code here:
+        int dongChon = 0;
+
+        dongChon = jTableNhaCungCap.getSelectedRow();
+
+        String ID = "";
+
+        //Lấy mã sv của dòng chọn trên jtable
+        ID = "" + jTableNhaCungCap.getValueAt(dongChon, 0);
+
+        frmNhaCungCap frmSua = new frmNhaCungCap();
+
+        //Gán mã sv để đưa lên form sửa
+        frmSua.setMaNhaCungCap(ID);
+
+        frmSua.setVisible(true);
+    }//GEN-LAST:event_btnSua_NhaCungCapActionPerformed
+
+    private void btnThemMoi_NhaCungCapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemMoi_NhaCungCapActionPerformed
+        // TODO add your handling code here:
+        frmNhaCungCap frmThemMoi = new frmNhaCungCap();
+        frmThemMoi.setVisible(true);
+    }//GEN-LAST:event_btnThemMoi_NhaCungCapActionPerformed
+
+    private void jTableNhaCungCapMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableNhaCungCapMouseClicked
+        // TODO add your handling code here:
+        int dongChon = 0;
+
+        dongChon = jTableNhaCungCap.getSelectedRow();
+
+        String ID = "";
+
+        //Lấy mã sv của dòng chọn trên jtable
+        ID = "" + jTableNhaCungCap.getValueAt(dongChon, 0);
+        CongTy objKH = DataProvider.getCongTyBus().layChiTietTheoMa(ID);
+    }//GEN-LAST:event_jTableNhaCungCapMouseClicked
+
+    private void btnTimKiemNhaCungCapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiemNhaCungCapActionPerformed
+        // TODO add your handling code here:
+        hienThiDanhSachTimKiemCongTy();
+    }//GEN-LAST:event_btnTimKiemNhaCungCapActionPerformed
+
+    private void txtTimKiemNhaCungCapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTimKiemNhaCungCapActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTimKiemNhaCungCapActionPerformed
+
+    private void btnThongTinCongTy1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongTinCongTy1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnThongTinCongTy1ActionPerformed
+
+    private void btnDong1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDong1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDong1ActionPerformed
+
+    private void jPanel19MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel19MousePressed
+        // TODO add your handling code here:
+        hienThiDanhSachNhapHang();
+    }//GEN-LAST:event_jPanel19MousePressed
+
+    private void jPanel20FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanel20FocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel20FocusGained
+
+    private void btnThongTinChiTietNhapHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongTinChiTietNhapHangActionPerformed
+        // TODO add your handling code here:
+        int dongChon = 0;
+
+        dongChon = jTableNhapHang.getSelectedRow();
+
+        String ID = "";
+
+        //Lấy mã sv của dòng chọn trên jtable
+        ID = "" + jTableNhapHang.getValueAt(dongChon, 0);
+
+        frmNhapHangAdd frmSua = new frmNhapHangAdd();
+
+        //Gán mã sv để đưa lên form sửa
+        frmSua.setMaNhapHang(ID);
+        frmSua.thongTinChiTiet();
+
+        frmSua.setVisible(true);
+    }//GEN-LAST:event_btnThongTinChiTietNhapHangActionPerformed
+
+    private void jTableNhapHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableNhapHangMouseClicked
+        // TODO add your handling code here:
+        int dongChon = 0;
+
+        dongChon = jTableNhapHang.getSelectedRow();
+
+        String ID = "";
+
+        //Lấy mã sv của dòng chọn trên jtable
+        ID = "" + jTableNhapHang.getValueAt(dongChon, 0);
+        NhapHang objNH = DataProvider.getNhapHangBus().layChiTietTheoMa(ID);
+    }//GEN-LAST:event_jTableNhapHangMouseClicked
 
     private void btnXoa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoa1ActionPerformed
         // TODO add your handling code here:
@@ -1904,13 +2366,12 @@ if (dongChon != -1) {
 
         if(ketQua == JOptionPane.YES_OPTION)//True
         {
-            int  dongChon = nhaphang.getSelectedRow();
+            int  dongChon = jTableNhapHang.getSelectedRow();
 
             String ID = "";
 
             //Lấy mã sv của dòng chọn trên jtable
-            ID = "" + nhaphang.getValueAt(dongChon, 0);
-            boolean a=DataProvider.getNhapHangBus().xoa1(ID);
+            ID = "" + jTableNhapHang.getValueAt(dongChon, 0);
 
             boolean kq = DataProvider.getNhapHangBus().xoa(ID);
 
@@ -1927,18 +2388,17 @@ if (dongChon != -1) {
         // TODO add your handling code here:
         int dongChon = 0;
 
-        dongChon = nhaphang.getSelectedRow();
+        dongChon = jTableNhapHang.getSelectedRow();
 
         String ID = "";
 
         //Lấy mã sv của dòng chọn trên jtable
-        ID = "" + nhaphang.getValueAt(dongChon, 0);
+        ID = "" + jTableNhapHang.getValueAt(dongChon, 0);
 
         frmNhapHangAdd frmSua = new frmNhapHangAdd();
 
         //Gán mã sv để đưa lên form sửa
         frmSua.setMaNhapHang(ID);
-        
 
         frmSua.setVisible(true);
     }//GEN-LAST:event_btnSua1ActionPerformed
@@ -1947,22 +2407,78 @@ if (dongChon != -1) {
         // TODO add your handling code here:
         frmNhapHangAdd frmThemMoi = new frmNhapHangAdd();
         frmThemMoi.setVisible(true);
-
     }//GEN-LAST:event_btnThemMoi1ActionPerformed
+
+    private void btnTimKiemNhapHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiemNhapHangActionPerformed
+        // TODO add your handling code here:
+        hienThiDanhSachTimKiemNhapHang();
+    }//GEN-LAST:event_btnTimKiemNhapHangActionPerformed
 
     private void txtTuKhoaNhapHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTuKhoaNhapHangActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTuKhoaNhapHangActionPerformed
 
-    private void txtTuKhoaHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTuKhoaHoaDonActionPerformed
+    private void jPanel23FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanel23FocusGained
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtTuKhoaHoaDonActionPerformed
+    }//GEN-LAST:event_jPanel23FocusGained
 
-    private void btnThemMoi2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemMoi2ActionPerformed
+    private void btnThongTinChiTietHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongTinChiTietHoaDonActionPerformed
         // TODO add your handling code here:
-        frmHoaDonAdd frmThemMoi = new frmHoaDonAdd();
-        frmThemMoi.setVisible(true);
-    }//GEN-LAST:event_btnThemMoi2ActionPerformed
+        int dongChon = 0;
+
+        dongChon = jTableHoaDon.getSelectedRow();
+
+        String ID = "";
+
+        //Lấy mã sv của dòng chọn trên jtable
+        ID = "" + jTableHoaDon.getValueAt(dongChon, 0);
+
+        frmHoaDonAdd frmSua = new frmHoaDonAdd();
+
+        //Gán mã sv để đưa lên form sửa
+        frmSua.setMaHoaDon(ID);
+        frmSua.thongTinChiTiet();
+
+        frmSua.setVisible(true);
+    }//GEN-LAST:event_btnThongTinChiTietHoaDonActionPerformed
+
+    private void jTableHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableHoaDonMouseClicked
+        // TODO add your handling code here:
+        int dongChon = 0;
+
+        dongChon = jTableHoaDon.getSelectedRow();
+
+        String ID = "";
+
+        //Lấy mã sv của dòng chọn trên jtable
+        ID = "" + jTableHoaDon.getValueAt(dongChon, 0);
+        HoaDon objNH = DataProvider.getHoaDonBus().layChiTietTheoMa(ID);
+    }//GEN-LAST:event_jTableHoaDonMouseClicked
+
+    private void btnXoa2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoa2ActionPerformed
+        // TODO add your handling code here:
+        int ketQua = JOptionPane.showConfirmDialog(rootPane, "Bạn có chắc chắn muốn xóa không ?",
+            "Thông báo", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+
+        if(ketQua == JOptionPane.YES_OPTION)//True
+        {
+            int  dongChon = jTableHoaDon.getSelectedRow();
+
+            String ID = "";
+
+            //Lấy mã sv của dòng chọn trên jtable
+            ID = "" + jTableHoaDon.getValueAt(dongChon, 0);
+
+            boolean kq = DataProvider.getHoaDonBus().xoa(ID);
+
+            if(kq)
+            {
+                //Reload lại ds
+                hienThiDanhSachHoaDon();
+            }
+
+        }
+    }//GEN-LAST:event_btnXoa2ActionPerformed
 
     private void btnSua2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSua2ActionPerformed
         // TODO add your handling code here:
@@ -1983,570 +2499,67 @@ if (dongChon != -1) {
         frmSua.setVisible(true);
     }//GEN-LAST:event_btnSua2ActionPerformed
 
-    private void btnXoa2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoa2ActionPerformed
+    private void btnThemMoi2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemMoi2ActionPerformed
         // TODO add your handling code here:
-        int ketQua = JOptionPane.showConfirmDialog(rootPane, "Bạn có chắc chắn muốn xóa không ?",
-            "Thông báo", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
-
-        if(ketQua == JOptionPane.YES_OPTION)//True
-        {
-            int  dongChon = jTableHoaDon.getSelectedRow();
-
-            String ID = "";
-
-            //Lấy mã sv của dòng chọn trên jtable
-            ID = "" + jTableHoaDon.getValueAt(dongChon, 0);
-
-            boolean a =DataProvider.getHoaDonBus().xoa1(ID);
-            boolean kq = DataProvider.getHoaDonBus().xoa(ID);
-
-            if(kq)
-            {
-                //Reload lại ds
-                hienThiDanhSachHoaDon();
-            }
-
-        }
-    }//GEN-LAST:event_btnXoa2ActionPerformed
-
-    private void jTableHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableHoaDonMouseClicked
-        // TODO add your handling code here:
-        int dongChon = 0;
-
-        dongChon = jTableHoaDon.getSelectedRow();
-
-        String ID = "";
-
-        //Lấy mã sv của dòng chọn trên jtable
-        ID = "" + jTableHoaDon.getValueAt(dongChon, 0);
-        HoaDon objNH = DataProvider.getHoaDonBus().layChiTietTheoMa(ID);
-
-        
-    }//GEN-LAST:event_jTableHoaDonMouseClicked
-
-    private void btnTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiemActionPerformed
-        // TODO add your handling code here:
-        //hienThiDanhSachTimKiemKhachHang();
-       /* KhachHang a = new KhachHang();
-        ArrayList<String>listid=new ArrayList<>();
-        ArrayList<String>listten=new ArrayList<>();
-          listid= a.getlistID();
-          listten=a.getten()    ;
-        model=(DefaultTableModel) khachhang.getModel();
-        model.setRowCount(0);
-        try {
-    Connection c = ketnoi.lienket();
-    Statement d = c.createStatement();
-    String id = txtTuKhoaKhachHang.getText();
-    if (listid.contains(id)) {
-        ResultSet rs = d.executeQuery("SELECT * FROM khachhang WHERE CUSTOMER_ID='" + id + "'");
-        while (rs.next()) {
-            String ten = rs.getString("CUSTOMER_NAME");
-            String diachi = rs.getString("CUSTOMER_ADDRESS");
-            String sdt = rs.getString("CUSTOMER_PHONE_NUMBER");
-            String mail = rs.getString("CUSTOMER_EMAIL");
-            Object rowdata[] = {id, ten, diachi, sdt, mail};
-            model.addRow(rowdata);
-         }
-        else if (listten.contains(id)) {
-        ResultSet rs2 = d.executeQuery("SELECT * FROM khachhang WHERE CUSTOMER_NAME='" + id + "'");
-        while (rs2.next()) {
-            String ten = rs2.getString("CUSTOMER_NAME");
-            String diachi = rs2.getString("CUSTOMER_ADDRESS");
-            String sdt = rs2.getString("CUSTOMER_PHONE_NUMBER");
-            String mail = rs2.getString("CUSTOMER_EMAIL");
-            Object rowdata[] = {id, ten, diachi, sdt, mail};
-            model.addRow(rowdata);
-         }
-        ketnoi.dongketnoi(c);
-    }   
-     } catch (SQLException e) {
-    e.printStackTrace();*/
-    KhachHang a = new KhachHang();
-ArrayList<String> listid = new ArrayList<>();
-ArrayList<String> listten = new ArrayList<>();
- ArrayList<String> listt = new ArrayList<>();
-listid = a.getlistID();
-listten = a.getten();
-listt=a.getds();
-DefaultTableModel model = (DefaultTableModel) khachhang.getModel();
-model.setRowCount(0);
-try {
-    Connection c = ketnoi.lienket();
-    Statement d = c.createStatement();
-    String id = txtTuKhoaKhachHang.getText();
-    if (listid.contains(id)==true) {
-        ResultSet rs = d.executeQuery("SELECT * FROM khachhang WHERE CUSTOMER_ID ='" + id + "'");
-        while (rs.next()) {
-            String ten = rs.getString("CUSTOMER_NAME");
-            String diachi = rs.getString("CUSTOMER_ADDRESS");
-            String sdt = rs.getString("CUSTOMER_PHONE_NUMBER");
-            String mail = rs.getString("CUSTOMER_EMAIL");
-            Object rowdata[] = {id, ten, diachi, sdt, mail};
-            model.addRow(rowdata);
-        }
-    } else if (listten.contains(id)) {
-        String id3=txtTuKhoaKhachHang.getText();
-        ResultSet rs2 = d.executeQuery("SELECT * FROM khachhang WHERE CUSTOMER_NAME = '"+id3+"'");
-        while (rs2.next()) {
-             String id1 =rs2.getString("CUSTOMER_ID");
-            String ten = rs2.getString("CUSTOMER_NAME");
-            String diachi = rs2.getString("CUSTOMER_ADDRESS");
-            String sdt = rs2.getString("CUSTOMER_PHONE_NUMBER");
-            String mail = rs2.getString("CUSTOMER_EMAIL");
-            Object rowdata[] = {id1, ten, diachi, sdt, mail};
-            model.addRow(rowdata);
-        }
-    } else if (listt.contains(id)) {
-        String id4=txtTuKhoaKhachHang.getText();
-        ResultSet rs3 = d.executeQuery("SELECT * FROM khachhang WHERE CUSTOMER_NAME LIKE '%"+id4+"'");
-        while (rs3.next()) {
-             String id1 =rs3.getString("CUSTOMER_ID");
-            String ten = rs3.getString("CUSTOMER_NAME");
-            String diachi = rs3.getString("CUSTOMER_ADDRESS");
-            String sdt = rs3.getString("CUSTOMER_PHONE_NUMBER");
-            String mail = rs3.getString("CUSTOMER_EMAIL");
-            Object rowdata[] = {id1, ten, diachi, sdt, mail};
-            model.addRow(rowdata);
-        }
-    } 
-     
-    ketnoi.dongketnoi(c);
-} catch (SQLException e) {
-    e.printStackTrace();
-}    
-      
-                
-        
-    }//GEN-LAST:event_btnTimKiemActionPerformed
-
-    private void btnThongTinCongTy1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongTinCongTy1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnThongTinCongTy1ActionPerformed
-
-    private void nhacungcapMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nhacungcapMouseClicked
-        // TODO add your handling code here:
-        int dongChon = 0;
-
-        dongChon = nhacungcap.getSelectedRow();
-
-        String ID = "";
-
-        //Lấy mã sv của dòng chọn trên jtable
-        ID = "" + nhacungcap.getValueAt(dongChon, 0);
-        String ID1 =   nhacungcap.getValueAt(dongChon, 0).toString();
-        //CongTy objKH = DataProvider.getCongTyBus().layChiTietTheoMa(ID);
-        txtTimKiemNhaCungCap.setText(ID1);
-
-       
-    }//GEN-LAST:event_nhacungcapMouseClicked
-
-    private void btnDong1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDong1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnDong1ActionPerformed
-
-    private void btnXoa_NhaCungCapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoa_NhaCungCapActionPerformed
-        // TODO add your handling code here:
-        int ketQua = JOptionPane.showConfirmDialog(rootPane, "Bạn có chắc chắn muốn xóa không ?",
-            "Thông báo", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
-            //txtTimKiemNhaCungCap.setText(nhacungcap.getValueAt(nhacungcap.getSelectedRow(),0).toString());
-        if(ketQua == JOptionPane.YES_OPTION)//True
-        {
-            /*int  dongChon = nhacungcap.getSelectedRow();
-
-            String ID = "";
-
-            //Lấy mã sv của dòng chọn trên jtable
-            ID = "" + nhacungcap.getValueAt(dongChon, 0);
-
-            boolean kq = DataProvider.getCongTyBus().xoa(ID);
-
-            if(kq)
-            {
-                //Reload lại ds
-                hienThiDanhSachCongTy();
-              }*/
-            try{
-            Connection c =ketnoi.lienket();
-         //  txtTimKiemNhaCungCap.setText(nhacungcap.getValueAt(nhacungcap.getSelectedRow(),0).toString());
-            String id = txtTimKiemNhaCungCap.getText();
-            Statement d=c.createStatement();
-            d.executeUpdate("DELETE FROM nhacungcap WHERE SUPPLIER_ID='"+id+"'");
-            ResultSet rs=d.executeQuery("SELECT * FROM nhacungcap ");
-            model = (DefaultTableModel)nhacungcap.getModel();
-            model.setRowCount(0);
-            while(rs.next()){
-             String id1=rs.getString("SUPPLIER_ID");
-             String ten = rs.getString("SUPPLIER_NAME");
-             String diachi= rs.getString("SUPPLIER_ADDRESS");
-             String sdt=rs.getString("SUPPLIER_PHONE_NUM");
-             String mail=rs.getString("SUPPLIER_EMAIL");
-             Object rowdata[]={id1,ten,diachi,sdt,mail};
-             model.addRow(rowdata);
-            }
-            ketnoi.dongketnoi(c);
-            } catch(SQLException e){e.printStackTrace();}
-        
-    }//GEN-LAST:event_btnXoa_NhaCungCapActionPerformed
-    }
-    public JTable getbang(){
-      return khachhang;
-    
-    }
-    private void btnSua_NhaCungCapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSua_NhaCungCapActionPerformed
-        // TODO add your handling code here:
-        int dongChon = 0;
-
-        dongChon = nhacungcap.getSelectedRow();
-
-        String ID = "";
-
-        //Lấy mã sv của dòng chọn trên jtable
-        ID = "" + nhacungcap.getValueAt(dongChon, 0);
-        String ten = nhacungcap.getValueAt(dongChon,1 ).toString();
-         String sdt=nhacungcap.getValueAt(dongChon, 3).toString();
-         String mail= nhacungcap.getValueAt(dongChon,4).toString();
-         String diachi=nhacungcap.getValueAt(dongChon, 2).toString();
-        frmNhaCungCap frmSua = new frmNhaCungCap(this);
-         frmSua.settext(ten, sdt, mail, diachi);
-        //Gán mã sv để đưa lên form sửa
-        frmSua.setMaNhaCungCap(ID);
-        frmSua.capnhat().setEnabled(true);
-
-        frmSua.setVisible(true);
-    }//GEN-LAST:event_btnSua_NhaCungCapActionPerformed
-
-    private void btnThemMoi_NhaCungCapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemMoi_NhaCungCapActionPerformed
-        // TODO add your handling code here:
-        
-        frmNhaCungCap frmThemMoi = new frmNhaCungCap(this);
-        frmThemMoi.capnhat().setEnabled(true);
-        
+        frmHoaDonAdd frmThemMoi = new frmHoaDonAdd();
         frmThemMoi.setVisible(true);
-       
-          
-        
-    }//GEN-LAST:event_btnThemMoi_NhaCungCapActionPerformed
-
-    private void btnTimKiemNhaCungCapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiemNhaCungCapActionPerformed
-        // TODO add your handling code here:
-        
-        //hienThiDanhSachTimKiemCongTy();
-        /*String input= btnTimKiemNhaCungCap.getText();
-        model = (DefaultTableModel)nhacungcap.getModel();
-         ArrayList<String> listid = new ArrayList<>();
-        ArrayList<String> listten = new ArrayList<>();*/
-       /* try {
-        Connection c = ketnoi.lienket();
-        Statement d=c.createStatement();
-        ArrayList<String>listid=new ArrayList<>();
-        ArrayList<String>listten=new ArrayList<>();
-        ResultSet rs=d.executeQuery("SELECT * FROM nhacungcap");
-        while(rs.next()){
-        listid.add(rs.getString("SUPPLIER_ID"));
-        listten.add(rs.getString("SUPPILER_NAME"));
-        
-        }
-        if(listid.contains(input)== true){
-         ResultSet rs1= d.executeQuery("SELECT * FROM nhacungcap WHERE SUPPLIER_ID='"+input+"'");
-         while(rs1.next()){
-            String id =rs1.getString("SUPPILER_ID");
-            String ten=rs1.getString("SUPPLIER_NAME");
-            String diachi=rs1.getString("SUPPLIER_ADDRESS");
-            String sdt= rs1.getString("SUPPLIER_PHONE_NUM");
-            String mail=rs1.getString("SUPPLIER_EMAIL");
-            Object rowdata[]={id,ten,diachi,sdt,mail};
-            model.addRow(rowdata);
-         } else if(listten.contains(input)==true){
-                 ResultSet rs2= d.executeQuery("SELECT * FROM nhacungcap WHERE SUPPLIER_NAME='"+input+"'");
-         while(rs.next()){
-            String id1 =rs2.getString("SUPPLiER_ID");
-            String ten1=rs2.getString("SUPPLIER_NAME");
-            String diachi1=rs2.getString("SUPPLIER_ADDRESS");
-            String sdt1= rs2.getString("SUPPLIER_PHONE_NUM");
-            String mail1=rs2.getString("SUPPLIER_EMAIL");
-            Object rowdata[]={id1,ten1,diachi1,sdt1,mail1};
-            model.addRow(rowdata);
-                 }
-        
-        }
-        ketnoi.dongketnoi(c);
-        }catch(SQLException e){
-        e.printStackTrace();
-        } */
-       String input= txtTimKiemNhaCungCap.getText();
-        model = (DefaultTableModel)nhacungcap.getModel();
-         ArrayList<String> listid = new ArrayList<>();
-        ArrayList<String> listten = new ArrayList<>();
-       try {
-    Connection c = ketnoi.lienket();
-    Statement d = c.createStatement();
-   
-    ResultSet rs = d.executeQuery("SELECT * FROM nhacungcap");
-    
-    while (rs.next()) {
-        listid.add(rs.getString("SUPPLIER_ID"));
-        listten.add(rs.getString("SUPPLIER_NAME"));
-    }
-    
-    if (listid.contains(input)==true) {
-        String input0= txtTimKiemNhaCungCap.getText();
-        ResultSet rs1 = d.executeQuery("SELECT * FROM nhacungcap WHERE SUPPLIER_ID='" + input0 + "'");
-        model.setRowCount(0);
-        while (rs1.next()) {
-            String id = rs1.getString("SUPPLIER_ID");
-            String ten = rs1.getString("SUPPLIER_NAME");
-            String diachi = rs1.getString("SUPPLIER_ADDRESS");
-            String sdt = rs1.getString("SUPPLIER_PHONE_NUM");
-            String mail = rs1.getString("SUPPLIER_EMAIL");
-            Object rowdata[] = { id, ten, diachi, sdt, mail };
-            model.addRow(rowdata);
-        }
-    } else if (listten.contains(input)==true) {
-        String input1= txtTimKiemNhaCungCap.getText();
-        ResultSet rs2 = d.executeQuery("SELECT * FROM nhacungcap WHERE SUPPLIER_NAME='" + input1 + "'");
-        model.setRowCount(0);
-        while (rs2.next()) {
-            String id1 = rs2.getString("SUPPLIER_ID");
-            String ten1 = rs2.getString("SUPPLIER_NAME");
-            String diachi1 = rs2.getString("SUPPLIER_ADDRESS");
-            String sdt1 = rs2.getString("SUPPLIER_PHONE_NUM");
-            String mail1 = rs2.getString("SUPPLIER_EMAIL");
-            Object rowdata[] = { id1, ten1, diachi1, sdt1, mail1 };
-            model.addRow(rowdata);
-        }
-    }
-    
-    ketnoi.dongketnoi(c);
-} catch (SQLException e) {
-    e.printStackTrace();
-}
-        
-    }//GEN-LAST:event_btnTimKiemNhaCungCapActionPerformed
-
-    private void txtTimKiemNhaCungCapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTimKiemNhaCungCapActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTimKiemNhaCungCapActionPerformed
-
-    private void btnTimKiemNhapHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiemNhapHangActionPerformed
-        // TODO add your handling code here:
-        hienThiDanhSachTimKiemNhapHang();
-    }//GEN-LAST:event_btnTimKiemNhapHangActionPerformed
+    }//GEN-LAST:event_btnThemMoi2ActionPerformed
 
     private void btnTimKiem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiem4ActionPerformed
         // TODO add your handling code here:
         hienThiDanhSachTimKiemHoaDon();
     }//GEN-LAST:event_btnTimKiem4ActionPerformed
 
-    private void jPanel20FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanel20FocusGained
+    private void txtTuKhoaHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTuKhoaHoaDonActionPerformed
         // TODO add your handling code here:
-        
-    }//GEN-LAST:event_jPanel20FocusGained
-
-    private void jPanel23FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanel23FocusGained
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_jPanel23FocusGained
-
-    private void jTabbedPane1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MousePressed
-        // TODO add your handling code here:
-        hienThiDanhSachHangHoa();
-    }//GEN-LAST:event_jTabbedPane1MousePressed
-
-    private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
-        // TODO add your handling code here:
-        SoQuyBusiness bus = new SoQuyBusiness();
-        bus.TongChi();
-        bus.TongThu();
-        bus.TonQuy();
-    }//GEN-LAST:event_jTabbedPane1MouseClicked
-
-    private void jMenuThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuThoatActionPerformed
-        // TODO add your handling code here:
-        this.setVisible(false);
-    }//GEN-LAST:event_jMenuThoatActionPerformed
-
-    private void jMenuItemDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemDangNhapActionPerformed
-        // TODO add your handling code here:
-        dangNhapHeThong();
-        
-    }//GEN-LAST:event_jMenuItemDangNhapActionPerformed
-
-    private void jMenuItemDangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemDangXuatActionPerformed
-        // TODO add your handling code here:
-        dangNhapHeThong();
-    }//GEN-LAST:event_jMenuItemDangXuatActionPerformed
-
-    private void btnXoa3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoa3ActionPerformed
-        // TODO add your handling code here:
-        int ketQua = JOptionPane.showConfirmDialog(rootPane, "Bạn có chắc chắn muốn xóa không ?",
-            "Thông báo", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
-
-        if(ketQua == JOptionPane.YES_OPTION)//True
-        {
-            int  dongChon = khachhang.getSelectedRow();
-
-            String ID = "";
-
-            //Lấy mã sv của dòng chọn trên jtable
-            ID = "" + khachhang.getValueAt(dongChon, 0);
-
-            boolean kq = DataProvider.getKhachHangBus().xoa(ID);
-
-            if(kq)
-            {
-                //Reload lại ds
-                hienThiDanhSachKhachHang();
-            }
-
-        }
-    }//GEN-LAST:event_btnXoa3ActionPerformed
-
-    private void jTableKhachHang1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableKhachHang1MouseClicked
-        // TODO add your handling code here:
-        int dongChon = 0;
-
-        dongChon = khachhang.getSelectedRow();
-
-        String ID = "";
-
-        //Lấy mã sv của dòng chọn trên jtable
-        ID = "" + khachhang.getValueAt(dongChon, 0);
-        KhachHang objKH = DataProvider.getKhachHangBus().layChiTietTheoMa(ID);
-
-      
-    }//GEN-LAST:event_jTableKhachHang1MouseClicked
-
-    private void btnThemMoi3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemMoi3ActionPerformed
-        // TODO add your handling code here:
-        frmKhachHang frmThemMoi = new frmKhachHang(this);
-        frmThemMoi.setVisible(true);
-    }//GEN-LAST:event_btnThemMoi3ActionPerformed
-
-    private void btnSua3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSua3ActionPerformed
-        // TODO add your handling code here:
-        int dongChon = 0;
-
-        dongChon = khachhang.getSelectedRow();
-
-        String ID = "";
-
-        //Lấy mã sv của dòng chọn trên jtable
-        ID = "" + khachhang.getValueAt(dongChon, 0);
-
-        frmKhachHang frmSua = new frmKhachHang(this);
-
-        //Gán mã sv để đưa lên form sửa
-        frmSua.setMaKhachHang(ID);
-
-        frmSua.setVisible(true);
-    }//GEN-LAST:event_btnSua3ActionPerformed
+    }//GEN-LAST:event_txtTuKhoaHoaDonActionPerformed
 
     private void jPanel14FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanel14FocusGained
         // TODO add your handling code here:
-
     }//GEN-LAST:event_jPanel14FocusGained
 
-    private void hanghoaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hanghoaMouseClicked
+    private void btnThongTinHangHoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongTinHangHoaActionPerformed
         // TODO add your handling code here:
         int dongChon = 0;
 
-        dongChon = hanghoa.getSelectedRow();
+        dongChon = jTableHangHoa.getSelectedRow();
 
         String ID = "";
 
         //Lấy mã sv của dòng chọn trên jtable
-        ID = "" + hanghoa.getValueAt(dongChon, 0);
+        ID = "" + jTableHangHoa.getValueAt(dongChon, 0);
+
+        frmHangHoaAdd frmThongTin = new frmHangHoaAdd();
+
+        //Gán mã sv để đưa lên form sửa
+        frmThongTin.setMaHangHoa(ID);
+
+        frmThongTin.setVisible(true);
+
+        frmThongTin.setThongTin(true);
+    }//GEN-LAST:event_btnThongTinHangHoaActionPerformed
+
+    private void jTableHangHoaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableHangHoaMouseClicked
+        // TODO add your handling code here:
+        int dongChon = 0;
+
+        dongChon = jTableHangHoa.getSelectedRow();
+
+        String ID = "";
+
+        //Lấy mã sv của dòng chọn trên jtable
+        ID = "" + jTableHangHoa.getValueAt(dongChon, 0);
         HangHoa objKH = DataProvider.getHangHoaBus().layChiTietTheoMa(ID);
 
         if(objKH != null)
         {
-            
 
         }
-       
-    }//GEN-LAST:event_hanghoaMouseClicked
+    }//GEN-LAST:event_jTableHangHoaMouseClicked
 
-    private void hanghoaComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_hanghoaComponentAdded
+    private void jTableHangHoaComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_jTableHangHoaComponentAdded
         // TODO add your handling code here:
-    }//GEN-LAST:event_hanghoaComponentAdded
-
-    private void cboNhomHangTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboNhomHangTimKiemActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cboNhomHangTimKiemActionPerformed
-
-    private void btnTimKiemHangHoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiemHangHoaActionPerformed
-        // TODO add your handling code here:
-        ArrayList<String> listid=new ArrayList<>();
-        ArrayList<String> listten= new ArrayList<>();
-        model = (DefaultTableModel) hanghoa.getModel();
-        HangHoa a = new HangHoa();
-        listid=a.getlistid();
-        listten=a.getlistten();
-         String input = txtTimKiemHangHoa.getText();
-         try {
-                Connection c = ketnoi.lienket();
-                
-                Statement d = c.createStatement();
-          if(input.isEmpty()==false){
-          if(listid.contains(input)==true){
-               ResultSet rs = d.executeQuery("SELECT * FROM sanpham WHERE PRODUCT_ID='"+input+"'");
-               while(rs.next()){
-               String id = rs.getString("PRODUCT_ID");
-               String ten = rs.getString("PRODUCT_NAME");
-               String mota= rs.getString("PRODUCT_DESCRIPTION");
-               String giaban= rs.getString("PRODUCT_PRICE");
-               String tonkho=rs.getString("PRODUCT_IVENTORY");
-               String nhomhang= rs.getString("PRODUCT_TYPE");
-               String khuvuc = rs.getString("LOCATION_ID");
-               model.setRowCount(0);
-               Object rowdata[]={id,ten,mota,giaban,tonkho,nhomhang,khuvuc};
-               model.addRow(rowdata);
-               }
-          
-          } else if(listten.contains(input)==true){
-              ResultSet rs = d.executeQuery("SELECT * FROM sanpham WHERE PRODUCT_NAME='"+input+"'");
-               while(rs.next()){
-               String id = rs.getString("PRODUCT_ID");
-               String ten = rs.getString("PRODUCT_NAME");
-               String mota= rs.getString("PRODUCT_DESCRIPTION");
-               String giaban= rs.getString("PRODUCT_PRICE");
-               String tonkho=rs.getString("PRODUCT_IVENTORY");
-               String nhomhang= rs.getString("PRODUCT_TYPE");
-               String khuvuc = rs.getString("LOCATION_ID");
-               model.setRowCount(0);
-               Object rowdata[]={id,ten,mota,giaban,tonkho,nhomhang,khuvuc};
-               model.addRow(rowdata);
-               }
-          }}
-          else /*if(input.isEmpty()==true)*/{
-              String input1= cboNhomHangTimKiem.getSelectedItem().toString();
-              ResultSet rs = d.executeQuery("SELECT * FROM sanpham WHERE PRODUCT_TYPE='"+input1+"'");
-              model.setRowCount(0);
-               while(rs.next()){
-               String id = rs.getString("PRODUCT_ID");
-               String ten = rs.getString("PRODUCT_NAME");
-               String mota= rs.getString("PRODUCT_DESCRIPTION");
-               String giaban= rs.getString("PRODUCT_PRICE");
-               String tonkho=rs.getString("PRODUCT_IVENTORY");
-               String nhomhang= rs.getString("PRODUCT_TYPE");
-               String khuvuc = rs.getString("LOCATION_ID");
-               
-               Object rowdata[]={id,ten,mota,giaban,tonkho,nhomhang,khuvuc};
-               model.addRow(rowdata);
-          
-          }        
-         }
-          ketnoi.dongketnoi(c);
-         }catch(SQLException e){
-         e.printStackTrace();
-         }
-        hienThiDanhSachTimKiemHangHoa();
-    }//GEN-LAST:event_btnTimKiemHangHoaActionPerformed
-
-    private void txtTimKiemHangHoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTimKiemHangHoaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTimKiemHangHoaActionPerformed
+    }//GEN-LAST:event_jTableHangHoaComponentAdded
 
     private void btnXoa_HangHoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoa_HangHoaActionPerformed
         // TODO add your handling code here:
@@ -2555,12 +2568,12 @@ try {
 
         if(ketQua == JOptionPane.YES_OPTION)//True
         {
-            /*int  dongChon = hanghoa.getSelectedRow();
+            int  dongChon = jTableHangHoa.getSelectedRow();
 
             String ID = "";
 
             //Lấy mã sv của dòng chọn trên jtable
-            ID = "" + hanghoa.getValueAt(dongChon, 0);
+            ID = "" + jTableHangHoa.getValueAt(dongChon, 0);
 
             boolean kq = DataProvider.getHangHoaBus().xoa(ID);
 
@@ -2568,35 +2581,13 @@ try {
             {
                 //Reload lại ds
                 hienThiDanhSachHangHoa();
-            }*/try{
-                txtTimKiemHangHoa.setText(hanghoa.getValueAt(hanghoa.getSelectedRow(), 0).toString());
-           String id=txtTimKiemHangHoa.getText();
-            Connection c = ketnoi.lienket();
-            Statement d = c.createStatement();
-            d.executeUpdate("DELETE FROM sanpham WHERE PRODUCT_ID='"+id+"'");
-             model = (DefaultTableModel)hanghoa.getModel();
-        model.setRowCount(0);
-         ResultSet rs=d.executeQuery("SELECT * FROM sanpham");
-         while (rs.next()){
-         String id1 = rs.getString("PRODUCT_ID");
-         String ten = rs.getString("PRODUCT_NAME");
-         String mota= rs.getString("PRODUCT_DESCRIPTION");
-         String gia=rs.getString("PRODUCT_PRICE");
-         String tonkho=rs.getString("PRODUCT_IVENTORY");
-         String loai= rs.getString("PRODUCT_TYPE");
-         String luutru=rs.getString("LOCATION_ID");
-         Object rowdata[]={id1,ten,mota,gia,tonkho,loai,luutru};
-         model.addRow(rowdata);
-         }
-            ketnoi.dongketnoi(c);
-            } catch(SQLException e){e.printStackTrace();}
-           
+            }
         }
     }//GEN-LAST:event_btnXoa_HangHoaActionPerformed
 
     private void btnSua_HangHoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSua_HangHoaActionPerformed
         // TODO add your handling code here:
-        /*int dongChon = 0;
+        int dongChon = 0;
 
         dongChon = jTableHangHoa.getSelectedRow();
 
@@ -2610,97 +2601,28 @@ try {
         //Gán mã sv để đưa lên form sửa
         frmSua.setMaHangHoa(ID);
 
-        frmSua.setVisible(true);*/
-        
-        
-        if(hanghoa.getSelectedRow()!=-1){
-        frmHangHoaAdd frm= new frmHangHoaAdd(this);
-         int a = hanghoa.getSelectedRow();
-         frm.settext(hanghoa.getValueAt(a, 0).toString(), hanghoa.getValueAt(a, 1).toString(),hanghoa.getValueAt(a, 5).toString(), hanghoa.getValueAt(a, 6).toString(), hanghoa.getValueAt(a,3).toString(),hanghoa.getValueAt(a, 4).toString(),hanghoa.getValueAt(a, 2).toString());
-        frm.setVisible(true);
-        //hanghoa.clearSelection();
-        }
-        
+        frmSua.setVisible(true);
     }//GEN-LAST:event_btnSua_HangHoaActionPerformed
 
     private void btnThemMoi_HangHoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemMoi_HangHoaActionPerformed
 
         // TODO add your handling code here:
-        if(hanghoa.getSelectedRow()!=-1) hanghoa.clearSelection();
-        frmHangHoaAdd frmThemMoi = new frmHangHoaAdd(this);
-        
+        frmHangHoaAdd frmThemMoi = new frmHangHoaAdd();
         frmThemMoi.setVisible(true);
     }//GEN-LAST:event_btnThemMoi_HangHoaActionPerformed
 
-    private void btnThongTinHangHoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongTinHangHoaActionPerformed
-       /* // TODO add your handling code here:
-         int dongChon = 0;
-
-        dongChon = hanghoa.getSelectedRow();
-
-        String ID = "";
-
-        //Lấy mã sv của dòng chọn trên jtable
-        ID = "" + hanghoa.getValueAt(dongChon, 0);
-        
-       
-
-        frmHangHoaAdd frmThongTin = new frmHangHoaAdd(this);
-
-        //Gán mã sv để đưa lên form sửa
-        frmThongTin.setMaHangHoa(ID);
-
-        frmThongTin.setVisible(true);
-        
-       frmThongTin.setThongTin(true);*/
-        this.showhanghoa();
-        
-    }//GEN-LAST:event_btnThongTinHangHoaActionPerformed
-
-    private void btnThongTinNhaCungCapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongTinNhaCungCapActionPerformed
+    private void cboNhomHangTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboNhomHangTimKiemActionPerformed
         // TODO add your handling code here:
-        this.hienthi();
-    }//GEN-LAST:event_btnThongTinNhaCungCapActionPerformed
+    }//GEN-LAST:event_cboNhomHangTimKiemActionPerformed
 
-    private void btnThongTinKhachHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongTinKhachHangActionPerformed
+    private void btnTimKiemHangHoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiemHangHoaActionPerformed
         // TODO add your handling code here:
-        /*int dongChon = 0;
+        hienThiDanhSachTimKiemHangHoa();
+    }//GEN-LAST:event_btnTimKiemHangHoaActionPerformed
 
-        dongChon = khachhang.getSelectedRow();
-
-        String ID = "";
-
-        //Lấy mã sv của dòng chọn trên jtable
-        ID = "" + khachhang.getValueAt(dongChon, 0);
-        
-       
-
-        frmKhachHang frmThongTin = new frmKhachHang(this);
-
-        //Gán mã sv để đưa lên form sửa
-        frmThongTin.setMaKhachHang(ID);
-
-        frmThongTin.setVisible(true);
-        
-       frmThongTin.setThongTin(true);*/
-        
-        
-           GiaoDienChinh.showkhachhang();
-        
-        
-    }//GEN-LAST:event_btnThongTinKhachHangActionPerformed
-
-    private void btnThongTinHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongTinHoaDonActionPerformed
+    private void txtTimKiemHangHoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTimKiemHangHoaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnThongTinHoaDonActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void btnTimKiemViTriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiemViTriActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnTimKiemViTriActionPerformed
+    }//GEN-LAST:event_txtTimKiemHangHoaActionPerformed
 
     
     /**
@@ -2735,37 +2657,39 @@ try {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new GiaoDienChinh().setVisible(true);
-             //  a1.setVisible(true);
             }
         });
-        //System.out.println(Mouse());
-        //System.out.println("hello");
-     //   showkhachhang();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDong;
     private javax.swing.JButton btnDong1;
+    private javax.swing.JButton btnDong2;
     private javax.swing.JButton btnSua;
     private javax.swing.JButton btnSua1;
     private javax.swing.JButton btnSua2;
-    private javax.swing.JButton btnSua3;
+    private javax.swing.JButton btnSuaNguoiDung;
+    private javax.swing.JButton btnSuaViTriLuuTru;
     private javax.swing.JButton btnSua_HangHoa;
     private javax.swing.JButton btnSua_NhaCungCap;
     private javax.swing.JButton btnThemMoi;
     private javax.swing.JButton btnThemMoi1;
     private javax.swing.JButton btnThemMoi2;
-    private javax.swing.JButton btnThemMoi3;
+    private javax.swing.JButton btnThemMoiNguoiDung;
     private javax.swing.JButton btnThemMoi_HangHoa;
     private javax.swing.JButton btnThemMoi_NhaCungCap;
+    private javax.swing.JButton btnThemViTri;
+    private javax.swing.JButton btnThongTinChiTietHoaDon;
+    private javax.swing.JButton btnThongTinChiTietNhapHang;
     private javax.swing.JButton btnThongTinCongTy1;
     private javax.swing.JButton btnThongTinHangHoa;
-    private javax.swing.JButton btnThongTinHoaDon;
     private javax.swing.JButton btnThongTinKhachHang;
+    private javax.swing.JButton btnThongTinNguoiDung;
     private javax.swing.JButton btnThongTinNhaCungCap;
     private javax.swing.JButton btnTimKiem;
     private javax.swing.JButton btnTimKiem4;
     private javax.swing.JButton btnTimKiemHangHoa;
+    private javax.swing.JButton btnTimKiemNguoiDung;
     private javax.swing.JButton btnTimKiemNhaCungCap;
     private javax.swing.JButton btnTimKiemNhapHang;
     private javax.swing.JButton btnTimKiemViTri;
@@ -2773,11 +2697,11 @@ try {
     private javax.swing.JButton btnXoa1;
     private javax.swing.JButton btnXoa2;
     private javax.swing.JButton btnXoa3;
+    private javax.swing.JButton btnXoaNguoiDung;
     private javax.swing.JButton btnXoa_HangHoa;
     private javax.swing.JButton btnXoa_NhaCungCap;
     private static javax.swing.JComboBox<String> cboNhomHangTimKiem;
-    private static javax.swing.JTable hanghoa;
-    private javax.swing.JButton jButton2;
+    private com.toedter.calendar.JDateChooser dtNgayCapCMT1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
@@ -2785,6 +2709,7 @@ try {
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel29;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel55;
     private javax.swing.JLabel jLabel65;
@@ -2797,7 +2722,7 @@ try {
     private javax.swing.JMenuItem jMenuItemDangXuat;
     private javax.swing.JMenu jMenuNguoiDung;
     private javax.swing.JMenuItem jMenuThoat;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
@@ -2816,156 +2741,31 @@ try {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JPanel jPanelTaiKhoan;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
+    private static javax.swing.JTable jTableHangHoa;
     private static javax.swing.JTable jTableHoaDon;
-    private static javax.swing.JTable jTableKhachHang1;
-    private javax.swing.JTextField jTextField1;
-    private static javax.swing.JTable khachhang;
-    private static javax.swing.JTable nhacungcap;
-    private static javax.swing.JTable nhaphang;
+    private static javax.swing.JTable jTableKhachHang;
+    private static javax.swing.JTable jTableNguoiDung;
+    private static javax.swing.JTable jTableNhaCungCap;
+    private static javax.swing.JTable jTableNhapHang;
+    private static javax.swing.JTable jTableViTri;
     private javax.swing.JTextField txtCMT1;
     private javax.swing.JTextField txtNoiCapCMT1;
     private static javax.swing.JTextField txtTimKiemHangHoa;
     private static javax.swing.JTextField txtTimKiemNhaCungCap;
+    private static javax.swing.JTextField txtTimKiemViTri;
     private static javax.swing.JTextField txtTuKhoaHoaDon;
     private static javax.swing.JTextField txtTuKhoaKhachHang;
+    private static javax.swing.JTextField txtTuKhoaNguoiDung;
     private static javax.swing.JTextField txtTuKhoaNhapHang;
     // End of variables declaration//GEN-END:variables
-
-    //private void showTable() {
-      
-    //}
-    public static  void showkhachhang(){
-      try {
-      Connection c = ketnoi.lienket();
-      Statement d = c.createStatement();
-      ResultSet rs = d.executeQuery("SELECT * FROM khachhang");
-      DefaultTableModel model = (DefaultTableModel) khachhang.getModel();
-      model.setRowCount(0);
-      while (rs.next()){
-          String id =rs.getString("CUSTOMER_ID");
-          String ten= rs.getString("CUSTOMER_NAME");
-          String diachi = rs.getString("CUSTOMER_ADDRESS");
-          String sdt= rs.getString("CUSTOMER_PHONE_NUMBER");
-          String mail = rs.getString("CUSTOMER_EMAIL");
-          Object rowdata[]={id,ten,diachi,sdt,mail};
-          model.addRow(rowdata);
-      }
-      ketnoi.dongketnoi(c);
-      } catch(SQLException e){
-       e.printStackTrace();
-       
-       
-      }
-    }
-    /*int Mouse(){
-        int a =0;
-      khachhang.addMouseListener(new MouseAdapter(){
-      public void   MouseClick(MouseEvent e){
-        a= e.getClickCount();
-      }
-        });//  
-      return a ;// 
-      
-    }*/
-     int   Mouse() {
-        
-    int a[] = {0}; // Biến ngoại vi
-
-    khachhang.addMouseListener(new MouseAdapter() {
-        public void mouseClicked(MouseEvent e) {
-           a[0] = e.getClickCount(); // Gán giá trị cho biến ngoại vi
-        }
-    });
-
-    return a[0]; // Trả về giá trị của biến ngoại vi
-   
-}
- /*public static void  hien(){
-     System.out.println(Mouse());
-    }*/// làm lại thôi
-
-    public  void hienthi() {
-        try{
-        Connection c = ketnoi.lienket();
-        Statement d = c.createStatement();
-        model= (DefaultTableModel) nhacungcap.getModel();
-        ResultSet rs = d.executeQuery("SELECT * FROM nhacungcap");
-        model.setRowCount(0);
-        while(rs.next()){
-        String id = rs.getString("SUPPLIER_ID");
-        String ten= rs.getString("SUPPLIER_NAME");
-        String sdt= rs.getString("SUPPLIER_ADDRESS");
-        String mail=rs.getString("SUPPLIER_PHONE_NUM");
-        String diachi=rs.getString("SUPPLIER_EMAIL");
-        Object rowdata[]={id,ten,sdt,mail,diachi};
-        model.addRow(rowdata);
-        }
-        ketnoi.dongketnoi(c);
-        }catch(SQLException e){
-        e.printStackTrace();
-                }
-    }
-
-    private void showhanghoa() {
-        try {
-        Connection c =ketnoi.lienket();
-        Statement d = c.createStatement();
-        model = (DefaultTableModel)hanghoa.getModel();
-        model.setRowCount(0);
-         ResultSet rs=d.executeQuery("SELECT * FROM sanpham");
-         while (rs.next()){
-         String id = rs.getString("PRODUCT_ID");
-         String ten = rs.getString("PRODUCT_NAME");
-         String mota= rs.getString("PRODUCT_DESCRIPTION");
-         String gia=rs.getString("PRODUCT_PRICE");
-         String tonkho=rs.getString("PRODUCT_IVENTORY");
-         String loai= rs.getString("PRODUCT_TYPE");
-         String luutru=rs.getString("LOCATION_ID");
-         Object rowdata[]={id,ten,mota,gia,tonkho,loai,luutru};
-         model.addRow(rowdata);
-         }
-        ketnoi.dongketnoi(c);
-        } catch(SQLException e){
-        e.printStackTrace();
-        }
-    }
-    public JTable gethanghoa(){
-    
-    return this.hanghoa;
-    }
-
-    private void showcombobox() {
-       cboNhomHangTimKiem.addItem("Loai 1");
-        cboNhomHangTimKiem.addItem("Loai 2");
-         cboNhomHangTimKiem.addItem("Loai 3");
-          cboNhomHangTimKiem.addItem("Loai 4");
-          /*try{
-           Connection c = ketnoi.lienket();
-          Statement d = c.createStatement();
-          ResultSet rs=d.executeQuery("SELECT * FROM sanpham");
-          while(rs.next()){
-          cboNhomHangTimKiem.addItem(rs.getString("PRODUCT_TYPE"));
-          
-          }
-          ketnoi.dongketnoi(c);
-          } catch(SQLException e){e.printStackTrace();}*/
-    }
-  public JComboBox<String> getcombobox (){
-      return cboNhomHangTimKiem;
-  
-  
-  }
-    
-    
-    
-
-    
 }

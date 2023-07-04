@@ -28,6 +28,66 @@ public class DataProvider {
         
         return KhachHangBus;
     }
+    private static NguoiDungBusiness NguoiDungBus = null;
+    
+    /**
+     * Hàm trả 1 đối tượng thuộc lớp SinhVienBusiness ở dạng static để sử dụng ở nhiều nơi
+     * @return 
+     */
+    public static NguoiDungBusiness getNguoiDungBus()
+    {
+        if(NguoiDungBus == null)//True
+        {
+            NguoiDungBus = new NguoiDungBusiness();//Singletone
+        }
+        
+        return NguoiDungBus;
+    }
+    private static ViTriBusiness ViTriBus = null;
+    
+    /**
+     * Hàm trả 1 đối tượng thuộc lớp SinhVienBusiness ở dạng static để sử dụng ở nhiều nơi
+     * @return 
+     */
+    public static ViTriBusiness getViTriBus()
+    {
+        if(ViTriBus == null)//True
+        {
+            ViTriBus = new ViTriBusiness();//Singletone
+        }
+        
+        return ViTriBus;
+    }
+      private static ChiTietDonHangNhapBusiness ChiTietDonHangNhapBus = null;
+    
+    /**
+     * Hàm trả 1 đối tượng thuộc lớp SinhVienBusiness ở dạng static để sử dụng ở nhiều nơi
+     * @return 
+     */
+    public static ChiTietDonHangNhapBusiness getChiTietDonHangNhapBus()
+    {
+        if(ChiTietDonHangNhapBus == null)//True
+        {
+            ChiTietDonHangNhapBus = new ChiTietDonHangNhapBusiness();//Singletone
+        }
+        
+        return ChiTietDonHangNhapBus;
+    }
+    private static ChiTietDonHangXuatBusiness ChiTietDonHangXuatBus = null;
+    
+    /**
+     * Hàm trả 1 đối tượng thuộc lớp SinhVienBusiness ở dạng static để sử dụng ở nhiều nơi
+     * @return 
+     */
+    public static ChiTietDonHangXuatBusiness getChiTietDonHangXuatBus()
+    {
+        if(ChiTietDonHangXuatBus == null)//True
+        {
+            ChiTietDonHangXuatBus = new ChiTietDonHangXuatBusiness();//Singletone
+        }
+        
+        return ChiTietDonHangXuatBus;
+    }
     
     private static NhapHangBusiness NhapHangBus = null;
     

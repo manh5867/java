@@ -4,6 +4,8 @@
  */
 package com.mycompany.quanlibanhang;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author My HP
@@ -15,6 +17,15 @@ public class frmViTriLuuTruAdd extends javax.swing.JFrame {
      */
     public frmViTriLuuTruAdd() {
         initComponents();
+    }
+     private String maViTri = "";
+
+    public String getMaViTri() {
+        return maViTri;
+    }
+
+    public void setMaViTri(String maViTri) {
+        this.maViTri = maViTri;
     }
 
     /**
@@ -39,6 +50,11 @@ public class frmViTriLuuTruAdd extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Vị trí lưu trữ"));
 
@@ -132,21 +148,39 @@ public class frmViTriLuuTruAdd extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(41, 41, 41)
+                .addGap(32, 32, 32)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
+                .addGap(20, 20, 20)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void hienThiChiTiet()
+    {
+        ViTri objKH = DataProvider.getViTriBus().layChiTietTheoMa(maViTri);
+        
+        if(objKH != null)
+        {
+            txtMaViTri.setText(maViTri);
+            txtMaViTri.setEditable(false);
+            txtTenViTri.setText(objKH.getTenViTri());
+            txtTrangThai.setText(objKH.getTrangThai());
+            txtMoTa.setText(objKH.getMoTa());
+            
+            
+            
+            
+        }
+        
+    }
     private void txtMaViTriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaViTriActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMaViTriActionPerformed
@@ -157,11 +191,76 @@ public class frmViTriLuuTruAdd extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        ViTri objKH = new ViTri();
+        
+        String ID = "", hoTen = "", trangThai = "", moTa = "";
+        
+        
+        
+        ID = txtMaViTri.getText();
+        hoTen = txtTenViTri.getText();
+        trangThai = txtTrangThai.getText();
+        moTa = txtMoTa.getText();
+        
+        
+        
+        //Gán giá trị cho các thuộc tính
+        objKH.setID(ID);
+        objKH.setTenViTri(hoTen);
+        objKH.setTrangThai(trangThai);
+        objKH.setMoTa(moTa);
+        
+        
+        
+        
+        
+        
+        
+       
+        
+        
+        boolean ketQua = false;
+        
+        //Khai báo 1 đối tượng
+        ViTriBusiness sinhVienBus = new ViTriBusiness();
+        
+        if(!maViTri.isEmpty())//TH sửa
+        {
+            ketQua = sinhVienBus.capNhat(objKH);
+        }
+        else
+        {
+            //Thực hiện thêm mới
+            ketQua = sinhVienBus.themMoi(objKH);
+        }
+        
+        if(ketQua)//true
+        {
+            JOptionPane.showMessageDialog(rootPane, "Thực hiện cập nhật khách hàng thành công");
+            //Reload lại danh sách
+            GiaoDienChinh.hienThiDanhSachViTri();
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+         if(!maViTri.isEmpty())//TH sửa
+        {
+            this.setTitle("Sửa thông tin vị trí lưu trữ");
+            
+            //Hiển thị chi tiết sinh viên trước khi sửa
+            hienThiChiTiet();
+        }
+        else
+        {
+            this.setTitle("Thêm mới thông tin vị trí lưu trữ");
+        }
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments

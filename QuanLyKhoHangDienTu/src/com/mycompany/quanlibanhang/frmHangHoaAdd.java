@@ -4,38 +4,16 @@
  */
 package com.mycompany.quanlibanhang;
 
-/*import java.util.List;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JComboBox;
-import javax.swing.JOptionPane;*/
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.JOptionPane;
-import java.awt.Point;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseAdapter;
-import javax.swing.JTable;
-import java.util.ArrayList;
-import javax.swing.JComboBox;
+import javax.swing.JTextField;
 
 /**
  *
  * @author My HP
  */
 public class frmHangHoaAdd extends javax.swing.JFrame {
-    private  static GiaoDienChinh h;
-    
     
     private boolean ThongTin;
 
@@ -57,15 +35,8 @@ public class frmHangHoaAdd extends javax.swing.JFrame {
     /**
      * Creates new form frmHangHoaAdd
      */
-    public frmHangHoaAdd(GiaoDienChinh a) {
+    public frmHangHoaAdd() {
         initComponents();
-        h=a;
-        if(h.gethanghoa().getSelectedRow()!=-1){
-        txtMaHang.setText(h.gethanghoa().getValueAt(h.gethanghoa().getSelectedRow(), 0).toString());
-       
-        }
-         showConbobox();
-        
     }
     private void hienThiChiTiet()
     {
@@ -77,6 +48,7 @@ public class frmHangHoaAdd extends javax.swing.JFrame {
             txtMaHang.setEditable(false);
             txtTenHang.setText(objHH.getTenHang());
             txtGiaBan.setText(Integer.toString(objHH.getGiaBan()));
+            cboNhomHang.getModel().setSelectedItem(objHH.getTenNhomHang());
             
             
             txtMoTa.setText(objHH.getMoTa());
@@ -86,41 +58,12 @@ public class frmHangHoaAdd extends javax.swing.JFrame {
             txtTonKho.setText(Integer.toString(objHH.getTonKho()));
             
             
-            if(!objHH.getMaNhomHang().isEmpty())
-            {
-                NhomHangBusiness bus = new NhomHangBusiness();
-                
-                NhomHang objNH = bus.layChiTietTheoMa(objHH.getMaNhomHang());
-                
-                if(objNH != null)
-                {
-                    cboNhomHang.getModel().setSelectedItem(objNH);
-                }
-            }
+           
             
         }
         
     }
-    private void hienThiDanhSachNH()
-    {
-        NhomHangBusiness nhomNHBusiness = new NhomHangBusiness();
-        
-        //Lấy danh sách
-        List<NhomHang> lstNH = nhomNHBusiness.layDanhSach();
-        
-        DefaultComboBoxModel model = new DefaultComboBoxModel();
-        
-        for(NhomHang objNH : lstNH)
-        {
-            model.addElement(objNH);
-        }
-        
-        //Sửa lại nội dung cần hiển thị ra trên combobox
-        cboNhomHang.setRenderer(new NhomHangRender());
-        
-        cboNhomHang.setModel(model);
-        
-    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -169,7 +112,7 @@ public class frmHangHoaAdd extends javax.swing.JFrame {
         btnLuu = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        btnThemNhomHang = new javax.swing.JButton();
+        btnChonViTri = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -192,6 +135,8 @@ public class frmHangHoaAdd extends javax.swing.JFrame {
 
         jLabel41.setText("Giá hàng (*):");
 
+        cboNhomHang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Điện thoại di động", "Linh kiện điện tử", "Máy tính xách tay", "Thiết bị âm thanh", "Thiết bị gia dụng thông minh" }));
+
         jLabel2.setText("Mô tả:");
 
         btnLuu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vn/com/stanford/j0622/qlsinhvien/images/save.png"))); // NOI18N
@@ -212,10 +157,10 @@ public class frmHangHoaAdd extends javax.swing.JFrame {
 
         jLabel4.setText("VND");
 
-        btnThemNhomHang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vn/com/stanford/j0622/qlsinhvien/images/add-icon.png"))); // NOI18N
-        btnThemNhomHang.addActionListener(new java.awt.event.ActionListener() {
+        btnChonViTri.setText("Chọn vị trí");
+        btnChonViTri.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnThemNhomHangActionPerformed(evt);
+                btnChonViTriActionPerformed(evt);
             }
         });
 
@@ -239,26 +184,27 @@ public class frmHangHoaAdd extends javax.swing.JFrame {
                             .addComponent(txtTenHang)
                             .addComponent(cboNhomHang, 0, 164, Short.MAX_VALUE)
                             .addComponent(txtViTri))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnThemNhomHang)
-                        .addGap(14, 14, 14)
+                        .addGap(48, 48, 48)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel41)
-                            .addComponent(jLabel38))
-                        .addGap(34, 34, 34)
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtGiaBan)
-                            .addComponent(txtTonKho, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel40)
-                            .addComponent(jLabel4)))
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel41)
+                                    .addComponent(jLabel38))
+                                .addGap(34, 34, 34)
+                                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtGiaBan)
+                                    .addComponent(txtTonKho, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel40)
+                                    .addComponent(jLabel4)))
+                            .addComponent(btnChonViTri)))
                     .addComponent(txtMoTa, javax.swing.GroupLayout.PREFERRED_SIZE, 573, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 28, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnLuu)
-                .addGap(36, 36, 36)
+                .addGap(34, 34, 34)
                 .addComponent(jButton2)
                 .addGap(78, 78, 78))
         );
@@ -281,21 +227,20 @@ public class frmHangHoaAdd extends javax.swing.JFrame {
                                 .addComponent(txtTenHang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel40))
                         .addGap(25, 25, 25)
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel34)
-                                .addComponent(cboNhomHang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(btnThemNhomHang))
-                        .addGap(28, 28, 28)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel34)
+                            .addComponent(cboNhomHang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(29, 29, 29)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel35)
-                            .addComponent(txtViTri, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtViTri, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnChonViTri)))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGap(94, 94, 94)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel38)
                             .addComponent(txtTonKho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(46, 46, 46)
+                .addGap(45, 45, 45)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
                     .addComponent(txtMoTa, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -328,7 +273,7 @@ public class frmHangHoaAdd extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
-        hienThiDanhSachNH();
+        
         if (ThongTin==true)
         {
             hienThiChiTiet();
@@ -358,9 +303,9 @@ public class frmHangHoaAdd extends javax.swing.JFrame {
     private void btnLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuActionPerformed
         // TODO add your handling code here:
         
-       /* HangHoa objHH = new HangHoa();
+        HangHoa objHH = new HangHoa();
 
-        String maHang = "", tenHang = "", moTa = "", donViTinh = "", viTri = "";
+        String maHang = "", tenHang = "", moTa = "", donViTinh = "", viTri = "",nhomHang="";
 
         int giaBan=0,giaVon=0,trongLuong=0,minTonKho=0,maxTonKho=0,tonKho=0;
 
@@ -372,6 +317,8 @@ public class frmHangHoaAdd extends javax.swing.JFrame {
         giaBan=Integer.parseInt(txtGiaBan.getText());
        
         tonKho=Integer.parseInt(txtTonKho.getText());
+        nhomHang=(cboNhomHang.getSelectedItem()).toString();
+        
         
 
         //Gán giá trị cho các thuộc tính
@@ -379,7 +326,7 @@ public class frmHangHoaAdd extends javax.swing.JFrame {
         
         objHH.setTenHang(tenHang);
         objHH.setMoTa(moTa);
-        objHH.setDonViTinh(donViTinh);
+        objHH.setTenNhomHang(nhomHang);
         objHH.setViTri(viTri);
         objHH.setGiaBan(giaBan);
         objHH.setGiaVon(giaVon);
@@ -387,12 +334,9 @@ public class frmHangHoaAdd extends javax.swing.JFrame {
         objHH.setTonKho( tonKho);
         objHH.setMinTonKho(minTonKho);
         objHH.setMaxTonKho(maxTonKho);
-        NhomHang objNH = (NhomHang)cboNhomHang.getSelectedItem();
+        
 
-        if(objNH != null)
-        {
-            objHH.setMaNhomHang(objNH.getMaNhomHang());
-        }
+     
 
         boolean ketQua = false;
 
@@ -415,61 +359,25 @@ public class frmHangHoaAdd extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Thực hiện cập nhật khách hàng thành công");
             //Reload lại danh sách
             GiaoDienChinh.hienThiDanhSachHangHoa();
-        }  */
-        if(h.gethanghoa().getSelectedRow()==-1){
-             DefaultTableModel model = (DefaultTableModel)h.gethanghoa().getModel();
-          model.setRowCount(0);
-         try{
-         Connection c = ketnoi.lienket();
-         Statement d=c.createStatement();
-        
-         String id=txtMaHang.getText();
-         String ten = txtTenHang.getText();
-         String mota=txtMoTa.getText();
-         String gia=txtGiaBan.getText();
-         String tonkho=txtTonKho.getText();
-         String loai=cboNhomHang.getSelectedItem().toString();
-         String khu= txtViTri.getText();
-         d.executeUpdate("INSERT INTO sanpham(PRODUCT_ID,PRODUCT_NAME,PRODUCT_DESCRIPTION,PRODUCT_PRICE,PRODUCT_IVENTORY,PRODUCT_TYPE,LOCATION_ID) VALUES('"+id+"','"+ten+"','"+mota+"','"+gia+"','"+tonkho+"','"+loai+"','"+khu+"') ");
-           Object rowdata[]={id,ten,mota,gia,tonkho,loai,khu};
-          
-           model.addRow(rowdata);
-          // h.gethanghoa().clearSelection();
-         ketnoi.dongketnoi(c);
-         } catch(SQLException e){e.printStackTrace();}
-        
         }
-        else if(h.gethanghoa().getSelectedRow()!=-1){
-       // h.gethanghoa().clearSelection();
-        try {
-         DefaultTableModel model1= (DefaultTableModel)h.gethanghoa().getModel();
-         model1.setRowCount(0);
-         Connection c = ketnoi.lienket();
-         Statement d =c.createStatement();
-         String id = txtMaHang.getText();
-         String ten = txtTenHang.getText();
-         String mota=txtMoTa.getText();
-         String gia=txtGiaBan.getText();
-         String tonkho=txtTonKho.getText();
-         String loai=cboNhomHang.getSelectedItem().toString();
-         String khu= txtViTri.getText();
-         d.executeUpdate("UPDATE sanpham SET PRODUCT_NAME='"+ten+"',PRODUCT_DESCRIPTION='"+mota+"',PRODUCT_PRICE='"+gia+"',PRODUCT_IVENTORY='"+tonkho+"',PRODUCT_TYPE='"+loai+"',LOCATION_ID='"+khu+"' WHERE PRODUCT_ID='"+id+"'" );
-         Object rowdata[]={id,ten,mota,gia,tonkho,loai,khu};
-         model1.addRow(rowdata);
-        ketnoi.dongketnoi(c);
-        
-        } catch(SQLException e){e.printStackTrace();}
-        } 
 
     }//GEN-LAST:event_btnLuuActionPerformed
 
-    private void btnThemNhomHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemNhomHangActionPerformed
+    private void btnChonViTriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChonViTriActionPerformed
         // TODO add your handling code here:
-        frmNhomHangAdd frmThemMoi = new frmNhomHangAdd(h,this);
-        frmThemMoi.setVisible(true);
-        hienThiDanhSachNH();
-        
-    }//GEN-LAST:event_btnThemNhomHangActionPerformed
+        frmChonViTriLuuTru frmChon = new frmChonViTriLuuTru();
+        frmChon.setVisible(true);
+                
+    }//GEN-LAST:event_btnChonViTriActionPerformed
+
+    public static JTextField getTxtViTri() {
+        return txtViTri;
+    }
+
+    public static void setTxtViTri(String txtViTri) {
+        frmHangHoaAdd.txtViTri.setText(txtViTri); 
+    }
+   
 
     /**
      * @param args the command line arguments
@@ -501,14 +409,14 @@ public class frmHangHoaAdd extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frmHangHoaAdd(h).setVisible(true);
+                new frmHangHoaAdd().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnChonViTri;
     private javax.swing.JButton btnLuu;
-    private javax.swing.JButton btnThemNhomHang;
     private javax.swing.JComboBox<String> cboNhomHang;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel2;
@@ -526,26 +434,6 @@ public class frmHangHoaAdd extends javax.swing.JFrame {
     private javax.swing.JTextField txtMoTa;
     private javax.swing.JTextField txtTenHang;
     private javax.swing.JTextField txtTonKho;
-    private javax.swing.JTextField txtViTri;
+    private static javax.swing.JTextField txtViTri;
     // End of variables declaration//GEN-END:variables
-
-    private void showConbobox() {
-        cboNhomHang.addItem("loai 1");
-        cboNhomHang.addItem("loai 2");
-        cboNhomHang.addItem("loai 3");
-        cboNhomHang.addItem("loai 4");
-        //cboNhomHang.addItem("5");
-    }
-    public JComboBox<String> getcombobox(){
-    return cboNhomHang;
-    }
-    public void settext(String s, String s1,String s2,String s3,String s4, String s5, String s6){
-      txtMaHang.setText(s);
-    txtTenHang.setText(s1);
-    cboNhomHang.setSelectedItem(s2);
-    txtViTri.setText(s3);
-    txtGiaBan.setText(s4);
-    txtTonKho.setText(s5);
-    txtMoTa.setText(s6);
-    }
 }

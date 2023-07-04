@@ -29,13 +29,11 @@ public class NhapHangBusiness {
 
             conn = DataProvider.ketNoi();
 
-            String strSQL = "Select * from NhapHang where 1=1";
+            String strSQL = "Select * from DonHangNhap where 1=1";
             
             if(!tuKhoa.isEmpty())
             {
-                strSQL += " AND (maNhap = '" + tuKhoa + "'  OR maHang like '%" + 
-                        tuKhoa + "%' OR tenHang like '%"+tuKhoa 
-                        +"%' OR tenNhaCungCap like '%"+ tuKhoa + "%')";
+                strSQL += " AND (IMPORT_ID = '" + tuKhoa + "' )";
             }
             
             
@@ -50,12 +48,11 @@ public class NhapHangBusiness {
                 objNH = new NhapHang();
 
                 //Gán giá trị cho các thuộc tính
-                objNH.setTenHang(rs.getString("TenHang"));
-                objNH.setSoLuong(rs.getInt("SoLuong"));
-                objNH.setNgayNhap(rs.getDate("NgayNhap"));
-                objNH.setTenNhaCungCap(rs.getString("TenNhaCungCap"));
-                objNH.setTrangThai(rs.getString("TrangThai"));
-                objNH.setMaNhap(rs.getString("MaNhap"));
+               objNH.setMaNhap(rs.getString("IMPORT_ID"));
+                objNH.setNgayNhap(rs.getDate("ORDER_TIME_IMP"));
+                objNH.setTongTienHang(rs.getInt("TOTAL_COST_IMP"));
+                objNH.setTenNhaCungCap(rs.getString("SUPPLIER"));
+                
 
                 //Thêm vào danh sách
                 lstNhapHang.add(objNH);
@@ -92,7 +89,7 @@ public class NhapHangBusiness {
 
             conn = DataProvider.ketNoi();
 
-            String strSQL = "Select * from NhapHang";
+            String strSQL = "Select * from donhangnhap";
 
             Statement comm = conn.createStatement();
 
@@ -105,13 +102,10 @@ public class NhapHangBusiness {
 
                 //Gán giá trị cho các thuộc tính
                 
-                objNH.setTenHang(rs.getString("TenHang"));
-                objNH.setSoLuong(rs.getInt("SoLuong"));
-                objNH.setNgayNhap(rs.getDate("NgayNhap"));
-                objNH.setTenNhaCungCap(rs.getString("TenNhaCungCap"));
-                objNH.setTrangThai(rs.getString("TrangThai"));
-                objNH.setMaNhap(rs.getString("MaNhap"));
-
+                objNH.setMaNhap(rs.getString("IMPORT_ID"));
+                 objNH.setNgayNhap(rs.getDate("ORDER_TIME_IMP"));
+                objNH.setTongTienHang(rs.getInt("TOTAL_COST_IMP"));
+                objNH.setTenNhaCungCap(rs.getString("SUPPLIER"));
                 //Thêm vào danh sách
                 lstNhapHang.add(objNH);
             }
@@ -142,7 +136,7 @@ public class NhapHangBusiness {
 
             conn = DataProvider.ketNoi();
 
-            String strSQL = "Select * from NhapHang where maNhap='" + maNhap + "'";
+            String strSQL = "Select * from donhangnhap where IMPORT_ID='" + maNhap + "'";
 
             Statement comm = conn.createStatement();
 
@@ -153,15 +147,10 @@ public class NhapHangBusiness {
                 objNH = new NhapHang();
 
                 //Gán giá trị cho các thuộc tính
-                objNH.setMaHang(rs.getString("MaHang"));
-                objNH.setTenHang(rs.getString("TenHang"));
-                objNH.setMaNhap(rs.getString("MaNhap"));
-                objNH.setNgayNhap(rs.getDate("NgayNhap"));
-                objNH.setGhiChu(rs.getString("GhiChu"));
-                objNH.setSoLuong(rs.getInt("SoLuong"));
-                 objNH.setTenNhaCungCap(rs.getString("TenNhaCungCap"));
-                 objNH.setTrangThai(rs.getString("TrangThai"));
-                 objNH.setTongTienHang(rs.getInt("TongTienNhap"));
+               
+                 objNH.setNgayNhap(rs.getDate("ORDER_TIME_IMP"));
+                objNH.setTongTienHang(rs.getInt("TOTAL_COST_IMP"));
+                objNH.setTenNhaCungCap(rs.getString("SUPPLIER"));
                                   
                 
                 
@@ -202,24 +191,19 @@ public class NhapHangBusiness {
             conn = DataProvider.ketNoi();
             
             //Khai báo công việc
-            String strInsert = "Insert into NhapHang(MaNhap, TenHang, MaHang, NgayNhap, "
-                    + "TrangThai, TenNhaCungCap,SoLuong,TongTienNhap,GhiChu) values("
-                    + "?,?,?,?,?, ?, ?, ?,?)";
+            String strInsert = "Insert into donhangnhap(IMPORT_ID, ORDER_TIME_IMP, TOTAL_COST_IMP, SUPPLIER "
+                    + ") values("
+                    + "?,?,?,?)";
             
             PreparedStatement comm = conn.prepareStatement(strInsert);
             
             
             //Thiết lập các giá trị cho tham số
             comm.setString(1, objNH.getMaNhap());
-            comm.setString(2, objNH.getTenHang());
-            comm.setString(3, objNH.getMaHang());
-            comm.setDate(4, new Date(objNH.getNgayNhap().getTime()));
-            comm.setString(5, objNH.getTrangThai());
-            comm.setString(6, objNH.getTenNhaCungCap());
-            comm.setInt(7, objNH.getSoLuong());
-            comm.setInt(8, objNH.getTongTienHang());
-             
-                comm.setString(9, objNH.getGhiChu());
+            comm.setInt(3, objNH.getTongTienHang());
+            comm.setString(4, objNH.getTenNhaCungCap());
+            comm.setDate(2, new Date(objNH.getNgayNhap().getTime()));
+            
                 
                 
              
@@ -259,16 +243,16 @@ public class NhapHangBusiness {
             conn = DataProvider.ketNoi();
             
             //Khai báo công việc
-            String strSQL = "Select * from HangHoa where MaHang='" + objNH.getMaHang() + "'";
+            String strSQL = "Select * from donhangnhap where IMPORT_ID='" + objNH.getMaHang() + "'";
 
             Statement coa = conn.createStatement();
 
             ResultSet rs = coa.executeQuery(strSQL);   
-            while (rs.next())
+           /* while (rs.next())
             {
                 SoLuong=rs.getInt("TonKho");
             }
-                SoLuong+=objNH.getSoLuong();
+              SoLuong+=objNH.getSoLuong();*/
             String strUpdate = "Update HangHoa set  TonKho=?  where MaHang = ?";
             
              PreparedStatement comm = conn.prepareStatement(strUpdate);    
@@ -322,25 +306,23 @@ public class NhapHangBusiness {
 
             
             //Khai báo công việc
-            String strUpdate = "Update NhapHang set TenHang=?, MaHang = ?, NgayNhap= ?, "
-                    + "TrangThai = ?, TenNhaCungCap = ?, "
-                    + "SoLuong = ?, TongTienNhap=?,GhiChu= ? where MaNhap = ?";
+            String strUpdate = "Update donhangnhap set ORDER_TIME_IMP=?, TOTAL_COST_IMP = ?, SUPPLIER= ? "
+                    
+                    + " where IMPORT_ID = ?";
             
             PreparedStatement comm = conn.prepareStatement(strUpdate);
             
             //Thiết lập các giá trị cho tham số
             
             
-            comm.setString(9, objNH.getMaNhap());
-            comm.setString(1, objNH.getTenHang());
-            comm.setString(2, objNH.getMaHang());
-            comm.setDate(3, new Date(objNH.getNgayNhap().getTime()));
-            comm.setString(4, objNH.getTrangThai());
-            comm.setString(5, objNH.getTenNhaCungCap());
-            comm.setInt(6, objNH.getSoLuong());
-            comm.setInt(7, objNH.getTongTienHang());
+            comm.setString(4, objNH.getMaNhap());
+           
+            comm.setDate(1, new Date(objNH.getNgayNhap().getTime()));
+            comm.setInt(2, objNH.getTongTienHang());
+            comm.setString(3, objNH.getTenNhaCungCap());
+            
              
-                comm.setString(8, objNH.getGhiChu());
+              
             
                        //Thực hiện công việc
            return (comm.executeUpdate() > 0);
@@ -364,116 +346,7 @@ public class NhapHangBusiness {
         
         return false;
     }
-     public boolean capNhat1(NhapHang objNH)
-    {
-        int soLuong=0;
-        Connection conn = null;
-           
-        try {
-            int SoLuong=0,SoLuongCu=0;
-            //Kết nối đến db làm việc
-            conn = DataProvider.ketNoi();
-            String strSQL = "Select * from NhapHang where MaNhap='" + objNH.getMaNhap()+ "'";
-
-            Statement coa = conn.createStatement();
-
-            ResultSet rs = coa.executeQuery(strSQL);   
-            while (rs.next())
-            {
-                SoLuongCu=rs.getInt("SoLuong");
-            }
-            //Khai báo công việc
-           
-             strSQL = "Select * from HangHoa where MaHang='" + objNH.getMaHang() + "'";
-
-            
-
-            rs = coa.executeQuery(strSQL);   
-            while (rs.next())
-            {
-                SoLuong=rs.getInt("TonKho");
-            }
-                SoLuong=SoLuong+objNH.getSoLuong()-SoLuongCu;
-            String strUpdate1 = "Update HangHoa set  TonKho=?  where MaHang = ?";
-            
-            PreparedStatement comm = conn.prepareStatement(strUpdate1);    
-            comm.setInt(1, SoLuong);
-            comm.setString(2, objNH.getMaHang());            //Thực hiện công việc
-           return (comm.executeUpdate() > 0);
-           
-        } catch (SQLException ex) {
-            System.err.println("Co loi xay ra trong qua trinh cap nhat thong tin. "
-                    + "Chi tiet: " + ex.getMessage());
-        }
-        finally
-        {
-             try {
-                if(conn != null){
-                //Đóng kết nối
-                conn.close();
-                }
-            } catch (SQLException ex) {
-                System.err.println("Co loi xay ra. Chi tiet: " + ex.getMessage());
-            }
-        }
-        
-        
-        return false;
-    }
-    public boolean xoa1(String MaNhap)
-    {
-       Connection conn = null;
-           
-       
-            
-            //Khai báo công việc
-           try {
-            int SoLuong=0;
-            //Kết nối đến db làm việc
-            conn = DataProvider.ketNoi();
-            NhapHang objNH = new NhapHang();
-            objNH=layChiTietTheoMa(MaNhap);
-            //Khai báo công việc
-            String strSQL = "Select * from HangHoa where MaHang='" + objNH.getMaHang() + "'";
-
-            Statement coa = conn.createStatement();
-
-            ResultSet rs = coa.executeQuery(strSQL);   
-            while (rs.next())
-            {
-                SoLuong=rs.getInt("TonKho");
-            }
-                SoLuong-=objNH.getSoLuong();
-            String strUpdate = "Update HangHoa set  TonKho=?  where MaHang = ?";
-            
-             PreparedStatement comm = conn.prepareStatement(strUpdate);    
-            comm.setInt(1, SoLuong);
-            comm.setString(2, objNH.getMaHang());
-                
-            //Thực hiện công việc
-           return (comm.executeUpdate() > 0);
-           
-        } catch (SQLException ex) {
-            System.err.println("Co loi xay ra trong qua trinh cap nhat thong tin. "
-                    + "Chi tiet: " + ex.getMessage());
-        }
-        finally
-        {
-             try {
-                if(conn != null){
-                //Đóng kết nối
-                conn.close();
-                }
-            } catch (SQLException ex) {
-                System.err.println("Co loi xay ra. Chi tiet: " + ex.getMessage());
-            }
-        }
-            
-            //Thực hiện công việc
-           
-        
-        return false;
-    }
+     
     
     /**
      * Xóa sinh viên trong hệ thống
@@ -491,7 +364,7 @@ public class NhapHangBusiness {
             conn = DataProvider.ketNoi();
             
             //Khai báo công việc
-            String strDelete = "Delete from NhapHang where MaNhap = ?";
+            String strDelete = "Delete from donhangnhap where IMPORT_ID = ?";
             
             PreparedStatement comm = conn.prepareStatement(strDelete);
             
