@@ -163,6 +163,13 @@ public class frmViTriLuuTruAdd extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+     public void thongTinChiTiet()
+    {
+        
+      
+        jButton1.setVisible(false);
+        
+    }
     private void hienThiChiTiet()
     {
         ViTri objKH = DataProvider.getViTriBus().layChiTietTheoMa(maViTri);

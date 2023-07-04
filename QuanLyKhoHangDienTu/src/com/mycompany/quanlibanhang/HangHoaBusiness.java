@@ -40,7 +40,7 @@ public class HangHoaBusiness {
 
             conn = DataProvider.ketNoi();
 
-            String strSQL = "Select * from HangHoa";
+            String strSQL = "Select * from HangHoa ";
 
             Statement comm = conn.createStatement();
 

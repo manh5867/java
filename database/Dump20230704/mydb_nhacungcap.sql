@@ -16,30 +16,30 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `khachhang`
+-- Table structure for table `nhacungcap`
 --
 
-DROP TABLE IF EXISTS `khachhang`;
+DROP TABLE IF EXISTS `nhacungcap`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `khachhang` (
-  `CUSTOMER_ID` varchar(10) NOT NULL,
-  `CUSTOMER_NAME` varchar(45) NOT NULL,
-  `CUSTOMER_ADDRESS` varchar(45) NOT NULL,
-  `CUSTOMER_PHONE_NUMBER` varchar(45) NOT NULL,
-  `CUSTOMER_EMAIL` varchar(45) NOT NULL,
-  PRIMARY KEY (`CUSTOMER_ID`)
+CREATE TABLE `nhacungcap` (
+  `SUPPLIER_ID` int NOT NULL,
+  `SUPPLIER_NAME` varchar(45) NOT NULL,
+  `SUPPLIER_PHONE_NUM` varchar(45) NOT NULL,
+  `SUPPLIER_EMAIL` varchar(45) NOT NULL,
+  `SUPPLIER_ADDRESS` varchar(45) NOT NULL,
+  PRIMARY KEY (`SUPPLIER_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `khachhang`
+-- Dumping data for table `nhacungcap`
 --
 
-LOCK TABLES `khachhang` WRITE;
-/*!40000 ALTER TABLE `khachhang` DISABLE KEYS */;
-INSERT INTO `khachhang` VALUES ('2','3','6','4','5'),('3','4','8','5','6');
-/*!40000 ALTER TABLE `khachhang` ENABLE KEYS */;
+LOCK TABLES `nhacungcap` WRITE;
+/*!40000 ALTER TABLE `nhacungcap` DISABLE KEYS */;
+INSERT INTO `nhacungcap` VALUES (1,'12','1','1','1');
+/*!40000 ALTER TABLE `nhacungcap` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -51,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-07-03 20:12:01
+-- Dump completed on 2023-07-04 19:01:33

@@ -86,10 +86,10 @@ public class frmChonHangHoa extends javax.swing.JFrame {
         jLabel28 = new javax.swing.JLabel();
         jPanel15 = new javax.swing.JPanel();
         jLabel29 = new javax.swing.JLabel();
-        txtTimKiemID2 = new javax.swing.JTextField();
-        btnTimKiem2 = new javax.swing.JButton();
+        txtTimKiem = new javax.swing.JTextField();
+        btnTimKiem = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox = new javax.swing.JComboBox<>();
         txtGiaBan = new javax.swing.JTextField();
         txtViTri = new javax.swing.JTextField();
         btnDong2 = new javax.swing.JButton();
@@ -124,18 +124,23 @@ public class frmChonHangHoa extends javax.swing.JFrame {
 
         jLabel29.setText("Từ khóa:");
 
-        txtTimKiemID2.addActionListener(new java.awt.event.ActionListener() {
+        txtTimKiem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTimKiemID2ActionPerformed(evt);
+                txtTimKiemActionPerformed(evt);
             }
         });
 
-        btnTimKiem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vn/com/stanford/j0622/qlsinhvien/images/search.png"))); // NOI18N
-        btnTimKiem2.setText("Tìm kiếm");
+        btnTimKiem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vn/com/stanford/j0622/qlsinhvien/images/search.png"))); // NOI18N
+        btnTimKiem.setText("Tìm kiếm");
+        btnTimKiem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTimKiemActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Nhóm hàng:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Điện thoại di động", "Linh kiện điện tử", "Máy tính xách tay", "Thiết bị âm thanh", "Thiết bị gia dụng thông minh" }));
 
         javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
         jPanel15.setLayout(jPanel15Layout);
@@ -148,11 +153,11 @@ public class frmChonHangHoa extends javax.swing.JFrame {
                         .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel29)
                             .addComponent(jLabel2)
-                            .addComponent(jComboBox1, 0, 149, Short.MAX_VALUE)
-                            .addComponent(txtTimKiemID2)))
+                            .addComponent(jComboBox, 0, 149, Short.MAX_VALUE)
+                            .addComponent(txtTimKiem)))
                     .addGroup(jPanel15Layout.createSequentialGroup()
                         .addGap(44, 44, 44)
-                        .addComponent(btnTimKiem2)))
+                        .addComponent(btnTimKiem)))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
         jPanel15Layout.setVerticalGroup(
@@ -161,13 +166,13 @@ public class frmChonHangHoa extends javax.swing.JFrame {
                 .addGap(23, 23, 23)
                 .addComponent(jLabel29)
                 .addGap(18, 18, 18)
-                .addComponent(txtTimKiemID2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addGap(31, 31, 31)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
-                .addComponent(btnTimKiem2)
+                .addComponent(btnTimKiem)
                 .addGap(16, 16, 16))
         );
 
@@ -259,9 +264,8 @@ public class frmChonHangHoa extends javax.swing.JFrame {
         jPanel14Layout.setHorizontalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel14Layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
+                .addGap(44, 44, 44)
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel14Layout.createSequentialGroup()
                         .addComponent(jScrollPane3)
@@ -301,7 +305,11 @@ public class frmChonHangHoa extends javax.swing.JFrame {
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel14Layout.createSequentialGroup()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel14Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel14Layout.createSequentialGroup()
                         .addGap(33, 33, 33)
@@ -330,10 +338,6 @@ public class frmChonHangHoa extends javax.swing.JFrame {
                         .addGap(137, 137, 137)
                         .addComponent(btnDong2)))
                 .addGap(0, 138, Short.MAX_VALUE))
-            .addGroup(jPanel14Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -354,7 +358,49 @@ public class frmChonHangHoa extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-public static void hienThiDanhSachHangHoa()
+
+     public static void hienThiDanhSachTimKiemHangHoa()
+    {
+        String tuKhoa="",nhomHang="";
+        
+        tuKhoa=txtTimKiem.getText();
+        
+        nhomHang=jComboBox.getSelectedItem().toString();
+       
+        //Khai báo 1 tiêu đề
+        String colTieuDe[] = new String[]{"Mã hàng", "Tên hàng", "Nhóm hàng", "Vị trí", "Tồn kho","Giá bán"};
+        
+        //Khai báo đối tượng để thiển thị lên table
+        DefaultTableModel model = new DefaultTableModel(colTieuDe, 0);
+        List<HangHoa> lstHangHoa = DataProvider.getHangHoaBus().timKiemHangHoa(tuKhoa, nhomHang);
+        
+        //Lấy danh sách sv
+        
+        
+        Object row[] = null;
+        
+        //Duyệt để đưa vào model
+        for(HangHoa kh : lstHangHoa)
+        {
+            //Khởi tạo mảng
+            row = new Object[6];
+            
+            row[0] = kh.getMaHang();
+            row[1] = kh.getTenHang();
+            row[2] = kh.getTenNhomHang();
+            row[3] = kh.getViTri();
+            row[4] = kh.getTonKho();
+            row[5] = kh.getGiaBan();
+            
+            
+            //Thêm vào model
+            model.addRow(row);
+        }
+        
+        //Hiển thị lên table
+        jTableHangHoa.setModel(model);       
+    }
+    public static void hienThiDanhSachHangHoa()
     {
         //Khai báo 1 tiêu đề
         String colTieuDe[] = new String[]{"Mã hàng", "Tên hàng", "Nhóm hàng", "Vị trí", "Tồn kho","Giá bán"};
@@ -375,7 +421,7 @@ public static void hienThiDanhSachHangHoa()
             
             row[0] = kh.getMaHang();
             row[1] = kh.getTenHang();
-            row[2] = kh.getMaNhomHang();
+            row[2] = kh.getTenNhomHang();
             row[3] = kh.getViTri();
             row[4] = kh.getTonKho();
             row[5] = kh.getGiaBan();
@@ -388,9 +434,9 @@ public static void hienThiDanhSachHangHoa()
         //Hiển thị lên table
         jTableHangHoa.setModel(model);        
     }
-    private void txtTimKiemID2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTimKiemID2ActionPerformed
+    private void txtTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTimKiemActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtTimKiemID2ActionPerformed
+    }//GEN-LAST:event_txtTimKiemActionPerformed
 
     private void btnDong2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDong2ActionPerformed
         // TODO add your handling code he
@@ -434,6 +480,8 @@ public static void hienThiDanhSachHangHoa()
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
         hienThiDanhSachHangHoa();
+         jComboBox.insertItemAt("", 0);
+        jComboBox.setSelectedItem("");
     }//GEN-LAST:event_formWindowOpened
 
     
@@ -531,6 +579,11 @@ public static void hienThiDanhSachHangHoa()
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSoLuongActionPerformed
 
+    private void btnTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiemActionPerformed
+        // TODO add your handling code here:
+        hienThiDanhSachTimKiemHangHoa();
+    }//GEN-LAST:event_btnTimKiemActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -569,8 +622,8 @@ public static void hienThiDanhSachHangHoa()
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnChon;
     private javax.swing.JButton btnDong2;
-    private javax.swing.JButton btnTimKiem2;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JButton btnTimKiem;
+    private static javax.swing.JComboBox<String> jComboBox;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel26;
@@ -591,7 +644,7 @@ public static void hienThiDanhSachHangHoa()
     private javax.swing.JTextField txtNhomHang;
     private javax.swing.JTextField txtSoLuong;
     private javax.swing.JTextField txtTenHang;
-    private javax.swing.JTextField txtTimKiemID2;
+    private static javax.swing.JTextField txtTimKiem;
     private javax.swing.JTextField txtTonKho;
     private javax.swing.JTextField txtViTri;
     // End of variables declaration//GEN-END:variables

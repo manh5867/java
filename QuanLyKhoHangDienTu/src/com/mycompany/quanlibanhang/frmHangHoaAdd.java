@@ -20,6 +20,11 @@ public class frmHangHoaAdd extends javax.swing.JFrame {
     public void setThongTin(boolean ThongTin) {
         this.ThongTin = ThongTin;
     }
+   
+
+    
+
+    
 
     private String maHangHoa = "";
 

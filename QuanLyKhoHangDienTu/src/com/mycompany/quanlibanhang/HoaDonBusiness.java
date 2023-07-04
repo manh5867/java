@@ -32,7 +32,7 @@ public class HoaDonBusiness {
             
             if(!tuKhoa.isEmpty())
             {
-                strSQL += " AND (maHoaDon = '" + tuKhoa + "' OR KhachHang like '%"+ tuKhoa + "%')";
+                strSQL += " AND (EXPORT_ID = '" + tuKhoa + "' OR CUSTOMER like '%"+ tuKhoa + "%')";
             }
             
             
@@ -47,12 +47,10 @@ public class HoaDonBusiness {
                 objHD = new HoaDon();
 
                 //Gán giá trị cho các thuộc tính
-                objHD.setTenHang(rs.getString("TenHang"));
-                objHD.setSoLuong(rs.getInt("SoLuong"));
-                objHD.setThoiGian(rs.getDate("ThoiGian"));
-                objHD.setKhachHang(rs.getString("KhachHang"));
-                objHD.setTongTienHang(rs.getInt("TongTienHang"));
-                objHD.setMaHoaDon(rs.getString("MaHoaDon"));
+                objHD.setThoiGian(rs.getDate("ORDER_TIME_EXP"));
+                objHD.setKhachHang(rs.getString("CUSTOMER"));
+                objHD.setTongTienHang(rs.getInt("TOTAL_PRICE_EXP"));
+                objHD.setMaHoaDon(rs.getString("EXPORT_ID"));
 
                 //Thêm vào danh sách
                 lstHoaDon.add(objHD);

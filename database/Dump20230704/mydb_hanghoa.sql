@@ -16,29 +16,33 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `donhangnhap`
+-- Table structure for table `hanghoa`
 --
 
-DROP TABLE IF EXISTS `donhangnhap`;
+DROP TABLE IF EXISTS `hanghoa`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `donhangnhap` (
-  `IMPORT_ID` varchar(16) NOT NULL,
-  `ORDER_TIME_IMP` datetime NOT NULL,
-  `TOTAL_COST_IMP` varchar(45) NOT NULL,
-  `SUPPLIER` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`IMPORT_ID`)
+CREATE TABLE `hanghoa` (
+  `PRODUCT_ID` varchar(10) NOT NULL,
+  `PRODUCT_NAME` varchar(45) NOT NULL,
+  `PRODUCT_DESCRIPTION` varchar(45) DEFAULT NULL,
+  `PRODUCT_PRICE` varchar(45) NOT NULL,
+  `PRODUCT_TYPE` varchar(45) NOT NULL,
+  `PRODUCT_LOCATION` varchar(10) NOT NULL,
+  `PRODUCT_QUANTITY` varchar(45) NOT NULL,
+  PRIMARY KEY (`PRODUCT_ID`),
+  KEY `fk_sanpham_vitriluutru1_idx` (`PRODUCT_LOCATION`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `donhangnhap`
+-- Dumping data for table `hanghoa`
 --
 
-LOCK TABLES `donhangnhap` WRITE;
-/*!40000 ALTER TABLE `donhangnhap` DISABLE KEYS */;
-INSERT INTO `donhangnhap` VALUES ('NH002','2023-07-03 00:00:00','1','1'),('NH011','2023-07-03 00:00:00','1','1'),('NH013','2023-04-03 00:00:00','12','Mạnh'),('NH020','2023-07-03 00:00:00','0','Mạnh');
-/*!40000 ALTER TABLE `donhangnhap` ENABLE KEYS */;
+LOCK TABLES `hanghoa` WRITE;
+/*!40000 ALTER TABLE `hanghoa` DISABLE KEYS */;
+INSERT INTO `hanghoa` VALUES ('1','2','3','4','5','4','2'),('3','3','3','3','T2','33','1'),('4','4','4','4','Điện tử','4','1'),('HH001','Mạnh','2','1','Điện thoại di động','Kho 2','3'),('HH003','Dây điện nhỏ','','100000','Linh kiện điện tử','Kho 2','10'),('SP001','Chuột1','','123','T1','VT002','-5'),('Sp002','Máy','1','1','T1','1','-5');
+/*!40000 ALTER TABLE `hanghoa` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -50,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-07-03 20:12:00
+-- Dump completed on 2023-07-04 19:01:32

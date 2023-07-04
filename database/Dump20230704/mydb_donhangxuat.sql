@@ -16,29 +16,29 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `vitriluutru`
+-- Table structure for table `donhangxuat`
 --
 
-DROP TABLE IF EXISTS `vitriluutru`;
+DROP TABLE IF EXISTS `donhangxuat`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `vitriluutru` (
-  `LOCATION_ID` varchar(10) NOT NULL,
-  `LOCATION_NAME` varchar(45) NOT NULL,
-  `LOCATION_STATUS` varchar(45) NOT NULL,
-  `LOCATION_DESCRIPTION` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`LOCATION_ID`)
+CREATE TABLE `donhangxuat` (
+  `EXPORT_ID` varchar(10) NOT NULL,
+  `ORDER_TIME_EXP` datetime NOT NULL,
+  `TOTAL_PRICE_EXP` varchar(45) NOT NULL,
+  `CUSTOMER` varchar(45) NOT NULL,
+  PRIMARY KEY (`EXPORT_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `vitriluutru`
+-- Dumping data for table `donhangxuat`
 --
 
-LOCK TABLES `vitriluutru` WRITE;
-/*!40000 ALTER TABLE `vitriluutru` DISABLE KEYS */;
-INSERT INTO `vitriluutru` VALUES ('Vt001','Kho 2','Đầy','1');
-/*!40000 ALTER TABLE `vitriluutru` ENABLE KEYS */;
+LOCK TABLES `donhangxuat` WRITE;
+/*!40000 ALTER TABLE `donhangxuat` DISABLE KEYS */;
+INSERT INTO `donhangxuat` VALUES ('','2023-07-03 00:00:00','0','Mạnh'),('HD001','2023-07-06 00:00:00','385','1'),('HD002','2023-08-04 00:00:00','1000','Quốc Ạnh'),('HD003','2023-07-03 00:00:00','0','Mạnh');
+/*!40000 ALTER TABLE `donhangxuat` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -50,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-07-03 20:12:01
+-- Dump completed on 2023-07-04 19:01:33

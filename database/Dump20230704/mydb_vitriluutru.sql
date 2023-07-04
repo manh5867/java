@@ -37,7 +37,7 @@ CREATE TABLE `vitriluutru` (
 
 LOCK TABLES `vitriluutru` WRITE;
 /*!40000 ALTER TABLE `vitriluutru` DISABLE KEYS */;
-INSERT INTO `vitriluutru` VALUES ('Vt001','Kho 2','Đầy','1');
+INSERT INTO `vitriluutru` VALUES ('Vt001','Kho 2','Đầy','1'),('VT002','Kho 4 ngăn 2','Chưa đầy ',NULL);
 /*!40000 ALTER TABLE `vitriluutru` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -50,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-07-03 20:12:01
+-- Dump completed on 2023-07-04 19:01:33

@@ -16,30 +16,31 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `khachhang`
+-- Table structure for table `chitietdonhangnhap`
 --
 
-DROP TABLE IF EXISTS `khachhang`;
+DROP TABLE IF EXISTS `chitietdonhangnhap`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `khachhang` (
-  `CUSTOMER_ID` varchar(10) NOT NULL,
-  `CUSTOMER_NAME` varchar(45) NOT NULL,
-  `CUSTOMER_ADDRESS` varchar(45) NOT NULL,
-  `CUSTOMER_PHONE_NUMBER` varchar(45) NOT NULL,
-  `CUSTOMER_EMAIL` varchar(45) NOT NULL,
-  PRIMARY KEY (`CUSTOMER_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+CREATE TABLE `chitietdonhangnhap` (
+  `IMPORTDETAIL_ID` int NOT NULL AUTO_INCREMENT,
+  `PRODUCT_NAME` varchar(45) NOT NULL,
+  `QUANTITY_IMP` varchar(45) NOT NULL,
+  `COST_EXP` varchar(45) NOT NULL,
+  `TOTAL_COST_EXP` varchar(45) DEFAULT NULL,
+  `IMPORT_ID` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`IMPORTDETAIL_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `khachhang`
+-- Dumping data for table `chitietdonhangnhap`
 --
 
-LOCK TABLES `khachhang` WRITE;
-/*!40000 ALTER TABLE `khachhang` DISABLE KEYS */;
-INSERT INTO `khachhang` VALUES ('2','3','6','4','5'),('3','4','8','5','6');
-/*!40000 ALTER TABLE `khachhang` ENABLE KEYS */;
+LOCK TABLES `chitietdonhangnhap` WRITE;
+/*!40000 ALTER TABLE `chitietdonhangnhap` DISABLE KEYS */;
+INSERT INTO `chitietdonhangnhap` VALUES (1,'3','3','3','3',NULL),(2,'Máy','2','0','0','NH001'),(4,'Máy','2','0','0','NH003'),(5,'Máy','1','0','0','NH004'),(6,'Máy','3','0','0','Nh006'),(7,'Chuột1','5','0','0','Nh006'),(8,'Chuột1','3','123','369','NH007'),(9,'Chuột1','3','123','369','NH008'),(10,'Chuột1','3','123','369','NH009'),(11,'Chuột1','5','123','615','NH009'),(12,'Máy','3','1','3','NH009'),(15,'Máy','3','1','3','NH002'),(16,'Máy','3','1','3','Nh002'),(17,'2','2','4','8','NH002'),(18,'4','2','4','8','NH013'),(19,'4','1','4','4','NH013');
+/*!40000 ALTER TABLE `chitietdonhangnhap` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -51,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-07-03 20:12:01
+-- Dump completed on 2023-07-04 19:01:34

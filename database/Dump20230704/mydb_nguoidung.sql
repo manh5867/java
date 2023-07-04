@@ -16,29 +16,30 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `donhangnhap`
+-- Table structure for table `nguoidung`
 --
 
-DROP TABLE IF EXISTS `donhangnhap`;
+DROP TABLE IF EXISTS `nguoidung`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `donhangnhap` (
-  `IMPORT_ID` varchar(16) NOT NULL,
-  `ORDER_TIME_IMP` datetime NOT NULL,
-  `TOTAL_COST_IMP` varchar(45) NOT NULL,
-  `SUPPLIER` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`IMPORT_ID`)
+CREATE TABLE `nguoidung` (
+  `UserID` varchar(10) NOT NULL,
+  `Username` varchar(45) DEFAULT NULL,
+  `PASSWORD` varchar(45) DEFAULT NULL,
+  `Full_Name` varchar(45) DEFAULT NULL,
+  `Access_Level` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`UserID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `donhangnhap`
+-- Dumping data for table `nguoidung`
 --
 
-LOCK TABLES `donhangnhap` WRITE;
-/*!40000 ALTER TABLE `donhangnhap` DISABLE KEYS */;
-INSERT INTO `donhangnhap` VALUES ('NH002','2023-07-03 00:00:00','1','1'),('NH011','2023-07-03 00:00:00','1','1'),('NH013','2023-04-03 00:00:00','12','Mạnh'),('NH020','2023-07-03 00:00:00','0','Mạnh');
-/*!40000 ALTER TABLE `donhangnhap` ENABLE KEYS */;
+LOCK TABLES `nguoidung` WRITE;
+/*!40000 ALTER TABLE `nguoidung` DISABLE KEYS */;
+INSERT INTO `nguoidung` VALUES ('001','manh5867','Thebausffs','Mạnh','Quản lí'),('002','quocanh','quocanh01','Quốc Anh','Nhân viên');
+/*!40000 ALTER TABLE `nguoidung` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -50,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-07-03 20:12:00
+-- Dump completed on 2023-07-04 19:01:33
