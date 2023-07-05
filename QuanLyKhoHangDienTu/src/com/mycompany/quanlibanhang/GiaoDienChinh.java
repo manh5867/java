@@ -244,6 +244,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(jTableHangHoa);
 
+        btnThongTinHangHoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vn/com/stanford/j0622/qlsinhvien/images/search.png"))); // NOI18N
         btnThongTinHangHoa.setText("Thông tin chi tiết");
         btnThongTinHangHoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -740,6 +741,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         });
         jScrollPane5.setViewportView(jTableHoaDon);
 
+        btnThongTinChiTietHoaDon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vn/com/stanford/j0622/qlsinhvien/images/search.png"))); // NOI18N
         btnThongTinChiTietHoaDon.setText("Thông tin chi tiết");
         btnThongTinChiTietHoaDon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -923,6 +925,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         });
         jScrollPane4.setViewportView(jTableNhapHang);
 
+        btnThongTinChiTietNhapHang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vn/com/stanford/j0622/qlsinhvien/images/search.png"))); // NOI18N
         btnThongTinChiTietNhapHang.setText("Thông tin chi tiết");
         btnThongTinChiTietNhapHang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -967,7 +970,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
                 .addComponent(btnSua1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(64, 64, 64)
                 .addComponent(btnXoa1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 70, Short.MAX_VALUE))
+                .addGap(0, 50, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel19Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)

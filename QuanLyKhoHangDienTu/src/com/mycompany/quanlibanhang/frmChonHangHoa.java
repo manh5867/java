@@ -337,7 +337,7 @@ public class frmChonHangHoa extends javax.swing.JFrame {
                     .addGroup(jPanel14Layout.createSequentialGroup()
                         .addGap(137, 137, 137)
                         .addComponent(btnDong2)))
-                .addGap(0, 138, Short.MAX_VALUE))
+                .addGap(0, 24, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -353,7 +353,7 @@ public class frmChonHangHoa extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 12, Short.MAX_VALUE))
+                .addGap(0, 8, Short.MAX_VALUE))
         );
 
         pack();
@@ -468,7 +468,7 @@ public class frmChonHangHoa extends javax.swing.JFrame {
             txtViTri.setText(objKH.getViTri());
             txtTonKho.setText(Integer.toString(objKH.getTonKho()));
           
-            txtNhomHang.setText(objKH.getMaNhomHang());
+            txtNhomHang.setText(objKH.getTenNhomHang());
 
             txtGiaBan.setText(Integer.toString(objKH.getGiaBan()));
            

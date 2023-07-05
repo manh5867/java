@@ -249,7 +249,7 @@ public class frmViTriLuuTruAdd extends javax.swing.JFrame {
         
         if(ketQua)//true
         {
-            JOptionPane.showMessageDialog(rootPane, "Thực hiện cập nhật khách hàng thành công");
+            JOptionPane.showMessageDialog(rootPane, "Thực hiện cập nhật vị trí lưu trữ thành công");
             //Reload lại danh sách
             GiaoDienChinh.hienThiDanhSachViTri();
         }
