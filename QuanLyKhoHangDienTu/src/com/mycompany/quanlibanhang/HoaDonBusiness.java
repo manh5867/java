@@ -32,7 +32,7 @@ public class HoaDonBusiness {
             
             if(!tuKhoa.isEmpty())
             {
-                strSQL += " AND (EXPORT_ID = '" + tuKhoa + "' OR CUSTOMER like '%"+ tuKhoa + "%')";
+                strSQL += " AND (EXPORT_ID = '" + tuKhoa + "' OR CUSTOMER_NAME like '%"+ tuKhoa + "%')";
             }
             
             
@@ -48,7 +48,7 @@ public class HoaDonBusiness {
 
                 //Gán giá trị cho các thuộc tính
                 objHD.setThoiGian(rs.getDate("ORDER_TIME_EXP"));
-                objHD.setKhachHang(rs.getString("CUSTOMER"));
+                objHD.setKhachHang(rs.getString("CUSTOMER_NAME"));
                 objHD.setTongTienHang(rs.getInt("TOTAL_PRICE_EXP"));
                 objHD.setMaHoaDon(rs.getString("EXPORT_ID"));
 
@@ -102,7 +102,7 @@ public class HoaDonBusiness {
                 
                
                 objHD.setThoiGian(rs.getDate("ORDER_TIME_EXP"));
-                objHD.setKhachHang(rs.getString("CUSTOMER"));
+                objHD.setKhachHang(rs.getString("CUSTOMER_NAME"));
                 objHD.setTongTienHang(rs.getInt("TOTAL_PRICE_EXP"));
                 objHD.setMaHoaDon(rs.getString("EXPORT_ID"));
 
@@ -148,7 +148,7 @@ public class HoaDonBusiness {
 
                 //Gán giá trị cho các thuộc tính
                 objHD.setThoiGian(rs.getDate("ORDER_TIME_EXP"));
-                objHD.setKhachHang(rs.getString("CUSTOMER"));
+                objHD.setKhachHang(rs.getString("CUSTOMER_NAME"));
                 objHD.setTongTienHang(rs.getInt("TOTAL_PRICE_EXP"));
                 objHD.setMaHoaDon(rs.getString("EXPORT_ID"));
                                   
@@ -191,7 +191,7 @@ public class HoaDonBusiness {
             conn = DataProvider.ketNoi();
             
             //Khai báo công việc
-            String strInsert = "Insert into donHangXuat(EXPORT_ID, ORDER_TIME_EXP, TOTAL_PRICE_EXP, CUSTOMER "
+            String strInsert = "Insert into donHangXuat(EXPORT_ID, ORDER_TIME_EXP, TOTAL_PRICE_EXP, CUSTOMER_NAME "
                     + ") values("
                     + "?,?,?,?)";
             
@@ -249,7 +249,7 @@ public class HoaDonBusiness {
             
             //Khai báo công việc
             String strUpdate = "Update donHangXuat set  ORDER_TIME_EXP = ?, TOTAL_PRICE_EXP= ?, "
-                    + " CUSTOMER = ? "
+                    + " CUSTOMER_NAME = ? "
                     + "  where EXPORT_ID = ?";
             
             PreparedStatement comm = conn.prepareStatement(strUpdate);

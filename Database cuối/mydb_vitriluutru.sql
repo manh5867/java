@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.33, for Win64 (x86_64)
 --
--- Host: localhost    Database: quanlibanhang
+-- Host: localhost    Database: mydb
 -- ------------------------------------------------------
 -- Server version	8.0.33
 
@@ -16,32 +16,29 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `sanpham`
+-- Table structure for table `vitriluutru`
 --
 
-DROP TABLE IF EXISTS `sanpham`;
+DROP TABLE IF EXISTS `vitriluutru`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `sanpham` (
-  `PRODUCT_ID` int NOT NULL,
-  `PRODUCT_NAME` varchar(45) DEFAULT NULL,
-  `PRODUCT_DESCRIPTION` varchar(45) DEFAULT NULL,
-  `PRODUCT_PRICE` varchar(45) DEFAULT NULL,
-  `PRODUCT_IVENTORY` varchar(45) DEFAULT NULL,
-  `PRODUCT_TYPE` varchar(45) DEFAULT NULL,
-  `LOCATION_ID` int DEFAULT NULL,
-  PRIMARY KEY (`PRODUCT_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `vitriluutru` (
+  `LOCATION_ID` varchar(10) NOT NULL,
+  `LOCATION_NAME` varchar(45) NOT NULL,
+  `LOCATION_STATUS` varchar(45) NOT NULL,
+  `LOCATION_DESCRIPTION` longtext,
+  PRIMARY KEY (`LOCATION_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `sanpham`
+-- Dumping data for table `vitriluutru`
 --
 
-LOCK TABLES `sanpham` WRITE;
-/*!40000 ALTER TABLE `sanpham` DISABLE KEYS */;
-INSERT INTO `sanpham` VALUES (1,'1','1','1','1','loai 1',1),(3,'3','3','3','3','loai 1',3),(4,'1231','khog biet','60000','23','loai 1',1313),(437,'680','','31000','1','loai 2',13),(440,'43333','','200000','56','loai 1',1);
-/*!40000 ALTER TABLE `sanpham` ENABLE KEYS */;
+LOCK TABLES `vitriluutru` WRITE;
+/*!40000 ALTER TABLE `vitriluutru` DISABLE KEYS */;
+INSERT INTO `vitriluutru` VALUES ('VT001','Kho 1','Đầy','1A Đ. Đức Thắng, Đông Ngạc, Bắc Từ Liêm, Hà Nội, Việt Nam'),('VT002','Kho 2','Trống','235 Hoàng Quốc Việt, Cổ Nhuế, Bắc Từ Liêm, Hà Nội, Việt Nam'),('VT003','Kho 3','Trống','175 P. Tây Sơn, Trung Liệt, Đống Đa, Hà Nội 116705, Việt Nam'),('VT004','Kho 4','Trống','207 Giải Phóng, Đồng Tâm, Hai Bà Trưng, Hà Nội, Việt Nam'),('VT005','Kho 5','Trống','Km 9 Đ. Nguyễn Trãi, P. Văn Quán, Nam Từ Liêm, Hà Nội, Việt Nam');
+/*!40000 ALTER TABLE `vitriluutru` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -53,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-07-01 21:59:57
+-- Dump completed on 2023-07-05 16:06:15

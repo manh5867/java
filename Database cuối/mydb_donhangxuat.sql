@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.33, for Win64 (x86_64)
 --
--- Host: localhost    Database: quanlibanhang
+-- Host: localhost    Database: mydb
 -- ------------------------------------------------------
 -- Server version	8.0.33
 
@@ -16,29 +16,29 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `nhacungcap_has_sanpham`
+-- Table structure for table `donhangxuat`
 --
 
-DROP TABLE IF EXISTS `nhacungcap_has_sanpham`;
+DROP TABLE IF EXISTS `donhangxuat`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `nhacungcap_has_sanpham` (
-  `SUPPLIER_ID` int NOT NULL,
-  `PRODUCT_ID` int NOT NULL,
-  PRIMARY KEY (`SUPPLIER_ID`,`PRODUCT_ID`),
-  KEY `PRODUCT_ID` (`PRODUCT_ID`),
-  CONSTRAINT `nhacungcap_has_sanpham_ibfk_1` FOREIGN KEY (`PRODUCT_ID`) REFERENCES `sanpham` (`PRODUCT_ID`),
-  CONSTRAINT `nhacungcap_has_sanpham_ibfk_2` FOREIGN KEY (`SUPPLIER_ID`) REFERENCES `nhacungcap` (`SUPPLIER_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `donhangxuat` (
+  `EXPORT_ID` varchar(10) NOT NULL,
+  `ORDER_TIME_EXP` datetime NOT NULL,
+  `TOTAL_PRICE_EXP` varchar(45) NOT NULL,
+  `CUSTOMER_NAME` varchar(45) NOT NULL,
+  PRIMARY KEY (`EXPORT_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `nhacungcap_has_sanpham`
+-- Dumping data for table `donhangxuat`
 --
 
-LOCK TABLES `nhacungcap_has_sanpham` WRITE;
-/*!40000 ALTER TABLE `nhacungcap_has_sanpham` DISABLE KEYS */;
-/*!40000 ALTER TABLE `nhacungcap_has_sanpham` ENABLE KEYS */;
+LOCK TABLES `donhangxuat` WRITE;
+/*!40000 ALTER TABLE `donhangxuat` DISABLE KEYS */;
+INSERT INTO `donhangxuat` VALUES ('HX001','2023-05-03 06:40:20','200000','Đặng Quốc Anh'),('HX002','2023-07-06 22:05:00','100000','Nguyễn Thành Hiếu'),('HX003','2023-07-01 16:33:00','7000000','Phạm Nhật Vanh'),('HX004','2023-07-03 12:50:00','25000000','Lê Minh hải'),('HX005','2023-07-03 08:00:00','500000','Ngô Linh Vân');
+/*!40000 ALTER TABLE `donhangxuat` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -50,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-07-01 21:59:55
+-- Dump completed on 2023-07-05 16:06:15

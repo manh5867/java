@@ -274,14 +274,14 @@ public class frmNhaCungCap extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(!maNhaCungCap.isEmpty())//TH sửa
         {
-            this.setTitle("Sửa thông tin khách hàng");
+            this.setTitle("Sửa thông tin nhà cung cấp");
             
             //Hiển thị chi tiết sinh viên trước khi sửa
             hienThiChiTiet();
         }
         else
         {
-            this.setTitle("Thêm mới thông tin khách hàng");
+            this.setTitle("Thêm mới thông tin nhà cung cấp ");
         }
     }//GEN-LAST:event_formWindowOpened
 

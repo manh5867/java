@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.33, for Win64 (x86_64)
 --
--- Host: localhost    Database: quanlibanhang
+-- Host: localhost    Database: mydb
 -- ------------------------------------------------------
 -- Server version	8.0.33
 
@@ -16,30 +16,30 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `vitriluutru`
+-- Table structure for table `nguoidung`
 --
 
-DROP TABLE IF EXISTS `vitriluutru`;
+DROP TABLE IF EXISTS `nguoidung`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `vitriluutru` (
-  `LOCATION_ID` int NOT NULL,
-  `LOCATION_NAME` varchar(45) DEFAULT NULL,
-  `LOCATION_DESCRIPTION` varchar(45) DEFAULT NULL,
-  `LOCATION_REPOSITORY` varchar(45) DEFAULT NULL,
-  `LOCATION_STATUS` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`LOCATION_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `nguoidung` (
+  `UserID` varchar(10) NOT NULL,
+  `Username` varchar(45) DEFAULT NULL,
+  `PASSWORD` varchar(45) DEFAULT NULL,
+  `Full_Name` varchar(45) DEFAULT NULL,
+  `Access_Level` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`UserID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `vitriluutru`
+-- Dumping data for table `nguoidung`
 --
 
-LOCK TABLES `vitriluutru` WRITE;
-/*!40000 ALTER TABLE `vitriluutru` DISABLE KEYS */;
-INSERT INTO `vitriluutru` VALUES (125,'ngo123','sadads','ádadsadsad','asa'),(12431,'aa','aa','aa','aa'),(12434,'asdf','safd','asf','saf'),(124313,'aa','aa','aa','aa'),(124366,'asdf','safd','asf','saf');
-/*!40000 ALTER TABLE `vitriluutru` ENABLE KEYS */;
+LOCK TABLES `nguoidung` WRITE;
+/*!40000 ALTER TABLE `nguoidung` DISABLE KEYS */;
+INSERT INTO `nguoidung` VALUES ('001','manh5867','Thebausffs','Mạnh','Quản lí'),('002','quocanh','quocanh01','Quốc Anh','Nhân viên'),('003','trungnguyen','123456','Nguyễn Đức Trung','Quản lí');
+/*!40000 ALTER TABLE `nguoidung` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -51,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-07-01 21:59:56
+-- Dump completed on 2023-07-05 16:06:15

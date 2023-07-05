@@ -132,6 +132,7 @@ public class NguoiDungBusiness {
             if(!tuKhoa.isEmpty())
             {
                 strSQL += " AND (UserID = '" + tuKhoa + "'  OR Username like '%" + 
+                        tuKhoa + "%' OR Full_Name like '%" + 
                         tuKhoa + "%')";
             }
             

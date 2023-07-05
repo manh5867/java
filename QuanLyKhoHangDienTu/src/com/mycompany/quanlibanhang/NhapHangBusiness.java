@@ -51,7 +51,7 @@ public class NhapHangBusiness {
                objNH.setMaNhap(rs.getString("IMPORT_ID"));
                 objNH.setNgayNhap(rs.getDate("ORDER_TIME_IMP"));
                 objNH.setTongTienHang(rs.getInt("TOTAL_COST_IMP"));
-                objNH.setTenNhaCungCap(rs.getString("SUPPLIER"));
+                objNH.setTenNhaCungCap(rs.getString("SUPPLIER_NAME"));
                 
 
                 //Thêm vào danh sách
@@ -105,7 +105,7 @@ public class NhapHangBusiness {
                 objNH.setMaNhap(rs.getString("IMPORT_ID"));
                  objNH.setNgayNhap(rs.getDate("ORDER_TIME_IMP"));
                 objNH.setTongTienHang(rs.getInt("TOTAL_COST_IMP"));
-                objNH.setTenNhaCungCap(rs.getString("SUPPLIER"));
+                objNH.setTenNhaCungCap(rs.getString("SUPPLIER_NAME"));
                 //Thêm vào danh sách
                 lstNhapHang.add(objNH);
             }
@@ -150,7 +150,7 @@ public class NhapHangBusiness {
                
                  objNH.setNgayNhap(rs.getDate("ORDER_TIME_IMP"));
                 objNH.setTongTienHang(rs.getInt("TOTAL_COST_IMP"));
-                objNH.setTenNhaCungCap(rs.getString("SUPPLIER"));
+                objNH.setTenNhaCungCap(rs.getString("SUPPLIER_NAME"));
                                   
                 
                 
@@ -191,7 +191,7 @@ public class NhapHangBusiness {
             conn = DataProvider.ketNoi();
             
             //Khai báo công việc
-            String strInsert = "Insert into donhangnhap(IMPORT_ID, ORDER_TIME_IMP, TOTAL_COST_IMP, SUPPLIER "
+            String strInsert = "Insert into donhangnhap(IMPORT_ID, ORDER_TIME_IMP, TOTAL_COST_IMP, SUPPLIER_NAME "
                     + ") values("
                     + "?,?,?,?)";
             
@@ -306,7 +306,7 @@ public class NhapHangBusiness {
 
             
             //Khai báo công việc
-            String strUpdate = "Update donhangnhap set ORDER_TIME_IMP=?, TOTAL_COST_IMP = ?, SUPPLIER= ? "
+            String strUpdate = "Update donhangnhap set ORDER_TIME_IMP=?, TOTAL_COST_IMP = ?, SUPPLIER_NAME= ? "
                     
                     + " where IMPORT_ID = ?";
             

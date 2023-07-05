@@ -16,29 +16,30 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `vitriluutru`
+-- Table structure for table `khachhang`
 --
 
-DROP TABLE IF EXISTS `vitriluutru`;
+DROP TABLE IF EXISTS `khachhang`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `vitriluutru` (
-  `LOCATION_ID` varchar(10) NOT NULL,
-  `LOCATION_NAME` varchar(45) NOT NULL,
-  `LOCATION_STATUS` varchar(45) NOT NULL,
-  `LOCATION_DESCRIPTION` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`LOCATION_ID`)
+CREATE TABLE `khachhang` (
+  `CUSTOMER_ID` varchar(10) NOT NULL,
+  `CUSTOMER_NAME` varchar(45) NOT NULL,
+  `CUSTOMER_ADDRESS` varchar(100) NOT NULL,
+  `CUSTOMER_PHONE_NUMBER` varchar(45) NOT NULL,
+  `CUSTOMER_EMAIL` varchar(45) NOT NULL,
+  PRIMARY KEY (`CUSTOMER_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `vitriluutru`
+-- Dumping data for table `khachhang`
 --
 
-LOCK TABLES `vitriluutru` WRITE;
-/*!40000 ALTER TABLE `vitriluutru` DISABLE KEYS */;
-INSERT INTO `vitriluutru` VALUES ('Vt001','Kho 2','Đầy','1'),('VT002','Kho 4 ngăn 2','Chưa đầy ',NULL);
-/*!40000 ALTER TABLE `vitriluutru` ENABLE KEYS */;
+LOCK TABLES `khachhang` WRITE;
+/*!40000 ALTER TABLE `khachhang` DISABLE KEYS */;
+INSERT INTO `khachhang` VALUES ('KH001','Đặng Quốc Anh','70 Ng. 36 Giang Văn Minh, Đội Cấn, Ba Đình, Hà Nội, Việt Nam','0376724362','anh@gmail.com'),('KH002','Nguyễn Thành Hiếu','8 P. Phủ Doãn, Hàng Bông, Hoàn Kiếm, Hà Nội, Việt Nam','0399127843','hieu@gmail.com'),('KH003','Phạm Nhật Vanh','108 P. Hoàng Như Tiếp, Bồ Đề, Long Biên, Hà Nội, Việt Nam','0377123789','vanh@gmail.com'),('KH004','Lê Minh hải','XWJJ+X3H, Chùa cự đà thôn, Khoan Tế, Gia Lâm, Hà Nội, Việt Nam ','0334567832','hai@gmail.com'),('KH005','Ngô Linh Vân','XWJ9+H46, Bát Tràng, Gia Lâm, Hà Nội, Việt Nam','0396614523','van@gmail.com');
+/*!40000 ALTER TABLE `khachhang` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -50,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-07-04 19:01:33
+-- Dump completed on 2023-07-05 16:06:15

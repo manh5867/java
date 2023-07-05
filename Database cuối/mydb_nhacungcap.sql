@@ -16,30 +16,30 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `nguoidung`
+-- Table structure for table `nhacungcap`
 --
 
-DROP TABLE IF EXISTS `nguoidung`;
+DROP TABLE IF EXISTS `nhacungcap`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `nguoidung` (
-  `UserID` varchar(10) NOT NULL,
-  `Username` varchar(45) DEFAULT NULL,
-  `PASSWORD` varchar(45) DEFAULT NULL,
-  `Full_Name` varchar(45) DEFAULT NULL,
-  `Access_Level` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`UserID`)
+CREATE TABLE `nhacungcap` (
+  `SUPPLIER_ID` varchar(10) NOT NULL,
+  `SUPPLIER_NAME` varchar(45) NOT NULL,
+  `SUPPLIER_PHONE_NUM` varchar(45) NOT NULL,
+  `SUPPLIER_EMAIL` varchar(45) NOT NULL,
+  `SUPPLIER_ADDRESS` varchar(100) NOT NULL,
+  PRIMARY KEY (`SUPPLIER_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `nguoidung`
+-- Dumping data for table `nhacungcap`
 --
 
-LOCK TABLES `nguoidung` WRITE;
-/*!40000 ALTER TABLE `nguoidung` DISABLE KEYS */;
-INSERT INTO `nguoidung` VALUES ('001','manh5867','Thebausffs','Mạnh','Quản lí'),('002','quocanh','quocanh01','Quốc Anh','Nhân viên');
-/*!40000 ALTER TABLE `nguoidung` ENABLE KEYS */;
+LOCK TABLES `nhacungcap` WRITE;
+/*!40000 ALTER TABLE `nhacungcap` DISABLE KEYS */;
+INSERT INTO `nhacungcap` VALUES ('NC001','Samsung','0320304324','samsung@gmail.com','XM5H+GR3, ĐT80, Tân Hoà, Quốc Oai, Hà Nội, Việt Nam'),('NC002','Apple','0399251637','apple@gmail.com','Đ. Nguyễn Bồ, Tứ Hiệp, Thanh Trì, Hà Nội 100000, Việt Nam'),('NC003','Xiaomi','0345128734','xiaomi@gmail.com','Số 218 Đ. Lĩnh Nam, Vĩnh Hưng, Hoàng Mai, Hà Nội, Việt Nam'),('NC004','Marshall','0234234423','marshall@gmail.com','2 Ng. 76 An Dương, Yên Phụ, Tây Hồ, Hà Nội, Việt Nam'),('NC005','Acer','0113454368','acer@gmail.com','Đ. Nguyễn Văn Huyên, Quan Hoa, Cầu Giấy, Hà Nội, Việt Nam');
+/*!40000 ALTER TABLE `nhacungcap` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -51,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-07-04 19:01:33
+-- Dump completed on 2023-07-05 16:06:15
