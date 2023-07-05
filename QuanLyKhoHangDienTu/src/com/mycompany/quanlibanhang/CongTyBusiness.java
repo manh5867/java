@@ -54,11 +54,11 @@ public class CongTyBusiness {
                 objCT = new CongTy();
 
                 //Gán giá trị cho các thuộc tính
-                objCT.setID(rs.getString("ID"));
-                objCT.setTenCongTy(rs.getString("TenNhaCungCap"));
-                objCT.setDienThoai(rs.getString("DienThoai"));
-                objCT.setEmail(rs.getString("Email"));
-                objCT.setDiaChi(rs.getString("DiaChi"));
+                objCT.setID(rs.getString("SUPPLIER_ID"));
+                objCT.setTenCongTy(rs.getString("SUPPLIER_NAME"));
+                objCT.setDienThoai(rs.getString("SUPPLIER_PHONE_NUM"));
+                objCT.setEmail(rs.getString("SUPPLIER_EMAIL"));
+                objCT.setDiaChi(rs.getString("SUPPLIER_ADDRESS"));
 
                 //Thêm vào danh sách
                 lstCongTy.add(objCT);
@@ -93,8 +93,8 @@ public class CongTyBusiness {
             
             if(!tuKhoa.isEmpty())
             {
-                strSQL += " AND (ID = '" + tuKhoa + "'  OR TenNhaCungCAp like '%" + 
-                        tuKhoa + "%' OR DienThoai like '%"
+                strSQL += " AND (SUPPLIER_ID = '" + tuKhoa + "'  OR SUPPLIER_NAME like '%" + 
+                        tuKhoa + "%' OR SUPPLIER_PHONE_NUM like '%"
                         + tuKhoa + "%')";
             }
             
@@ -110,11 +110,11 @@ public class CongTyBusiness {
                 objCT = new CongTy();
 
                 //Gán giá trị cho các thuộc tính
-                objCT.setID(rs.getString("ID"));
-                objCT.setTenCongTy(rs.getString("TenNhaCungCap"));
-                objCT.setDienThoai(rs.getString("DienThoai"));
-                objCT.setEmail(rs.getString("Email"));
-                objCT.setDiaChi(rs.getString("DiaChi"));
+                objCT.setID(rs.getString("SUPPLIER_ID"));
+                objCT.setTenCongTy(rs.getString("SUPPLIER_NAME"));
+                objCT.setDienThoai(rs.getString("SUPPLIER_PHONE_NUM"));
+                objCT.setEmail(rs.getString("SUPPLIER_EMAIL"));
+                objCT.setDiaChi(rs.getString("SUPPLIER_ADDRESS"));
 
                 //Thêm vào danh sách
                 lstCongTy.add(objCT);
@@ -146,7 +146,7 @@ public class CongTyBusiness {
 
             conn = DataProvider.ketNoi();
 
-            String strSQL = "Select * from NhaCungCap where ID='" + ID + "'";
+            String strSQL = "Select * from NhaCungCap where SUPPLIER_ID='" + ID + "'";
 
             Statement comm = conn.createStatement();
 
@@ -157,15 +157,13 @@ public class CongTyBusiness {
                 objKH = new CongTy();
 
                 //Gán giá trị cho các thuộc tính
-                objKH.setID(rs.getString("ID"));
-                objKH.setTenCongTy(rs.getString("TenNhaCungCap"));
-                objKH.setDienThoai(rs.getString("DienThoai"));
-                objKH.setEmail(rs.getString("Email"));
-                objKH.setDiaChi(rs.getString("DiaChi"));
+                 objKH.setID(rs.getString("SUPPLIER_ID"));
+                objKH.setTenCongTy(rs.getString("SUPPLIER_NAME"));
+                objKH.setDienThoai(rs.getString("SUPPLIER_PHONE_NUM"));
+                objKH.setEmail(rs.getString("SUPPLIER_EMAIL"));
+                objKH.setDiaChi(rs.getString("SUPPLIER_ADDRESS"));
              
-                objKH.setGhiChu(rs.getString("GhiChu"));
-                objKH.setMaSoThue(rs.getString("MaSoThue"));
-                objKH.setWebsite(rs.getString("Website"));
+                
                 
                 lstCongTy.add(objKH);
             }
@@ -197,9 +195,9 @@ public class CongTyBusiness {
             conn = DataProvider.ketNoi();
             
             //Khai báo công việc
-            String strInsert = "Insert into NhaCungCap(ID, TenNhaCungCap, DienThoai, Email, DiaChi, "
-                    + "GhiChu,MaSoThue,Website) values("
-                    + "?,?,?,?,?, ?, ?, ?)";
+            String strInsert = "Insert into NhaCungCap(SUPPLIER_ID, SUPPLIER_NAME, SUPPLIER_PHONE_NUM, SUPPLIER_EMAIL, SUPPLIER_ADDRESS "
+                    + ") values("
+                    + "?,?,?,?,?)";
             
             PreparedStatement comm = conn.prepareStatement(strInsert);
             
@@ -210,9 +208,7 @@ public class CongTyBusiness {
             comm.setString(4, objKH.getEmail());
             comm.setString(5, objKH.getDiaChi());
            
-            comm.setString(6, objKH.getGhiChu());
-             comm.setString(7, objKH.getMaSoThue());
-              comm.setString(8,  objKH.getWebsite());
+            
                
                 
                   
@@ -255,9 +251,9 @@ public class CongTyBusiness {
             conn = DataProvider.ketNoi();
             
             //Khai báo công việc
-            String strUpdate = "Update NhaCungCap set TenNhaCungCap=?, DienThoai = ?, Email = ?,DiaChi=?, "
+            String strUpdate = "Update NhaCungCap set SUPPLIER_NAME=?, SUPPLIER_PHONE_NUM = ?, SUPPLIER_EMAIL = ?,SUPPLIER_ADDRESS=? "
                    
-                    + " GhiChu=?,MaSoThue = ?,Website=? where ID = ?";
+                    + "  where SUPPLIER_ID = ?";
             
             PreparedStatement comm = conn.prepareStatement(strUpdate);
             
@@ -268,11 +264,8 @@ public class CongTyBusiness {
             comm.setString(3, objKH.getEmail());
             comm.setString(4, objKH.getDiaChi());
             
-            comm.setString(5, objKH.getGhiChu());
-            comm.setString(6, objKH.getMaSoThue());
-            comm.setString(7, objKH.getWebsite());
             
-                comm.setString(8, objKH.getID());
+                comm.setString(5, objKH.getID());
             
             
             //Thực hiện công việc
@@ -312,7 +305,7 @@ public class CongTyBusiness {
             conn = DataProvider.ketNoi();
             
             //Khai báo công việc
-            String strDelete = "Delete from NhaCungCap where ID = ?";
+            String strDelete = "Delete from NhaCungCap where SUPPLIER_ID = ?";
             
             PreparedStatement comm = conn.prepareStatement(strDelete);
             

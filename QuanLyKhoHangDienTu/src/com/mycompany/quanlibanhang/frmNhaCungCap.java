@@ -46,19 +46,13 @@ public class frmNhaCungCap extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         txtID = new javax.swing.JTextField();
         txtHoTen = new javax.swing.JTextField();
         txtDienThoai = new javax.swing.JTextField();
         txtEmail = new javax.swing.JTextField();
         txtDiaChi = new javax.swing.JTextField();
-        txtGhiChu = new javax.swing.JTextField();
         btnCapNhat = new javax.swing.JButton();
         btnDong = new javax.swing.JButton();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        txtMaSoThue = new javax.swing.JTextField();
-        txtWebsite = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -78,8 +72,6 @@ public class frmNhaCungCap extends javax.swing.JFrame {
         jLabel5.setText("Email (*):");
 
         jLabel6.setText("Địa chỉ:");
-
-        jLabel7.setText("Ghi chú:");
 
         txtID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,10 +95,6 @@ public class frmNhaCungCap extends javax.swing.JFrame {
             }
         });
 
-        jLabel12.setText("Mã số thuế:");
-
-        jLabel13.setText("Website:");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -114,25 +102,15 @@ public class frmNhaCungCap extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnCapNhat)
-                        .addGap(26, 26, 26)
-                        .addComponent(btnDong)
-                        .addGap(68, 68, 68))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6)
                             .addComponent(jLabel5))
-                        .addGap(70, 70, 70)
+                        .addGap(77, 77, 77)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtGhiChu, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtMaSoThue, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(txtWebsite, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtDiaChi, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE)))
-                        .addGap(42, 42, 42))
+                            .addComponent(txtDiaChi, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(137, 137, 137))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
@@ -147,13 +125,13 @@ public class frmNhaCungCap extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtHoTen, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel12)
-                            .addComponent(jLabel13))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnCapNhat)
+                .addGap(38, 38, 38)
+                .addComponent(btnDong)
+                .addGap(68, 68, 68))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -178,23 +156,11 @@ public class frmNhaCungCap extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtDiaChi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(txtMaSoThue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel13)
-                    .addComponent(txtWebsite, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7)
-                    .addComponent(txtGhiChu, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(127, 127, 127)
+                .addGap(68, 68, 68)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCapNhat)
                     .addComponent(btnDong))
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -202,16 +168,14 @@ public class frmNhaCungCap extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addGap(0, 23, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(8, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(0, 14, Short.MAX_VALUE))
         );
 
         pack();
@@ -222,11 +186,20 @@ public class frmNhaCungCap extends javax.swing.JFrame {
 
     }//GEN-LAST:event_txtIDActionPerformed
 
+    public void thongTinChiTiet()
+    {
+        
+       
+        btnCapNhat.setVisible(false);
+      
+        
+        
+    }
     private void btnCapNhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCapNhatActionPerformed
         // TODO add your handling code here:
         CongTy objCT = new CongTy();
 
-        String ID = "", hoTen = "", dienThoai = "", email = "", diaChi = "",maSoThue="",website="",ghiChu="",congTyID="";
+        String ID = "", hoTen = "", dienThoai = "", email = "", diaChi = "";
 
         int gioiTinh = 0;
 
@@ -236,9 +209,7 @@ public class frmNhaCungCap extends javax.swing.JFrame {
         email = txtEmail.getText();
         diaChi = txtDiaChi.getText();
         
-        ghiChu=txtGhiChu.getText();
-        website=txtWebsite.getText();
-        maSoThue=txtMaSoThue.getText();
+        
         
 
         //Gán giá trị cho các thuộc tính
@@ -247,14 +218,12 @@ public class frmNhaCungCap extends javax.swing.JFrame {
         objCT.setDienThoai(dienThoai);
         objCT.setEmail(email);
         objCT.setDiaChi(diaChi);
-        objCT.setGhiChu(ghiChu);
+        
 
         
         
         
-        objCT.setMaSoThue(maSoThue);
-        objCT.setWebsite(website);
-
+      
         boolean ketQua = false;
 
         //Khai báo 1 đối tượng
@@ -274,7 +243,7 @@ public class frmNhaCungCap extends javax.swing.JFrame {
         {
             JOptionPane.showMessageDialog(rootPane, "Thực hiện cập nhật nhà cung cấp thành công");
             //Reload lại danh sách
-            GiaoDienChinh.hienThiDanhSachCongTy();
+            GiaoDienChinh.hienThiDanhSachNhaCungCap();
         }
 
     }//GEN-LAST:event_btnCapNhatActionPerformed
@@ -292,9 +261,7 @@ public class frmNhaCungCap extends javax.swing.JFrame {
             txtEmail.setText(objKH.getEmail());
             txtDiaChi.setText(objKH.getDiaChi());
             
-            txtGhiChu.setText(objKH.getGhiChu());
-            txtMaSoThue.setText(objKH.getMaSoThue());
-            txtWebsite.setText(objKH.getWebsite());
+          
             
         }
     }
@@ -357,22 +324,16 @@ public class frmNhaCungCap extends javax.swing.JFrame {
     private javax.swing.JButton btnCapNhat;
     private javax.swing.JButton btnDong;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txtDiaChi;
     private javax.swing.JTextField txtDienThoai;
     private javax.swing.JTextField txtEmail;
-    private javax.swing.JTextField txtGhiChu;
     private javax.swing.JTextField txtHoTen;
     private javax.swing.JTextField txtID;
-    private javax.swing.JTextField txtMaSoThue;
-    private javax.swing.JTextField txtWebsite;
     // End of variables declaration//GEN-END:variables
 
     

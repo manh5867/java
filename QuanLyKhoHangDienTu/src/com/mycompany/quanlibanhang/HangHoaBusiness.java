@@ -40,7 +40,7 @@ public class HangHoaBusiness {
 
             conn = DataProvider.ketNoi();
 
-            String strSQL = "Select * from HangHoa";
+            String strSQL = "Select * from HangHoa ";
 
             Statement comm = conn.createStatement();
 
@@ -52,13 +52,13 @@ public class HangHoaBusiness {
                 objHH = new HangHoa();
 
                 //Gán giá trị cho các thuộc tính
-                objHH.setMaHang(rs.getString("MaHang"));
-                objHH.setTenHang(rs.getString("TenHang"));
-                objHH.setGiaVon(rs.getInt("GiaVon"));
-                objHH.setGiaBan(rs.getInt("GiaBan"));
-                objHH.setMaNhomHang(rs.getString("NhomHang"));
-                objHH.setTonKho(rs.getInt("TonKho"));
-                objHH.setViTri(rs.getString("ViTri"));
+                objHH.setMaHang(rs.getString("PRODUCT_ID"));
+                objHH.setTenHang(rs.getString("PRODUCT_NAME"));
+                
+                objHH.setGiaBan(rs.getInt("PRODUCT_PRICE"));
+                objHH.setTenNhomHang(rs.getString("PRODUCT_TYPE"));
+                objHH.setTonKho(rs.getInt("PRODUCT_QUANTITY"));
+                objHH.setViTri(rs.getString("PRODUCT_LOCATION"));
 
                 //Thêm vào danh sách
                 lstHangHoa.add(objHH);
@@ -93,13 +93,13 @@ public class HangHoaBusiness {
             
             if(!tuKhoa.isEmpty())
             {
-                strSQL += " AND (MaHang = '" + tuKhoa  + "%' OR tenHang like '%"
+                strSQL += " AND (PRODUCT_ID = '" + tuKhoa  + "' OR PRODUCT_NAME like '%"
                         + tuKhoa + "%')";
             }
             
             if(!nhomHang.isEmpty())
             {
-                strSQL += " AND NhomHang = '" + nhomHang + "'";
+                strSQL += " AND PRODUCT_TYPE = '" + nhomHang + "'";
             }
 
             Statement comm = conn.createStatement();
@@ -112,13 +112,13 @@ public class HangHoaBusiness {
                 objHH = new HangHoa();
 
                 //Gán giá trị cho các thuộc tính
-               objHH.setMaHang(rs.getString("MaHang"));
-                objHH.setTenHang(rs.getString("TenHang"));
-                objHH.setGiaVon(rs.getInt("GiaVon"));
-                objHH.setGiaBan(rs.getInt("GiaBan"));
-                objHH.setMaNhomHang(rs.getString("NhomHang"));
-                objHH.setTonKho(rs.getInt("TonKho"));
-                objHH.setViTri(rs.getString("ViTri"));
+               objHH.setMaHang(rs.getString("PRODUCT_ID"));
+                objHH.setTenHang(rs.getString("PRODUCT_NAME"));
+                
+                objHH.setGiaBan(rs.getInt("PRODUCT_PRICE"));
+                objHH.setTenNhomHang(rs.getString("PRODUCT_TYPE"));
+                objHH.setTonKho(rs.getInt("PRODUCT_QUANTITY"));
+                objHH.setViTri(rs.getString("PRODUCT_LOCATION"));
 
                 //Thêm vào danh sách
                 lstHangHoa.add(objHH);
@@ -150,7 +150,7 @@ public class HangHoaBusiness {
 
             conn = DataProvider.ketNoi();
 
-            String strSQL = "Select * from HangHoa where maHang='" + maHang + "'";
+            String strSQL = "Select * from HangHoa where PRODUCT_ID='" + maHang + "'";
 
             Statement comm = conn.createStatement();
 
@@ -161,18 +161,13 @@ public class HangHoaBusiness {
                 objHH = new HangHoa();
 
                 //Gán giá trị cho các thuộc tính
-                objHH.setMaHang(rs.getString("MaHang"));
-                objHH.setTenHang(rs.getString("TenHang"));
-                objHH.setGiaVon(rs.getInt("GiaVon"));
-                objHH.setGiaBan(rs.getInt("GiaBan"));
-                objHH.setMaNhomHang(rs.getString("NhomHang"));
-                objHH.setTonKho(rs.getInt("TonKho"));
-                 objHH.setViTri(rs.getString("ViTri"));
-                 objHH.setTrongLuong(rs.getInt("TrongLuong"));
-                 objHH.setMinTonKho(rs.getInt("MinTonKho"));
-                 objHH.setMaxTonKho(rs.getInt("MaxTonKho"));
-                 objHH.setMoTa(rs.getString("MoTa"));
-                 objHH.setDonViTinh(rs.getString("DonViTinh"));
+                objHH.setMaHang(rs.getString("PRODUCT_ID"));
+                objHH.setTenHang(rs.getString("PRODUCT_NAME"));
+                
+                objHH.setGiaBan(rs.getInt("PRODUCT_PRICE"));
+                objHH.setTenNhomHang(rs.getString("PRODUCT_TYPE"));
+                objHH.setTonKho(rs.getInt("PRODUCT_QUANTITY"));
+                objHH.setViTri(rs.getString("PRODUCT_LOCATION"));
                  
                 
                 
@@ -213,25 +208,24 @@ public class HangHoaBusiness {
             conn = DataProvider.ketNoi();
             
             //Khai báo công việc
-            String strInsert = "Insert into HangHoa(MaHang, TenHang, NhomHang, GiaVon, "
-                    + "GiaBan, ViTri,TrongLuong,TonKho,MinTonKho,MaxTonKho,MoTa,DonViTinh) values("
-                    + "?,?,?,?,?, ?, ?, ?,?,?,?,?)";
+            String strInsert = "Insert into HangHoa(PRODUCT_ID, PRODUCT_NAME, PRODUCT_TYPE,  "
+                    + "PRODUCT_PRICE, PRODUCT_LOCATION,PRODUCT_QUANTITY,PRODUCT_DESCRIPTION) values("
+                    + "?,?,?,?,?, ?, ?)";
             
             PreparedStatement comm = conn.prepareStatement(strInsert);
             
             //Thiết lập các giá trị cho tham số
             comm.setString(1, objHH.getMaHang());
             comm.setString(2, objHH.getTenHang());
-            comm.setString(3, objHH.getMaNhomHang());
-            comm.setInt(4, objHH.getGiaVon());
-            comm.setInt(5, objHH.getGiaBan());
-            comm.setString(6, objHH.getViTri());
-            comm.setInt(7, objHH.getTrongLuong());
-            comm.setInt(8, objHH.getTonKho());
-             comm.setInt(9, objHH.getMinTonKho());
-              comm.setInt(10, objHH.getMaxTonKho());
-               comm.setString(11, objHH.getMoTa());
-                comm.setString(12, objHH.getDonViTinh());
+            comm.setString(3, objHH.getTenNhomHang());
+           
+            comm.setInt(4, objHH.getGiaBan());
+            comm.setString(5, objHH.getViTri());
+            
+            comm.setInt(6, objHH.getTonKho());
+            
+               comm.setString(7, objHH.getMoTa());
+                
                 
                   
             
@@ -273,27 +267,25 @@ public class HangHoaBusiness {
             conn = DataProvider.ketNoi();
             
             //Khai báo công việc
-            String strUpdate = "Update HangHoa set TenHang=?, NhomHang = ?, GiaVon= ?, "
-                    + "GiaBan = ?, ViTri = ?, "
-                    + "TrongLuong = ?, TonKho=?,MinTonKho=?, MaxTonKho= ?, MoTa=?,DonViTinh = ? where MaHang = ?";
+            String strUpdate = "Update HangHoa set PRODUCT_NAME=?, PRODUCT_TYPE = ?,  "
+                    + "PRODUCT_PRICE = ?, PRODUCT_LOCATION = ?, "
+                    + "PRODUCT_QUANTITY=?, PRODUCT_DESCRIPTION=? where PRODUCT_ID = ?";
             
             PreparedStatement comm = conn.prepareStatement(strUpdate);
             
             //Thiết lập các giá trị cho tham số
             
             
+           comm.setString(7, objHH.getMaHang());
             comm.setString(1, objHH.getTenHang());
-            comm.setString(2, objHH.getMaNhomHang());
-            comm.setInt(3, objHH.getGiaVon());
-            comm.setInt(4, objHH.getGiaBan());
-            comm.setString(5, objHH.getViTri());
-            comm.setInt(6, objHH.getTrongLuong());
-            comm.setInt(7, objHH.getTonKho());
-             comm.setInt(8, objHH.getMinTonKho());
-              comm.setInt(9, objHH.getMaxTonKho());
-               comm.setString(10, objHH.getMoTa());
-                comm.setString(11, objHH.getDonViTinh());
-                comm.setString(12, objHH.getMaHang());
+            comm.setString(2, objHH.getTenNhomHang());
+           
+            comm.setInt(3, objHH.getGiaBan());
+            comm.setString(4, objHH.getViTri());
+            
+            comm.setInt(5, objHH.getTonKho());
+            
+               comm.setString(6, objHH.getMoTa());
             
             
             //Thực hiện công việc
@@ -333,7 +325,7 @@ public class HangHoaBusiness {
             conn = DataProvider.ketNoi();
             
             //Khai báo công việc
-            String strDelete = "Delete from HangHoa where MaHang = ?";
+            String strDelete = "Delete from HangHoa where PRODUCT_ID = ?";
             
             PreparedStatement comm = conn.prepareStatement(strDelete);
             

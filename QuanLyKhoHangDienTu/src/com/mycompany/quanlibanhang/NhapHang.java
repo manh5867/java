@@ -94,6 +94,8 @@ public class NhapHang {
     private String trangThai;
     private String ghiChu;
     
+    
+    
     public NhapHang()
     {
         
@@ -101,6 +103,10 @@ public class NhapHang {
     public NhapHang(String maNhap)
     {
         this.maNhap=maNhap;
+    }
+
+    void setDate(String string) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
             
 }
