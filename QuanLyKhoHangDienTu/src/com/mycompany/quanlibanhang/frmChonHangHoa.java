@@ -106,7 +106,7 @@ public class frmChonHangHoa extends javax.swing.JFrame {
         txtNhomHang = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         btnChon = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        lbTen = new javax.swing.JLabel();
         txtSoLuong = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -227,7 +227,7 @@ public class frmChonHangHoa extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Số lượng cần xuất:");
+        lbTen.setText("Nhập số lượng:");
 
         txtSoLuong.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -242,7 +242,7 @@ public class frmChonHangHoa extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1)
+                    .addComponent(lbTen)
                     .addComponent(btnChon, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
                     .addComponent(txtSoLuong))
                 .addContainerGap(67, Short.MAX_VALUE))
@@ -251,7 +251,7 @@ public class frmChonHangHoa extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(43, 43, 43)
-                .addComponent(jLabel1)
+                .addComponent(lbTen)
                 .addGap(18, 18, 18)
                 .addComponent(txtSoLuong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
@@ -353,7 +353,7 @@ public class frmChonHangHoa extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 8, Short.MAX_VALUE))
+                .addGap(0, 14, Short.MAX_VALUE))
         );
 
         pack();
@@ -488,7 +488,16 @@ public class frmChonHangHoa extends javax.swing.JFrame {
     private void btnChonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChonActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        
+        int dongChon = 0;
+
+        dongChon = jTableHangHoa.getSelectedRow();
+
+        String strSoLuongHangHoa = "";
+        int soLuongHangHoa=0;
+
+        //Lấy mã sv của dòng chọn trên jtable
+        strSoLuongHangHoa = "" + jTableHangHoa.getValueAt(dongChon, 4);
+        soLuongHangHoa=Integer.parseInt(strSoLuongHangHoa);
         if (nhapHangOrXuatHang=="NhapHang")
         {
            ChiTietDonHangNhap objCT = new ChiTietDonHangNhap();
@@ -534,14 +543,23 @@ public class frmChonHangHoa extends javax.swing.JFrame {
          if (nhapHangOrXuatHang=="XuatHang")
         {
            ChiTietDonHangXuat objCT = new ChiTietDonHangXuat();
+           
             String tenHang = "", idXuat = "";
 
             int gia=0,tongGia=0,soLuong=0;
+            soLuong=Integer.parseInt(txtSoLuong.getText());
+            
+            if(soLuongHangHoa<soLuong)
+            {
+                JOptionPane.showMessageDialog(rootPane, "Số lượng xuất ra lớn hơn số hàng trong kho");
+            }
+            else
+            {
            
              tenHang = txtTenHang.getText();
         
         idXuat = idDonHangXuat;
-        soLuong=Integer.parseInt(txtSoLuong.getText());
+        
         gia=Integer.parseInt(txtGiaBan.getText());
        
         tongGia=soLuong*gia;
@@ -570,7 +588,7 @@ public class frmChonHangHoa extends javax.swing.JFrame {
         
            
            
-          
+            }
         }
          
     }//GEN-LAST:event_btnChonActionPerformed
@@ -624,7 +642,6 @@ public class frmChonHangHoa extends javax.swing.JFrame {
     private javax.swing.JButton btnDong2;
     private javax.swing.JButton btnTimKiem;
     private static javax.swing.JComboBox<String> jComboBox;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel28;
@@ -639,6 +656,7 @@ public class frmChonHangHoa extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private static javax.swing.JTable jTableHangHoa;
     private javax.swing.JLabel lbDonViTinh;
+    private javax.swing.JLabel lbTen;
     private javax.swing.JTextField txtGiaBan;
     private javax.swing.JTextField txtMaHang;
     private javax.swing.JTextField txtNhomHang;

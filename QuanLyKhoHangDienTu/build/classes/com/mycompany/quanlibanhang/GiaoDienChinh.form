@@ -365,7 +365,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jScrollPane2" alignment="0" max="32767" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace min="0" pref="482" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="462" max="32767" attributes="0"/>
                               <Component id="btnThongTinNhaCungCap" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
                               <Component id="btnThemMoi_NhaCungCap" min="-2" max="-2" attributes="0"/>
@@ -539,6 +539,9 @@
             </Component>
             <Component class="javax.swing.JButton" name="btnThongTinNhaCungCap">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/vn/com/stanford/j0622/qlsinhvien/images/search.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Th&#xf4;ng tin chi ti&#x1ebf;t"/>
               </Properties>
               <Events>
@@ -683,6 +686,9 @@
             </Container>
             <Component class="javax.swing.JButton" name="btnThongTinKhachHang">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/vn/com/stanford/j0622/qlsinhvien/images/search.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Th&#xf4;ng tin chi ti&#x1ebf;t"/>
               </Properties>
               <Events>
@@ -771,7 +777,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace min="0" pref="519" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="479" max="32767" attributes="0"/>
                               <Component id="jButton1" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
                               <Component id="btnThemViTri" min="-2" max="-2" attributes="0"/>
@@ -813,6 +819,9 @@
           <SubComponents>
             <Component class="javax.swing.JButton" name="btnXoaViTri">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/vn/com/stanford/j0622/qlsinhvien/images/delete.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="X&#xf3;a"/>
               </Properties>
               <Events>
@@ -851,6 +860,9 @@
             </Container>
             <Component class="javax.swing.JButton" name="btnThemViTri">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/vn/com/stanford/j0622/qlsinhvien/images/add-icon.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Th&#xea;m m&#x1edb;i"/>
               </Properties>
               <Events>
@@ -859,6 +871,9 @@
             </Component>
             <Component class="javax.swing.JButton" name="btnSuaViTriLuuTru">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/vn/com/stanford/j0622/qlsinhvien/images/gear_16.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="S&#x1eed;a"/>
               </Properties>
               <Events>
@@ -910,6 +925,9 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="btnTimKiemViTri">
                   <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/vn/com/stanford/j0622/qlsinhvien/images/search.png"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="T&#xec;m ki&#x1ebf;m"/>
                   </Properties>
                   <Events>
@@ -928,6 +946,9 @@
             </Container>
             <Component class="javax.swing.JButton" name="jButton1">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/vn/com/stanford/j0622/qlsinhvien/images/search.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Th&#xf4;ng tin chi ti&#x1ebf;t"/>
               </Properties>
               <Events>
@@ -1590,6 +1611,9 @@
                 </Container>
                 <Component class="javax.swing.JButton" name="btnThongTinNguoiDung">
                   <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/vn/com/stanford/j0622/qlsinhvien/images/search.png"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Th&#xf4;ng tin chi ti&#x1ebf;t"/>
                   </Properties>
                   <Events>

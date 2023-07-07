@@ -285,6 +285,8 @@ public class frmHangHoaAdd extends javax.swing.JFrame {
         else
         {
             this.setTitle("Thêm mới thông tin hàng hóa");
+            txtTonKho.setText("0");
+            txtTonKho.setEditable(false);
         }
     }//GEN-LAST:event_formWindowOpened
 

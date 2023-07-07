@@ -405,6 +405,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
             }
         });
 
+        btnThongTinNhaCungCap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vn/com/stanford/j0622/qlsinhvien/images/search.png"))); // NOI18N
         btnThongTinNhaCungCap.setText("Thông tin chi tiết");
         btnThongTinNhaCungCap.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -421,7 +422,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                        .addGap(0, 482, Short.MAX_VALUE)
+                        .addGap(0, 462, Short.MAX_VALUE)
                         .addComponent(btnThongTinNhaCungCap)
                         .addGap(65, 65, 65)
                         .addComponent(btnThemMoi_NhaCungCap)
@@ -501,6 +502,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTableKhachHang);
 
+        btnThongTinKhachHang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vn/com/stanford/j0622/qlsinhvien/images/search.png"))); // NOI18N
         btnThongTinKhachHang.setText("Thông tin chi tiết");
         btnThongTinKhachHang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -596,6 +598,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Khách hàng", jPanel4);
 
+        btnXoaViTri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vn/com/stanford/j0622/qlsinhvien/images/delete.png"))); // NOI18N
         btnXoaViTri.setText("Xóa");
         btnXoaViTri.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -621,6 +624,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         });
         jScrollPane6.setViewportView(jTableViTri);
 
+        btnThemViTri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vn/com/stanford/j0622/qlsinhvien/images/add-icon.png"))); // NOI18N
         btnThemViTri.setText("Thêm mới");
         btnThemViTri.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -628,6 +632,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
             }
         });
 
+        btnSuaViTriLuuTru.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vn/com/stanford/j0622/qlsinhvien/images/gear_16.png"))); // NOI18N
         btnSuaViTriLuuTru.setText("Sửa");
         btnSuaViTriLuuTru.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -639,6 +644,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
 
         jLabel2.setText("Từ khóa: ");
 
+        btnTimKiemViTri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vn/com/stanford/j0622/qlsinhvien/images/search.png"))); // NOI18N
         btnTimKiemViTri.setText("Tìm kiếm");
         btnTimKiemViTri.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -676,6 +682,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vn/com/stanford/j0622/qlsinhvien/images/search.png"))); // NOI18N
         jButton1.setText("Thông tin chi tiết");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -691,7 +698,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addGap(0, 519, Short.MAX_VALUE)
+                        .addGap(0, 479, Short.MAX_VALUE)
                         .addComponent(jButton1)
                         .addGap(53, 53, 53)
                         .addComponent(btnThemViTri)
@@ -1089,6 +1096,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         });
         jScrollPane7.setViewportView(jTableNguoiDung);
 
+        btnThongTinNguoiDung.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vn/com/stanford/j0622/qlsinhvien/images/search.png"))); // NOI18N
         btnThongTinNguoiDung.setText("Thông tin chi tiết");
         btnThongTinNguoiDung.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

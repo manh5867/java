@@ -5,28 +5,32 @@
             <url>src/com/mycompany/quanlibanhang/GiaoDienChinh.java</url>
             <bookmark id="1">
                 <name/>
-                <line>2107</line>
+                <line>2115</line>
                 <key/>
             </bookmark>
         </file>
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/My%20HP/Documents/GitHub/java/QuanLyKhoHangDienTu/src/com/mycompany/quanlibanhang/ChiTietDonHangXuat.java</file>
+            <file>file:/C:/Users/My%20HP/Documents/GitHub/java/QuanLyKhoHangDienTu/src/com/mycompany/quanlibanhang/ViTri.java</file>
+            <file>file:/C:/Users/My%20HP/Documents/GitHub/java/QuanLyKhoHangDienTu/src/com/mycompany/quanlibanhang/ChiTietDonHangXuatBusiness.java</file>
+            <file>file:/C:/Users/My%20HP/Documents/GitHub/java/QuanLyKhoHangDienTu/src/com/mycompany/quanlibanhang/NguoiDung.java</file>
             <file>file:/C:/Users/My%20HP/Documents/GitHub/java/QuanLyKhoHangDienTu/src/com/mycompany/quanlibanhang/ChiTietDonHangNhapBusiness.java</file>
-            <file>file:/C:/Users/My%20HP/Documents/GitHub/java/QuanLyKhoHangDienTu/src/com/mycompany/quanlibanhang/SHAREData.java</file>
             <file>file:/C:/Users/My%20HP/Documents/GitHub/java/QuanLyKhoHangDienTu/src/com/mycompany/quanlibanhang/HangHoaBusiness.java</file>
             <file>file:/C:/Users/My%20HP/Documents/GitHub/java/QuanLyKhoHangDienTu/src/com/mycompany/quanlibanhang/frmChonViTriLuuTru.java</file>
             <file>file:/C:/Users/My%20HP/Documents/GitHub/java/QuanLyKhoHangDienTu/src/com/mycompany/quanlibanhang/NguoiDungBusiness.java</file>
+            <file>file:/C:/Users/My%20HP/Documents/GitHub/java/QuanLyKhoHangDienTu/src/com/mycompany/quanlibanhang/frmNhaCungCap.java</file>
             <file>file:/C:/Users/My%20HP/Documents/GitHub/java/QuanLyKhoHangDienTu/src/com/mycompany/quanlibanhang/frmChonHangHoa.java</file>
             <file>file:/C:/Users/My%20HP/Documents/GitHub/java/QuanLyKhoHangDienTu/src/com/mycompany/quanlibanhang/frmHoaDonAdd.java</file>
+            <file>file:/C:/Users/My%20HP/Documents/GitHub/java/QuanLyKhoHangDienTu/src/com/mycompany/quanlibanhang/frmViTriLuuTruAdd.java</file>
             <file>file:/C:/Users/My%20HP/Documents/GitHub/java/QuanLyKhoHangDienTu/src/com/mycompany/quanlibanhang/frmHangHoaAdd.java</file>
             <file>file:/C:/Users/My%20HP/Documents/GitHub/java/QuanLyKhoHangDienTu/src/com/mycompany/quanlibanhang/DataProvider.java</file>
-            <file>file:/C:/Users/My%20HP/Documents/GitHub/java/QuanLyKhoHangDienTu/src/com/mycompany/quanlibanhang/frmViTriLuuTruAdd.java</file>
             <file>file:/C:/Users/My%20HP/Documents/GitHub/java/QuanLyKhoHangDienTu/src/com/mycompany/quanlibanhang/frmNguoiDungAdd.java</file>
-            <file>file:/C:/Users/My%20HP/Documents/GitHub/java/QuanLyKhoHangDienTu/src/com/mycompany/quanlibanhang/KhachHang.java</file>
             <file>file:/C:/Users/My%20HP/Documents/GitHub/java/QuanLyKhoHangDienTu/src/com/mycompany/quanlibanhang/frmNhapHangAdd.java</file>
-            <file>file:/C:/Users/My%20HP/Documents/GitHub/java/QuanLyKhoHangDienTu/src/com/mycompany/quanlibanhang/NhapHangBusiness.java</file>
             <file>file:/C:/Users/My%20HP/Documents/GitHub/java/QuanLyKhoHangDienTu/src/com/mycompany/quanlibanhang/frmDangNhap.java</file>
+            <file>file:/C:/Users/My%20HP/Documents/GitHub/java/QuanLyKhoHangDienTu/src/com/mycompany/quanlibanhang/ViTriBusiness.java</file>
+            <file>file:/C:/Users/My%20HP/Documents/GitHub/java/QuanLyKhoHangDienTu/src/com/mycompany/quanlibanhang/KhachHangBusiness.java</file>
             <file>file:/C:/Users/My%20HP/Documents/GitHub/java/QuanLyKhoHangDienTu/src/com/mycompany/quanlibanhang/HoaDonBusiness.java</file>
             <file>file:/C:/Users/My%20HP/Documents/GitHub/java/QuanLyKhoHangDienTu/src/com/mycompany/quanlibanhang/frmKhachHang.java</file>
             <file>file:/C:/Users/My%20HP/Documents/GitHub/java/QuanLyKhoHangDienTu/src/com/mycompany/quanlibanhang/CongTyBusiness.java</file>

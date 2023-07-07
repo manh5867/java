@@ -143,7 +143,14 @@ public class ChiTietDonHangXuatBusiness {
             {
                 SoLuong=rs.getInt("PRODUCT_QUANTITY");
             }
+            if( objNH.getSoLuong()<=SoLuong)
+            {
               SoLuong-=objNH.getSoLuong();
+            }
+            else 
+            {
+                
+            }
             String strUpdate = "Update HangHoa set  PRODUCT_QUANTITY=?  where PRODUCT_NAME = ?";
             
              PreparedStatement comm = conn.prepareStatement(strUpdate);    

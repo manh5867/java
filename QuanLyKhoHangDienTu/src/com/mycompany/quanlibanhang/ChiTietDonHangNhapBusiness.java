@@ -43,8 +43,8 @@ public class ChiTietDonHangNhapBusiness {
                 objCT.setID(rs.getString("IMPORTDETAIL_ID"));
                 objCT.setTenHang(rs.getString("PRODUCT_NAME"));
                 objCT.setSoLuong(rs.getInt("QUANTITY_IMP"));
-                objCT.setGiaTien(rs.getInt("COST_EXP"));
-                objCT.setTongGiaTien(rs.getInt("TOTAL_COST_EXP"));
+                objCT.setGiaTien(rs.getInt("COST_IMP"));
+                objCT.setTongGiaTien(rs.getInt("TOTAL_COST_IMP"));
                 
                 
 
@@ -82,7 +82,7 @@ public class ChiTietDonHangNhapBusiness {
             conn = DataProvider.ketNoi();
             
             //Khai báo công việc
-            String strInsert = "Insert into ChiTietDonHangNhap(IMPORTDETAIL_ID, PRODUCT_NAME, QUANTITY_IMP, COST_EXP, TOTAL_COST_EXP,IMPORT_ID "
+            String strInsert = "Insert into ChiTietDonHangNhap(IMPORTDETAIL_ID, PRODUCT_NAME, QUANTITY_IMP, COST_IMP, TOTAL_COST_IMP,IMPORT_ID "
                     + ") values("
                     + "?,?,?,?,?,?)";
             
@@ -143,6 +143,7 @@ public class ChiTietDonHangNhapBusiness {
             {
                 SoLuong=rs.getInt("PRODUCT_QUANTITY");
             }
+            
               SoLuong+=objNH.getSoLuong();
             String strUpdate = "Update HangHoa set  PRODUCT_QUANTITY=?  where PRODUCT_NAME = ?";
             
@@ -193,7 +194,7 @@ public class ChiTietDonHangNhapBusiness {
             conn = DataProvider.ketNoi();
             
             //Khai báo công việc
-            String strUpdate = "Update ChiTietDonHangNhap set  QUANTITY_IMP = ?, COST_EXP = ?,TOTAL_COST_EXP=? "
+            String strUpdate = "Update ChiTietDonHangNhap set  QUANTITY_IMP = ?, COST_IMP = ?,TOTAL_COST_IMP=? "
                    
                     + "  where IMPORTDETAIL_ID = ?";
             

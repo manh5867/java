@@ -222,7 +222,7 @@ public class HangHoaBusiness {
             comm.setInt(4, objHH.getGiaBan());
             comm.setString(5, objHH.getViTri());
             
-            comm.setInt(6, objHH.getTonKho());
+            comm.setInt(6, 0);
             
                comm.setString(7, objHH.getMoTa());
                 
